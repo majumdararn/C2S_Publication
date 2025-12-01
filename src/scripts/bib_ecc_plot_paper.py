@@ -277,7 +277,7 @@ ax_ins1 = inset_axes(ax, width="100%", height="100%", bbox_to_anchor=(0, 0.4, 0.
 ax_ins1.axis('off')
 
 # Load the PDF and select the first page
-doc = fitz.open(paths.figures / 'ppt/ballinboxEccentric.pdf')
+doc = fitz.open(paths.data / 'ppt/ballinboxEccentric.pdf')
 page = doc.load_page(0)
 
 # Define crop area (x0, y0, x1, y1) in points
