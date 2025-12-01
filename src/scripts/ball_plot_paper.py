@@ -131,7 +131,7 @@ read folder structure
 """
 
 # folder structure
-## mother folder name
+## mother folder name (working dir + )
 ### save length values as strings
 ### decimal points are replaced with p
 length_a_str=str(length_a).replace('.','p')
@@ -298,10 +298,3 @@ for i,t in enumerate(t_arr):
 
     plt.savefig(plot_file, format='pdf')
     plt.close(fig)
-
-# try:
-#     # Make sure the output directory exists
-#     os.path.exists(paths.figures / plot_file)
-# except Exception as e:
-#     print("Failed to generate figure:", e)
-#     raise
