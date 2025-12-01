@@ -30,7 +30,7 @@ datasets:
       dataset.tar.xz: src/data/dataset.tar.xz
 
 # Custom file dependencies
-# dependencies:
+dependencies:
   src/scripts/ball_plot_paper.py:
     - src/data/dataset.tar.xz
   src/scripts/bib_ecc_plot_paper.py:
