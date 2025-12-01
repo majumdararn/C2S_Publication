@@ -193,7 +193,8 @@ model_dir=os.path.join(sim_dir,model_dir_name)
 model_param_dir=os.path.join(model_dir,model_param_dir_name)
 
 # create folder for figure (one level up from data folder)
-figure_dir=os.path.join(mother_dir, '../../figure/')
+# figure_dir=os.path.join(mother_dir, '../../figure/')
+figure_dir=paths.figures
 os.makedirs(figure_dir, exist_ok=True)
 ## folder for this suit of figures
 plot_dir=os.path.join(figure_dir, sim_model +'_paper')
@@ -321,12 +322,12 @@ for i,t in enumerate(t_arr):
     #         ax_ins.add_patch(Rectangle((rect_center_x, rect_center_y), cell_x, cell_y,
     #                                     edgecolor='k', facecolor='none', linewidth=0.5))
 
-    fig.savefig(paths.figures / plot_file, format='pdf')
-    # plt.close(fig)
+    plt.savefig(plot_file, format='pdf')
+    plt.close(fig)
 
-try:
-    # Make sure the output directory exists
-    os.path.exists(paths.figures / plot_file)
-except Exception as e:
-    print("Failed to generate figure:", e)
-    raise
+# try:
+#     # Make sure the output directory exists
+#     os.path.exists(paths.figures / plot_file)
+# except Exception as e:
+#     print("Failed to generate figure:", e)
+#     raise
