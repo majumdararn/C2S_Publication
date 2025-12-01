@@ -31,10 +31,10 @@ datasets:
 
 # Custom file dependencies
 dependencies:
-  src/scripts/ball_plot_paper.py:
-    - src/data/dataset.tar.xz
-  src/scripts/bib_ecc_plot_paper.py:
-    - src/data/dataset.tar.xz
+  # src/scripts/ball_plot_paper.py:
+  #   - src/data/dataset.tar.xz
+  # src/scripts/bib_ecc_plot_paper.py:
+  #   - src/data/dataset.tar.xz
   # src/tex/ms.tex:
   #   - src/tex/stylesheet.tex
 
