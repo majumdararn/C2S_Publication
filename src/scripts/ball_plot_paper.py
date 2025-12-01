@@ -241,86 +241,86 @@ for i,t in enumerate(t_arr):
                    markersize=ms_arr[idx],
                      label='Categorization method: ' + method_cat + ', ' + str(num_cat) + ' categories' )
 
-    # # ananlytical intensity
-    # ## Intensity unit 10^-10 \AA^2
-    # Iq_ana,q_ana=ball(qmax=np.max(q),qmin=np.min(q),Npts=100,
-    #             scale=1,bg=0,sld=ball_sld,sld_sol=0,rad=ball_rad)
-    # ## Normalize by volume
-    # ## (Before * 10**2) Intensity unit 10^-10 \AA^-1 = 10 ^-2 cm^-1
-    # ## (after * 10**2) Intensity unit cm^-1
-    # Iq_ana = (Iq_ana / vol_norm) * 10**2
+    # ananlytical intensity
+    ## Intensity unit 10^-10 \AA^2
+    Iq_ana,q_ana=ball(qmax=np.max(q),qmin=np.min(q),Npts=100,
+                scale=1,bg=0,sld=ball_sld,sld_sol=0,rad=ball_rad)
+    ## Normalize by volume
+    ## (Before * 10**2) Intensity unit 10^-10 \AA^-1 = 10 ^-2 cm^-1
+    ## (after * 10**2) Intensity unit cm^-1
+    Iq_ana = (Iq_ana / vol_norm) * 10**2
 
-    # # loglog plot
-    # ax.loglog(q_ana, Iq_ana, 'b', label='Analytical calculation', zorder=-10)
-    # # ax.loglog(q, Iq,'r', linestyle='', marker='o', markersize=3, label='Numerical calculation')
+    # loglog plot
+    ax.loglog(q_ana, Iq_ana, 'b', label='Analytical calculation', zorder=-10)
+    # ax.loglog(q, Iq,'r', linestyle='', marker='o', markersize=3, label='Numerical calculation')
 
-    # # plot formatting
-    # ## legend
-    # ax.legend()
-    # ## labels
-    # ax.set_xlabel(r'Q [$\mathrm{\AA}^{-1}$]')
-    # ax.set_ylabel(r'I(Q) [$\mathrm{cm}^{-1}$]')
-    # ## SANS upper boundary Q=1 \AA^-1
-    # ax.set_xlim(right=1)
+    # plot formatting
+    ## legend
+    ax.legend()
+    ## labels
+    ax.set_xlabel(r'Q [$\mathrm{\AA}^{-1}$]')
+    ax.set_ylabel(r'I(Q) [$\mathrm{cm}^{-1}$]')
+    ## SANS upper boundary Q=1 \AA^-1
+    ax.set_xlim(right=1)
 
-    # # read node sld
-    # # save pseudo atom info
-    # ensem_dir_name='ensem{0:0>3}'.format(0)
-    # ensem_dir=os.path.join(t_dir, ensem_dir_name)
-    # scatt_cal_dir_name='scatt_cal_' + scatt_settings
-    # scatt_cal_dir=os.path.join(ensem_dir, scatt_cal_dir_name)
-    # scatt_cal_data_file_name='scatt_cal.h5'
-    # scatt_cal_data_file=os.path.join(scatt_cal_dir, scatt_cal_data_file_name)
-    # scatt_cal_data=h5py.File(scatt_cal_data_file,'r')
-    # node_pos=scatt_cal_data['node_pos'][:]
-    # node_sld=scatt_cal_data['node_sld'][:]
-    # pseudo_pos=scatt_cal_data['pseudo_pos'][:]
-    # pseudo_b=scatt_cal_data['pseudo_b'][:]
-    # pseudo_b_cat_val=scatt_cal_data['pseudo_b_cat_val'][:]
-    # pseudo_b_cat_idx=scatt_cal_data['pseudo_b_cat_idx'][:]
-    # scatt_cal_data.close()
+    # read node sld
+    # save pseudo atom info
+    ensem_dir_name='ensem{0:0>3}'.format(0)
+    ensem_dir=os.path.join(t_dir, ensem_dir_name)
+    scatt_cal_dir_name='scatt_cal_' + scatt_settings
+    scatt_cal_dir=os.path.join(ensem_dir, scatt_cal_dir_name)
+    scatt_cal_data_file_name='scatt_cal.h5'
+    scatt_cal_data_file=os.path.join(scatt_cal_dir, scatt_cal_data_file_name)
+    scatt_cal_data=h5py.File(scatt_cal_data_file,'r')
+    node_pos=scatt_cal_data['node_pos'][:]
+    node_sld=scatt_cal_data['node_sld'][:]
+    pseudo_pos=scatt_cal_data['pseudo_pos'][:]
+    pseudo_b=scatt_cal_data['pseudo_b'][:]
+    pseudo_b_cat_val=scatt_cal_data['pseudo_b_cat_val'][:]
+    pseudo_b_cat_idx=scatt_cal_data['pseudo_b_cat_idx'][:]
+    scatt_cal_data.close()
 
-    # # determine sld min and max for plotting
-    # sld_min=np.min(node_sld,0)
-    # sld_max=np.max(node_sld,0)
+    # determine sld min and max for plotting
+    sld_min=np.min(node_sld,0)
+    sld_max=np.max(node_sld,0)
 
-    # if el_type=='lagrangian':
-    #     num_node_x=el_order*nx+1
-    #     num_node_y=el_order*ny+1
-    #     num_node_z=el_order*nz+1
-    # # plotting node SLD
-    # ## cutting at z = cut_frac * length_z
-    # cut_frac=0.5
-    # node_pos_3d=node_pos.reshape(num_node_x, num_node_y, num_node_z, 3)
-    # z_idx= np.floor(cut_frac*(num_node_z)).astype(int)
-    # z_val=node_pos_3d[0, 0, z_idx , 2]
+    if el_type=='lagrangian':
+        num_node_x=el_order*nx+1
+        num_node_y=el_order*ny+1
+        num_node_z=el_order*nz+1
+    # plotting node SLD
+    ## cutting at z = cut_frac * length_z
+    cut_frac=0.5
+    node_pos_3d=node_pos.reshape(num_node_x, num_node_y, num_node_z, 3)
+    z_idx= np.floor(cut_frac*(num_node_z)).astype(int)
+    z_val=node_pos_3d[0, 0, z_idx , 2]
     ## figure specification
     plot_file_name='Iq_ball.pdf'
     plot_file=os.path.join(plot_dir,plot_file_name)
-    # #fig_ins, ax_ins = plt.subplots(figsize=(5, 5))
-    # ax_ins = inset_axes(ax, width="100%", height="100%", bbox_to_anchor=(0, 0.3, 0.5, 0.5),
-    #                      bbox_transform=ax.transAxes)
-    # ## image plot
-    # ### .T is required to exchange x and y axis
-    # ### origin is 'lower' to put it in lower left corner
-    # node_sld_3d=node_sld.reshape(num_node_x, num_node_y, num_node_z)
-    # cmap = ListedColormap(['white', '#440154'])
-    # img = ax_ins.imshow(node_sld_3d[:,:,z_idx].T,
-    #                      extent=[0, length_a, 0, length_b],
-    #                        origin='lower', vmin=sld_min, vmax=sld_max,
-    #                          interpolation='bilinear', cmap=cmap)
+    #fig_ins, ax_ins = plt.subplots(figsize=(5, 5))
+    ax_ins = inset_axes(ax, width="100%", height="100%", bbox_to_anchor=(0, 0.3, 0.5, 0.5),
+                         bbox_transform=ax.transAxes)
+    ## image plot
+    ### .T is required to exchange x and y axis
+    ### origin is 'lower' to put it in lower left corner
+    node_sld_3d=node_sld.reshape(num_node_x, num_node_y, num_node_z)
+    cmap = ListedColormap(['white', '#440154'])
+    img = ax_ins.imshow(node_sld_3d[:,:,z_idx].T,
+                         extent=[0, length_a, 0, length_b],
+                           origin='lower', vmin=sld_min, vmax=sld_max,
+                             interpolation='bilinear', cmap=cmap)
 
-    # ax_ins.axis('off')
+    ax_ins.axis('off')
 
-    # ## add mesh
-    # cell_x=length_a/nx
-    # cell_y=length_a/ny
-    # for idx1 in range(nx):
-    #     for idx2 in range(ny):
-    #         rect_center_x=idx1*cell_x
-    #         rect_center_y=idx2*cell_y
-    #         ax_ins.add_patch(Rectangle((rect_center_x, rect_center_y), cell_x, cell_y,
-    #                                     edgecolor='k', facecolor='none', linewidth=0.5))
+    ## add mesh
+    cell_x=length_a/nx
+    cell_y=length_a/ny
+    for idx1 in range(nx):
+        for idx2 in range(ny):
+            rect_center_x=idx1*cell_x
+            rect_center_y=idx2*cell_y
+            ax_ins.add_patch(Rectangle((rect_center_x, rect_center_y), cell_x, cell_y,
+                                        edgecolor='k', facecolor='none', linewidth=0.5))
 
     plt.savefig(plot_file, format='pdf')
     plt.close(fig)
