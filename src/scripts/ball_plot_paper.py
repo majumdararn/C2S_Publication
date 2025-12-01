@@ -70,12 +70,12 @@ def ball (qmax,qmin,Npts,scale,bg,sld,sld_sol,rad):
 # script_dir = "src"  # Full path of the script
 # working_dir = "."  # Directory to run the script in
 # open tarfile
-tar_path=paths.data / 'dataset.tar.xz'
-tar=tarfile.open(tar_path, 'r:xz')
-readme=tar.extractfile('README.md')
+tar_path = paths.data / "dataset.tar.xz"
+with tarfile.open(tar_path, "r:xz") as tar:
+    tar.extract("dataset/README.md", path=paths.data)
 
 # Read README.md
-with open(readme, "r", encoding="utf-8") as f:
+with open("dataset/README.md", "r", encoding="utf-8") as f:
     lines = f.readlines()
 
 # Example plot: length of each line
