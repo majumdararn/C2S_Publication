@@ -70,7 +70,7 @@ def ball (qmax,qmin,Npts,scale,bg,sld,sld_sol,rad):
 # script_dir = "src"  # Full path of the script
 # working_dir = "."  # Directory to run the script in
 # open tarfile
-tar_path=paths.data / 'dataset.tar.gz'
+tar_path=paths.data / 'dataset.tar.xz'
 tar=tarfile.open(tar_path, 'r:gz')
 readme=tar.extractfile('README.md')
 
