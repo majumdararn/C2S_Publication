@@ -262,37 +262,37 @@ for i,t in enumerate(t_arr):
     ## SANS upper boundary Q=1 \AA^-1
     ax.set_xlim(right=1)
 
-    # read node sld
-    # save pseudo atom info
-    ensem_dir_name='ensem{0:0>3}'.format(0)
-    ensem_dir=os.path.join(t_dir, ensem_dir_name)
-    scatt_cal_dir_name='scatt_cal_' + scatt_settings
-    scatt_cal_dir=os.path.join(ensem_dir, scatt_cal_dir_name)
-    scatt_cal_data_file_name='scatt_cal.h5'
-    scatt_cal_data_file=os.path.join(scatt_cal_dir, scatt_cal_data_file_name)
-    scatt_cal_data=h5py.File(scatt_cal_data_file,'r')
-    node_pos=scatt_cal_data['node_pos'][:]
-    node_sld=scatt_cal_data['node_sld'][:]
-    pseudo_pos=scatt_cal_data['pseudo_pos'][:]
-    pseudo_b=scatt_cal_data['pseudo_b'][:]
-    pseudo_b_cat_val=scatt_cal_data['pseudo_b_cat_val'][:]
-    pseudo_b_cat_idx=scatt_cal_data['pseudo_b_cat_idx'][:]
-    scatt_cal_data.close()
+    # # read node sld
+    # # save pseudo atom info
+    # ensem_dir_name='ensem{0:0>3}'.format(0)
+    # ensem_dir=os.path.join(t_dir, ensem_dir_name)
+    # scatt_cal_dir_name='scatt_cal_' + scatt_settings
+    # scatt_cal_dir=os.path.join(ensem_dir, scatt_cal_dir_name)
+    # scatt_cal_data_file_name='scatt_cal.h5'
+    # scatt_cal_data_file=os.path.join(scatt_cal_dir, scatt_cal_data_file_name)
+    # scatt_cal_data=h5py.File(scatt_cal_data_file,'r')
+    # node_pos=scatt_cal_data['node_pos'][:]
+    # node_sld=scatt_cal_data['node_sld'][:]
+    # pseudo_pos=scatt_cal_data['pseudo_pos'][:]
+    # pseudo_b=scatt_cal_data['pseudo_b'][:]
+    # pseudo_b_cat_val=scatt_cal_data['pseudo_b_cat_val'][:]
+    # pseudo_b_cat_idx=scatt_cal_data['pseudo_b_cat_idx'][:]
+    # scatt_cal_data.close()
 
-    # determine sld min and max for plotting
-    sld_min=np.min(node_sld,0)
-    sld_max=np.max(node_sld,0)
+    # # determine sld min and max for plotting
+    # sld_min=np.min(node_sld,0)
+    # sld_max=np.max(node_sld,0)
 
-    if el_type=='lagrangian':
-        num_node_x=el_order*nx+1
-        num_node_y=el_order*ny+1
-        num_node_z=el_order*nz+1
-    # plotting node SLD
-    ## cutting at z = cut_frac * length_z
-    cut_frac=0.5
-    node_pos_3d=node_pos.reshape(num_node_x, num_node_y, num_node_z, 3)
-    z_idx= np.floor(cut_frac*(num_node_z)).astype(int)
-    z_val=node_pos_3d[0, 0, z_idx , 2]
+    # if el_type=='lagrangian':
+    #     num_node_x=el_order*nx+1
+    #     num_node_y=el_order*ny+1
+    #     num_node_z=el_order*nz+1
+    # # plotting node SLD
+    # ## cutting at z = cut_frac * length_z
+    # cut_frac=0.5
+    # node_pos_3d=node_pos.reshape(num_node_x, num_node_y, num_node_z, 3)
+    # z_idx= np.floor(cut_frac*(num_node_z)).astype(int)
+    # z_val=node_pos_3d[0, 0, z_idx , 2]
     ## figure specification
     plot_file_name='Iq_ball.pdf'
     plot_file=os.path.join(plot_dir,plot_file_name)
