@@ -97,6 +97,11 @@ with tarfile.open(tar_path, "r:xz") as tar:
     for member in tar.getmembers():
         if member.name.startswith("dataset/data/"):
             tar.extract(member, path=paths.data)
+# extract ppt folder
+with tarfile.open(tar_path, "r:xz") as tar:
+    for member in tar.getmembers():
+        if member.name.startswith("dataset/ppt/"):
+            tar.extract(member, path=paths.data)
 # working dir (or data folder) path
 working_dir = paths.data / "dataset"
 
