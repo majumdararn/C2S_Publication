@@ -296,30 +296,30 @@ for i,t in enumerate(t_arr):
     ## figure specification
     plot_file_name='Iq_ball.pdf'
     plot_file=os.path.join(plot_dir,plot_file_name)
-    #fig_ins, ax_ins = plt.subplots(figsize=(5, 5))
-    ax_ins = inset_axes(ax, width="100%", height="100%", bbox_to_anchor=(0, 0.3, 0.5, 0.5),
-                         bbox_transform=ax.transAxes)
-    ## image plot
-    ### .T is required to exchange x and y axis
-    ### origin is 'lower' to put it in lower left corner
-    node_sld_3d=node_sld.reshape(num_node_x, num_node_y, num_node_z)
-    cmap = ListedColormap(['white', '#440154'])
-    img = ax_ins.imshow(node_sld_3d[:,:,z_idx].T,
-                         extent=[0, length_a, 0, length_b],
-                           origin='lower', vmin=sld_min, vmax=sld_max,
-                             interpolation='bilinear', cmap=cmap)
+    # #fig_ins, ax_ins = plt.subplots(figsize=(5, 5))
+    # ax_ins = inset_axes(ax, width="100%", height="100%", bbox_to_anchor=(0, 0.3, 0.5, 0.5),
+    #                      bbox_transform=ax.transAxes)
+    # ## image plot
+    # ### .T is required to exchange x and y axis
+    # ### origin is 'lower' to put it in lower left corner
+    # node_sld_3d=node_sld.reshape(num_node_x, num_node_y, num_node_z)
+    # cmap = ListedColormap(['white', '#440154'])
+    # img = ax_ins.imshow(node_sld_3d[:,:,z_idx].T,
+    #                      extent=[0, length_a, 0, length_b],
+    #                        origin='lower', vmin=sld_min, vmax=sld_max,
+    #                          interpolation='bilinear', cmap=cmap)
 
-    ax_ins.axis('off')
+    # ax_ins.axis('off')
 
-    ## add mesh
-    cell_x=length_a/nx
-    cell_y=length_a/ny
-    for idx1 in range(nx):
-        for idx2 in range(ny):
-            rect_center_x=idx1*cell_x
-            rect_center_y=idx2*cell_y
-            ax_ins.add_patch(Rectangle((rect_center_x, rect_center_y), cell_x, cell_y,
-                                        edgecolor='k', facecolor='none', linewidth=0.5))
+    # ## add mesh
+    # cell_x=length_a/nx
+    # cell_y=length_a/ny
+    # for idx1 in range(nx):
+    #     for idx2 in range(ny):
+    #         rect_center_x=idx1*cell_x
+    #         rect_center_y=idx2*cell_y
+    #         ax_ins.add_patch(Rectangle((rect_center_x, rect_center_y), cell_x, cell_y,
+    #                                     edgecolor='k', facecolor='none', linewidth=0.5))
 
     plt.savefig(paths.figures / plot_file, format='pdf')
     plt.close(fig)
