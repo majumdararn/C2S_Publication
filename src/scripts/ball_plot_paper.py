@@ -240,27 +240,27 @@ for i,t in enumerate(t_arr):
                    markersize=ms_arr[idx],
                      label='Categorization method: ' + method_cat + ', ' + str(num_cat) + ' categories' )
 
-    # ananlytical intensity
-    ## Intensity unit 10^-10 \AA^2
-    Iq_ana,q_ana=ball(qmax=np.max(q),qmin=np.min(q),Npts=100,
-                scale=1,bg=0,sld=ball_sld,sld_sol=0,rad=ball_rad)
-    ## Normalize by volume
-    ## (Before * 10**2) Intensity unit 10^-10 \AA^-1 = 10 ^-2 cm^-1
-    ## (after * 10**2) Intensity unit cm^-1
-    Iq_ana = (Iq_ana / vol_norm) * 10**2
+    # # ananlytical intensity
+    # ## Intensity unit 10^-10 \AA^2
+    # Iq_ana,q_ana=ball(qmax=np.max(q),qmin=np.min(q),Npts=100,
+    #             scale=1,bg=0,sld=ball_sld,sld_sol=0,rad=ball_rad)
+    # ## Normalize by volume
+    # ## (Before * 10**2) Intensity unit 10^-10 \AA^-1 = 10 ^-2 cm^-1
+    # ## (after * 10**2) Intensity unit cm^-1
+    # Iq_ana = (Iq_ana / vol_norm) * 10**2
 
-    # loglog plot
-    ax.loglog(q_ana, Iq_ana, 'b', label='Analytical calculation', zorder=-10)
-    # ax.loglog(q, Iq,'r', linestyle='', marker='o', markersize=3, label='Numerical calculation')
+    # # loglog plot
+    # ax.loglog(q_ana, Iq_ana, 'b', label='Analytical calculation', zorder=-10)
+    # # ax.loglog(q, Iq,'r', linestyle='', marker='o', markersize=3, label='Numerical calculation')
 
-    # plot formatting
-    ## legend
-    ax.legend()
-    ## labels
-    ax.set_xlabel(r'Q [$\mathrm{\AA}^{-1}$]')
-    ax.set_ylabel(r'I(Q) [$\mathrm{cm}^{-1}$]')
-    ## SANS upper boundary Q=1 \AA^-1
-    ax.set_xlim(right=1)
+    # # plot formatting
+    # ## legend
+    # ax.legend()
+    # ## labels
+    # ax.set_xlabel(r'Q [$\mathrm{\AA}^{-1}$]')
+    # ax.set_ylabel(r'I(Q) [$\mathrm{cm}^{-1}$]')
+    # ## SANS upper boundary Q=1 \AA^-1
+    # ax.set_xlim(right=1)
 
     # # read node sld
     # # save pseudo atom info
