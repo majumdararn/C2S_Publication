@@ -42,8 +42,9 @@ dependencies:
   # src/tex/ms.tex:
   #   - src/figures/Iq_ball.pdf
   #   - src/figures/Iq_bib_ecc.pdf
-  # src/tex/ms.tex:
-  #   - src/tex/stylesheet.tex
+  src/tex/ms.tex:
+    - src/scripts/bib_ecc_plot_paper.py
+    - src/scripts/ball_plot_paper.py
 
 # Name of the `.tex` manuscript and corresponding `.pdf` article
 ms_name: ms
