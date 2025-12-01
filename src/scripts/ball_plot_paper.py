@@ -17,14 +17,13 @@ from matplotlib.colors import ListedColormap
 import h5py
 import paths
 
-# # lib imports (if any)
-# # find current dir and and ..
-# lib_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
-# # add .. in path
-# sys.path.append(lib_dir)
-
 # ignore warnings
 warnings.filterwarnings("ignore", category=SyntaxWarning)
+
+###################################
+# (DE) Funktionsbereich
+# (ENG) Functions
+###################################
 
 # analytical SAS function
 def J1(x):
@@ -59,50 +58,25 @@ def ball (qmax,qmin,Npts,scale,bg,sld,sld_sol,rad):
     Iq_arr = (scale)*np.abs(FormFactor)**2+bg
     return Iq_arr, q_arr
 
-##########################
-# read input from xml file
-##########################
+##############################################
+# (DE) Henunterläde input Daten von tar ordner
+# (ENG) Download input data from tar file
+##############################################
 
-### file locations ###
-# xml location
-# xml_folder='./xml/'
-# # script dir and working dir
-# script_dir = "src"  # Full path of the script
-# working_dir = "."  # Directory to run the script in
 # open tarfile
 tar_path = paths.data / "dataset.tar.xz"
-# with tarfile.open(tar_path, "r:xz") as tar:
-#     tar.extract("dataset/README.md", path=paths.data)
-#     tar.extract("dataset/data", path=paths.data)
+# extract data folder
 with tarfile.open(tar_path, "r:xz") as tar:
-    # tar.extract("dataset/README.md", path=paths.data)
     for member in tar.getmembers():
         if member.name.startswith("dataset/data/"):
             tar.extract(member, path=paths.data)
-
-# Correct path when opening the extracted file
+# working dir (or data folder) path
 working_dir = paths.data / "dataset"
 
-# # Read README.md
-# with open(readme_path, "r", encoding="utf-8") as f:
-#     lines = f.readlines()
-
-# # Example plot: length of each line
-# line_lengths = [len(line.strip()) for line in lines]
-
-# plt.figure(figsize=(10, 5))
-# plt.plot(line_lengths)
-# plt.xlabel("Line Number")
-# plt.ylabel("Line Length")
-# plt.title("README.md Line Lengths")
-# plt.tight_layout()
-# plt.savefig(paths.figures / 'readme.pdf')
-
-
-
-############
-# Input data
-############
+##################
+# (DE) Input Daten
+# (ENG) Input data
+##################
 
 ### struct gen ###
 # box side lengths (float values)
@@ -210,9 +184,9 @@ for i,t in enumerate(t_arr):
     # time_dir name
     t_dir_name=f't{i:0>3}'
     t_dir=os.path.join(model_param_dir, t_dir_name)
-    for idx in range(len(method_cats)):
-        method_cat=method_cats[idx]
-        num_cat=num_cats[idx]
+    for idx, (method_cat, num_cat) in enumerate(zip(method_cats, num_cats)):
+        # method_cat=method_cats[idx]
+        # num_cat=num_cats[idx]
 
         # retrieve scattering setting for this particular case
         scatt_settings='cat_' + method_cat + '_' + str(num_cat) + 'Q_' \
