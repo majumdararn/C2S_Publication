@@ -321,11 +321,12 @@ for i,t in enumerate(t_arr):
     #         ax_ins.add_patch(Rectangle((rect_center_x, rect_center_y), cell_x, cell_y,
     #                                     edgecolor='k', facecolor='none', linewidth=0.5))
 
-    plt.savefig(paths.figures / plot_file, format='pdf')
-    plt.close(fig)
+    fig.savefig(paths.figures / plot_file, format='pdf')
+    # plt.close(fig)
 
 try:
     # Make sure the output directory exists
     os.path.exists(paths.figures / plot_file)
 except Exception as e:
     print("Failed to generate figure:", e)
+    raise
