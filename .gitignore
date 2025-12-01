@@ -13,7 +13,7 @@ src/tex/figures/*
 # Miscellaneous
 __pycache__
 *.synctex.gz
-src/srcripts/models
+src/scripts/models
 src/scripts/phase_field_img_plot_paper.py 
 src/scripts/phase_field_Iq_plot_paper.py
 src/scripts/bib_ecc_plot_paper.py
