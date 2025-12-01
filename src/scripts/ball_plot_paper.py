@@ -71,9 +71,14 @@ def ball (qmax,qmin,Npts,scale,bg,sld,sld_sol,rad):
 # working_dir = "."  # Directory to run the script in
 # open tarfile
 tar_path = paths.data / "dataset.tar.xz"
+# with tarfile.open(tar_path, "r:xz") as tar:
+#     tar.extract("dataset/README.md", path=paths.data)
+#     tar.extract("dataset/data", path=paths.data)
 with tarfile.open(tar_path, "r:xz") as tar:
-    tar.extract("dataset/README.md", path=paths.data)
-    tar.extract("dataset/data", path=paths.data)
+    # tar.extract("dataset/README.md", path=paths.data)
+    for member in tar.getmembers():
+        if member.name.startswith("dataset/data/"):
+            tar.extract(member, path=paths.data)
 
 # Correct path when opening the extracted file
 working_dir = paths.data / "dataset"
