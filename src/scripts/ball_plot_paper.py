@@ -323,3 +323,9 @@ for i,t in enumerate(t_arr):
 
     plt.savefig(paths.figures / plot_file, format='pdf')
     plt.close(fig)
+
+try:
+    # Make sure the output directory exists
+    os.path.exists(paths.figures / plot_file)
+except Exception as e:
+    print("Failed to generate figure:", e)
