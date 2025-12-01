@@ -74,8 +74,11 @@ tar_path = paths.data / "dataset.tar.xz"
 with tarfile.open(tar_path, "r:xz") as tar:
     tar.extract("dataset/README.md", path=paths.data)
 
+# Correct path when opening the extracted file
+readme_path = paths.data / "dataset" / "README.md"
+
 # Read README.md
-with open("dataset/README.md", "r", encoding="utf-8") as f:
+with open(readme_path, "r", encoding="utf-8") as f:
     lines = f.readlines()
 
 # Example plot: length of each line
