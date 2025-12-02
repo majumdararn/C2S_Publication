@@ -146,6 +146,251 @@ To compare with SAS data, continuum simulations need to calculate the Fourier Tr
 % overview 
 In this article, the proposed numerical algorithm to calculate SAS patterns from continuum simulations is described. The algorithm is verified using different examples for which SAS patterns can be calculated analytically. The analytical curves are used for qualitative comparisons of the overall shapes and also for quantitative assessments of the accuracy of parameter determination in reciprocal space. The calculation procedure is then illustrated on the example of spinodal decomposition of an iron chromium (\ce{Fe-Cr}) alloy.
 
+\section{Materials and methods}
+\label{sec:mat_method}
+
+% Short summary
+In the following, the concept of \emph{scattering length density} (SLD) is revisited, and a background overview of numerical and analytical approaches for calculating SAS patterns is provided, in section~\ref{subsec:mat_method_sas}. The concrete numerical algorithm is introduced later in section~\ref{subsec:res_algo}. Key continuum simulation concepts relevant to SAS pattern calculations are presented in section~\ref{subsec:mat_method_sim}, followed by descriptions of the model nanostructures, used for validation, in section~\ref{subsec:mat_method_model} and the simulated nanostructures, employed for demonstration, in section~\ref{subsec:mat_method_fem}.
+
+%% Sebastian version
+% I fucked it up, but it was something like this
+% A background summary on the concept of \emph{scattering length density}, how they can be calculated from continuum simulation, and how SAS patterns can be calculated from them analytically and numerically are introfuced in section~\ref{subsec:mat_method_sas}; the concrete algorithm introduced in this contribution is presented later in section~\ref{subsec:res_algo}.
+% introduces the concept of \emph{scattering length density} in section~\ref{subsec:mat_method_sas}; the concrete algorithm introduced in this contribution is presented later in section~\ref{subsec:res_algo}. It is followed by a description how this quantity can be obtained from continuum simulations in section~\ref{subsec:mat_method_sim}. Section~\ref{subsec:mat_method_model} presents the nanostructures that are used to validate the calculation method, and section~\ref{subsec:mat_method_fem} an FEM simulation used for demonstration.
+
+\subsection{Calculation of Small Angle Scattering (SAS) patterns}
+\label{subsec:mat_method_sas}
+To compute SAS patterns from continuum simulations, the local SLD, denoted as $\beta(\vec{r})$, must be determined at each spatial point $\vec{r}$ of the simulated nanostructure. This quantity reflects the local elemental composition weighted by the scattering properties of the constituent elements. 
+
+The SLD computation starts with the local molar density $\rho_{\text{m}}(\vec{r})\,[\text{mol}/\text{\AA}^3]$ and the local mole fractions $\chi_{\alpha}(\vec{r})$ of the constituent materials, from which the local material composition is established. Each material $\alpha$ is then decomposed into its elemental constituents (el) with corresponding concentrations $c_{\alpha, \text{el}}$. In the simplest case, each material is a pure element. Using the elemental concentration, the Avogadro constant $N_{\text{A}}=6.022\times10^{23},\text{mol}^{-1}$, and $b_{\text{el}}$ as the scattering property of an atom of element el , one obtains
+%
+% To calculate SAS patterns from continuum simulations, the local SLD $\beta(\vec{r})$ at a point $\vec{r}$ of the simulated nanostructure has to be computed. Ultimately, this computation weighs the local elemental composition with the scattering properties of the elements. Starting with the local molar density $\rho_{\text{m}}(\vec{r})\,[\text{mol}/\text{\AA}^3]$ and the local mole fractions $\chi_{\alpha}(\vec{r})$ of the constituent materials, the local material composition is calculated. To break this down to the elemental composition, each material $\alpha$ is decomposed into a sum of different elements el with their respective concentrations $c_{\alpha, \text{el}}$ -- in the simplest case, each material is a pure element. Using the Avogadro constant $N_{\text{A}}=6.022 \times 10^{23}\,\text{mol}^{-1}$ and $b_{\text{el}}$ as the scattering property of an atom of element el, one obtains
+%
+\begin{equation}
+    \label{eqn:SLD_cal}
+    \beta(\vec{r})= \rho_{\text{m}}(\vec{r}) \cdot N_{\text{A}} \cdot
+    \sum_{\alpha} \chi_{\alpha}(\vec{r}) \cdot
+    \sum_{\text{el}} c_{\alpha, \text{el}} \cdot b_{\text{el}} .
+\end{equation}
+%
+For SANS, $b_{\text{el}}$ corresponds to the coherent scattering length $(b_c)$ of the element~\cite{sears1992neutron, NIST}. For SAXS, $b_{\text{el}}$ can be approximated by $Z r_e$, where $Z$ is the atomic number and $r_e$ is the classical electron radius~\cite{NIST}.
+
+To validate simulations with SAS measurements, the Fourier transform of the ACF of calculated $\beta(\vec{r})$ can be compared with the SAS intensity $(I)$ measured as a function of the scattering vector $\vec{Q}$ or, in case of orientational averaging, its magnitude $Q$. The value of $Q$ can be calculated from experimental parameters as $Q=4\pi \sin(\theta)/\lambda$ using the incident beam wavelength $\lambda$ and the angle between the direction of the incoming and scattered beam $2\theta$. So, 
+%
+\begin{equation}
+\begin{split}
+    \label{eqn:SANS_cont}
+    I(Q) = \left\langle I(\vec{Q}) \right\rangle_{\Omega} &= \left\langle\iiint\limits_V \text{ACF}[\beta(\vec{r})]\,\mathrm{e}^{\mathrm{i} \vec{Q} \cdot \vec{r}}\,\mathrm{d}\vec{r}\right\rangle_{\Omega}\\
+         &=\,\left\langle\left|\iiint\limits_V \beta(\vec{r})\,\mathrm{e}^{\mathrm{i} \vec{Q} \cdot \vec{r}}\,\mathrm{d}\vec{r}\,\right|^2\right\rangle_{\Omega},
+\end{split}
+\end{equation}
+%
+with $\langle\cdots\rangle_{\Omega}$ denoting orientational averaging. 
+
+For numerically simulated nanostructures, this formula cannot be used directly to calculate SAS intensities, because an analytical expression of $\beta(\vec{r})$ cannot be retrieved from the numerical simulation. So, a discretization of the continuum is proposed in section~\ref{subsec:res_algo}, where representative point-like scatterers with scattering contributions $b_i$ are placed at positions $\vec{R_i}$. Using these, the SAS intensity can be calculated numerically as
+%
+\begin{equation}
+    \label{eqn:SANS_atomic}
+    I(Q)=\left\langle\left|\sum_{j=1}^{N}\sum_{k=1}^{N} b_j b_k e^{\mathrm{i} \vec{Q} \cdot (\vec{R}_j -\vec{R}_k)}\right|^2\right\rangle_{\Omega}.
+\end{equation}
+%
+This equation finds widespread use for calculating the scattering intensity from atomistic simulations~\cite{majumdar2024computation}, where it sums over atoms instead of the point-like scatterers proposed in this work.
+
+The measured $I(Q)$, used for comparison, is obtained by radially averaging the 2D SAS intensity acquired during experiments. If there is a preferential alignment in the sample~\cite{lee2006magnetic, mcmullan2010directed, vallooran2011macroscopic, cerclier2012structure}, the additionally contained information in the scattering intensity can be evaluated by omitting the orientational averaging step and comparing $I(\vec{Q})$ directly~\cite{hollamby2008effect}. SAXS measurements are routinely performed both in university laboratories and large facilities~\cite{weckert2004petraIII, raimondi2016esrf}. SANS measurements are employed for material characterization at several facilities worldwide~\cite{roegler2002new, ageron1989cold, thomason2019isis, fischer1997sinq}.
+
+\subsection{Continuum simulations}
+\label{subsec:mat_method_sim}
+
+The SLD values in simulated structures are calculated from physical variables, as shown in equation \ref{eqn:SLD_cal}. The spatial and temporal evolution of these physical variables is computed by solving physics-based partial differential equations (PDEs) in a continuum simulation. To achieve a good match between the calculated and measured SAS intensity, the SLD distribution, computed from a simulated distribution of physical variables, must closely reproduce the real shape, size, and contrast $(\Delta \beta)$, where contrast refers to the difference in SLDs between different regions of the nanostructure~\cite{hollamby2013practical, sivia2011elementary}.
+
+
+% To obtain the real-space structures from which in this work the SLD $(\beta)$ and then the SAS patterns are calculated, continuum simulations can be used that numerically solve physics-based partial differential equations (PDEs) to compute the spatial and temporal evolution of physical variables \cite{chenxin2023phase}. The resulting spatiotemporal distribution of SLD defines the evolving nanostructure. To achieve a good match between the calculated and measured SAS intensity, the simulated nanostructures must closely reproduce the real shape, size, and contrast $(\Delta \beta)$, where contrast refers to the difference in SLDs between different regions of the nanostructure~\cite{hollamby2013practical, sivia2011elementary}.
+
+To avoid the high computational cost of simulating large volumes with nanoscopic resolution~\cite{gates2005computational, ghavanloo2019computational}; only a small, representative portion of the full system is simulated, which is referred to as the representative volume element (RVE)~\cite{chen2004square}. An RVE can have any shape, but cubic or rectangular shapes are most commonly employed~\cite{chenxin2023phase, steinbach2009phase, tourret2022phase}. In this study, cubic RVEs, referred to as the simulation box, are used without restricting the generality of the approach. For irregularly shaped RVEs, removing finite-size effects from numerically calculated SAS patterns becomes more challenging~\cite{majumdar2024computation}.
+
+A variety of numerical methods can be employed to solve the governing PDEs for nanostructure simulation. In this particular contribution, we adopt the Finite Element Method (FEM), but the proposed algorithm for computing SAS patterns is agnostic to the type of numerical method used for solution. In FEM, the simulation domain (i.e., the simulation box) is discretized into finite-sized subregions called elements, through a process known as meshing. The governing equations are solved locally within each element, and the global solution is constructed by assembling the local solutions~\cite{dick2009introduction}. The global solution yields parameter values at discrete nodes, from which SLD values can be calculated  using equation~\ref{eqn:SLD_cal}. SLD values at arbitrary locations within an element can be interpolated from the nodal values using shape functions, which depend on the type and order of the element.
+
+\begin{figure}
+    \centering
+    \includegraphics[trim={5cm 5cm 6cm 4cm},clip,width=0.4\textwidth]{figures/Lagrangian_elements_2.pdf}
+    \caption{Lagrangian elements of first order shown on the left and second order shown on the right. The nodes are indexed as $(k,l,m)$. Both figures show only one single element $i$ of a simulation. \label{fig:lagrangian_elements}}
+\end{figure}
+%
+In this work, first and second-order Lagrangian elements were used as shape functions. For an element of order $\mathcal{O}$, the SLD $\beta$ at a point $(x,y,z)$ inside the $i^{\text{th}}$ element can be interpolated as
+%
+\begin{multline}
+    \label{eqn:interpole_lagrange}
+    \beta_i(x,y,z)=\\
+    \sum_{k=1}^{(\mathcal{O}+1)}\sum_{l=1}^{(\mathcal{O}+1)}\sum_{m=1}^{(\mathcal{O}+1)} N_{i,k,l,m}(x,y,z) \cdot \beta(x_{i,k,l,m}, y_{i,k,l,m}, z_{i,k,l,m}).
+\end{multline}
+%
+Here, $(x_{i,k,l,m}, y_{i,k,l,m}, z_{i,k,l,m})$ are the coordinates of the node indexed by $(k,l,m)$ in the $i^{\text{th}}$ element as visualized in fig.~\ref{fig:lagrangian_elements}, and $N_{i,k,l,m}(x,y,z)$ is the shape function associated with that node. These shape functions are products of 1D Lagrange polynomials in each spatial dimension:
+%
+\begin{multline}
+\label{eqn:lagrange_shape_func}
+    N_{i,k,l,m}(x,y,z) = N_{i,k,l,m}(x) \cdot N_{i,k,l,m}(y) \cdot N_{i,k,l,m}(z)=\\
+    \prod_{\substack{\bar{k}=1 \\ (\bar{k} \neq k)}}^{\mathcal{O}+1} \frac{x-x_{i,\bar{k},l,m}}{x_{i,k,l,m}-x_{i,\bar{k},l,m}} \cdot
+    \prod_{\substack{\bar{l}=1 \\ (\bar{l} \neq l)}}^{\mathcal{O}+1} \frac{y-y_{i,k,\bar{l},m}}{y_{i,k,l,m}-y_{i,k,\bar{l},m}} \cdot
+    \prod_{\substack{\bar{m}=1 \\ (\bar{m} \neq m)}}^{\mathcal{O}+1} \frac{z-z_{i,k,l,\bar{m}}}{z_{i,k,l,m}-z_{i,k,l,\bar{m}}}.
+\end{multline}
+
+\subsection{Validation nanostructures}
+\label{subsec:mat_method_model}
+
+To validate the here-proposed numerical method of calculating SAS patterns, model nanostructures were generated, for which the SAS intensity can be calculated analytically. These analytical expressions were compared with numerical calculations: Qualitatively, to test the influence of different approximations and get initial confirmation, and quantitatively, to determine the accuracy of numerical calculations.
+
+% qualitative
+Qualitative comparisons of analytical and numerical calculations were performed with four different nanoparticles, whose structure can be generalized by a sphere (radius $r_{\text{sph}}$, SLD $\beta_{\text{sph}}$) in a cube (side length $L$, SLD $\beta_{\text{cube}}$) with the sphere center displaced from the cube center by a vector $\vec{R}_{\text{ecc}}$. The contrast between the cube and the surrounding emptiness is $\Delta\beta_{\text{cube}} = \beta_{\text{cube}}$ and the contrast between the sphere and the cube is $\Delta\beta_{\text{sph}} = \beta_{\text{sph}} - \beta_{\text{cube}}$. The sign of the contrast is irrelevant because the measured intensity is proportional to the square of contrast \cite{jeffries2021small}.
+
+\begin{table*}
+\centering
+\begin{tabular}{llcccccc}
+\toprule
+     & \multirow{2}{*}{} & $r_{\text{sph}}$ & $L$ & $\beta_{\text{sph}}$ & $\beta_{\text{cube}}$ & $\vec{R}_{\text{ecc}}$ & $\sigma^{\dagger\dagger}$ \vspace{0.5em}\\ 
+     &                        & $[\text{\AA}]$        & $[\text{\AA}]$ & $[10^{-5} \cdot \text{\AA}^{-2}]$ & $[10^{-5} \cdot \text{\AA}^{-2}]$ & $[(\text{\AA}, \text{\AA}, \text{\AA})]$ & $[\text{\AA}]$\\
+\midrule
+\multirow{4}{*}{\shortstack{Qualitative \\ comparison}}
+& Sphere                  & 10             & 40  & 2  & 0 & (0,0,0) & N/A          \\
+& Cube                    & 10$^{\dagger}$ & 40  & 2  & 2 & (0,0,0) & N/A          \\
+& Sphere at cube-center   & 10             & 40  & 2  & 1 & (0,0,0) & N/A          \\
+& Sphere off cube-center  & 10             & 40  & 2  & 1 & (5,5,5) & N/A          \\
+\addlinespace[1mm]
+\hdashline
+\addlinespace[1mm]
+\multirow{2}{*}{\shortstack{ Quantitative \\ comparison}}
+& Particle growth         & [7 -- 17]$^{\dagger\dagger\dagger}$ & 40  & 2  & 1 & (0,0,0) & N/A         \\
+& Interdiffusion          & 60                                  & 200 & 5  & 1 & (0,0,0) & [2 --10]$^{\dagger\dagger\dagger}$   \\
+\bottomrule
+\end{tabular}
+\caption{Parameters used for generating validation nanostructures. All models used for qualitative comparison and the particle growth model used for quantitative comparison can be generated with the given values of $r_{\text{sph}}$, $L$, $\beta_{\text{sph}}$, $\beta_{\text{cube}}$, and $\vec{R}_{\text{ecc}}$. The interdiffusion model used for quantitative comparison requires additionally the $\sigma$ values.\\
+\noindent $^{\dagger}$ The $r_{\text{sph}}$ value for cube model is irrelevant but has to be $\leq L$.\\
+\noindent $^{\dagger\dagger}$ $\sigma$ is only applicable for the interdiffusion example.\\
+\noindent $^{\dagger\dagger\dagger}$ [N1 -- N2] represents an inclusive range from N1 to N2.
+\label{tab:param_val_struct}}
+\end{table*}
+
+The test cases are all derived from the most general model employed, \emph{sphere off cube-center}: a cubic structure containing a spherical inhomogeneity, with its center shifted with respect to the center of the cube (the inhomogeneity is always completely contained in the cube). By choosing $\vec{R}_{\text{ecc}}$ as $(0,0,0)$, this simplifies to the model \emph{sphere at cube-center}. This model can further be simplified to a \emph{cube} or \emph{sphere} by removing the contrasts $\Delta\beta_{\text{sph}}$ or $\Delta\beta_{\text{cube}}$, respectively. The parameter values for different models of nanoparticles are listed in table~\ref{tab:param_val_struct}.
+
+The model nanostructures were generated by calculating the nodal SLD $(\beta_{\text{node}})$ values analytically. For the general structure, $(\beta_{\text{node}})$ at the $i^{\text{th}}$ node located at $(x_i, y_i, z_i)$ was calculated as a function of the Euclidean distance $r_i$ from the sphere center $(x_c, y_c, z_c)$ using
+%
+\begin{equation}
+\label{eqn:SLD_sph}
+\begin{aligned}
+    \beta_{\text{node}}(r_i) = 
+    \begin{cases}
+    \beta_{\text{sph}} & \text{if } r_i \leq r_{\text{sph}} \\
+    \beta_{\text{cube}} & \text{if } r_i > r_{\text{sph}}
+    \end{cases}\quad.
+\end{aligned}
+\end{equation}
+%
+The sphere center $(x_c, y_c, z_c)$ is determined by the vector addition of the simulation box center and $\vec{R}_{\text{ecc}}$.
+
+The analytical SAS intensity for the general structure can be calculated as 
+%
+\begin{multline}
+\label{eqn:I_ana_ecc_sph_cube}
+    I^{\text{ana}}_{\text{ecc-sph-cube}}(Q)=
+    \Bigl\langle\bigl|\Delta\beta_{\text{cube}}V_{\text{cube}}F_{\text{cube}}(Q,\alpha,\psi)-\\
+    e^{i\vec{Q}\cdot\vec{R}_{\text{ecc}}}\Delta\beta_{\text{sph}}
+    V_{\text{sph}}F_{\text{sph}}(Q)\bigr|^2\Bigr\rangle_{\Omega}.
+\end{multline}
+% 
+Here, $\alpha$ and $\psi$ are angles signifying orientations of a shape, which is rotated at an angle $\psi$ about its own axis, which is oriented at an angle $\alpha$ from the beam axis. The orientational averaging $\left\langle \cdot \right\rangle_\Omega$ is performed over all $\alpha$ and $\psi$~\cite{porod1960formfactors, nayuk2012formfactors}. $F_{\text{cube}}(Q,\alpha,\psi)$ is the form factor of a cube of volume $V_{\text{cube}}$, whose orientation is given by $\alpha$ and $\psi$:
+%
+\begin{multline}
+\label{eqn:F_cube}
+    F_{\text{cube}}(Q,\alpha,\psi)=
+    \text{sinc}\left[{\sin\left(Q\frac{L}{2}\sin(\alpha)\sin(\psi)\right)}\right]\cdot\\
+    \text{sinc}\left[{\sin\left(Q\frac{L}{2}\sin(\alpha)\cos(\psi)\right)}\right] \cdot \\
+    \text{sinc}\left[{\sin\left(Q\frac{L}{2}\cos(\alpha)\right)}\right].
+\end{multline}
+%
+$F_{\text{sph}}(Q)$ is the form factor of a sphere, which is invariant to the orientation due to shape symmetry~\cite{sivia2011elementary},
+%
+\begin{equation}
+\label{eqn:F_sph}
+    F_{\text{sph}}(Q) = 3 \frac{\sin(Qr)-Qr\cos(Qr)}{(Qr)^3} .
+\end{equation}
+
+For Quantitative comparisons, time-evolving nanostructures were generated using two models: Particle growth and interdiffusion. To perform the comparison, the time evolution of chosen model parameters was retrieved by fitting relevant analytical expressions to numerical SAS intensities using Python~\cite{2020SciPy-NMeth, python}. The retrieved parameters were then compared with the values used for nanostructure generation at different time steps.
+
+The particle growth model simulates a spherical particle, whose radius $r_{\text{sph}}(t)$ grows linearly from $r_0$ to $r_{\text{end}}$ over simulation time $t_{\text{max}}$:
+%
+\begin{equation}
+    \label{r_gg(t)}
+    r_{\text{sph}}(t)=r_0 + (r_{\text{end}}-r_0) \frac{t}{t_{\text{max}}}.
+\end{equation}
+%
+Here, $t/t_{\text{max}}$ was varied from 0 to 1 in steps of 0.1. At any particular time, the nodal SLD values are calculated using equation~\ref{eqn:SLD_sph} with the model values listed in table~\ref{tab:param_val_struct}. The $\beta_{\text{cube}}$ in this model represents the SLD of the environment around the particle. The calculated scattering patterns were then evaluated by fitting equation~\ref{eqn:I_ana_ecc_sph_cube} to them and extracting $r_\text{sph}(t)$.
+
+The interdiffusion model~\cite{stieger2004are} simulates a spherical particle and its environment, which diffuse into each other. The width of the interdiffusion layer is described by the parameter $\sigma(t)$ that increases linearly from $\sigma_0$ to $\sigma_{\text{end}}$ as
+%
+\begin{equation}
+    \label{sig_fs(t)}
+    \sigma(t)=\sigma_0 + (\sigma_{\text{end}}-\sigma_0)\frac{t}{t_{\text{max}}},
+\end{equation}
+%
+with $t/t_{\text{max}}$ varying from 0 to 1 in steps of 0.1. At any particular time step, the nodal SLD values were calculated as a function of $r_i$ as:
+%
+\begin{equation}
+\label{eqn:SLD_fs}
+\begin{aligned}
+    \beta_{\text{int-diff}}(r_i,t) = \frac{\beta_{\text{sph}}-\beta_{\text{cube}}}{2}\left(1-\text{erf}\left[\frac{r_i-r_{\text{sph}}}{\sqrt{2}\cdot\sigma(t)}\right]\right) +\beta_{\text{cube}},
+\end{aligned}
+\end{equation}
+%
+where $\beta_{\text{cube}}$ physically represents the SLD of environment and $\text{erf}\left[\cdot\right]$ signifies the error function \cite{andrews1998special} with standard deviation equal to $\sigma(t)$ (see values in table~\ref{tab:param_val_struct}). 
+
+All the nanostructures used for validation were generated in a cubic simulation box, whose mesh defines node positions and element types. The models used for qualitative comparison and the particle growth example used for quantitative comparison were performed in simulation boxes of length $40$\,\AA{}, which were meshed with $64000$ $(40 \times 40 \times 40)$ cubic elements of side length $1$\,\AA{}. The element types were first-order Lagrangian. For the interdiffusion model used for quantitative comparison, a bigger simulation box of side length 200\,\AA{} was chosen to accommodate a bigger sphere. A bigger sphere was required because the relevant analytical SANS patterns were of a fuzzy sphere, which requires a ratio of particle radius and fuzz value to be much greater than 1 \cite{stieger2004are, fuzzysphereurl}. Three combinations of meshing and element types are compared for this model: $125000~(50 \times 50 \times 50)$ cubic first-order Lagrangian elements, $125000~(50 \times 50 \times 50)$ cubic second-order Lagrangian elements, and $1000000~(100 \times 100 \times 100)$ cubic first-order Lagrangian elements.
+
+\subsection{FEM simulation of a realistic nanostructure}
+\label{subsec:mat_method_fem}
+
+\begin{table*}
+\centering
+\begin{tabular}{c c c c c c c c}
+\hline \vspace{-0.4 cm} \\ 
+                                      & $A$		      & $B$	          & $C$           & $D$           & $E$            & $F$            & $G$\\
+\hline
+$g_{\text{loc}}(\chi_{\text{Cr}})$    & -24468.31		& -28275.33	    & 4167.994      & 7052.907      & 12089.93       & 2568.625       & -2345.293\\
+$g_{\text{Cr}}(\chi_{\text{Cr}})$     & -32.770969		& -25.8186669	& -3.29612744   & 17.669757     & 37.6197853     & 20.6941796     & 10.8095813\\
+$g_{\text{Fe}}(\chi_{\text{Cr}})$     & -31.687117		& -26.0291774	& 0.2286581     & 24.3633544    & 44.3334237     & 8.72990497     & 20.956768\\
+\hline
+\end{tabular}
+\caption{Empirical coefficients for the approximation of $g_{\text{loc}}(\chi_{\text{Cr}})$, $g_{\text{Cr}}(\chi_{\text{Cr}})$, and $g_{\text{Fe}}(\chi_{\text{Cr}})$ used in equation~\ref{eqn:g_j(c)}. \label{tab:spiniodal_params}}
+\end{table*}
+%
+% To demonstrate the presented framework, the nanostructure of the spinodal decomposition of iron (\ce{Fe}) and chromium (\ce{Cr}) at a temperature of 773\,K ($500\,^{\circ}$C) over a real time of 1 day (86400\,s) was simulated. An incompressible isotropic binary solution free from imperfections was assumed during the simulation, in which the molar volume is independent of both composition and pressure~\cite{cahn1961on, coehn2008chapter}. This simplification is a good approximation for metallic systems like the \ce{Fe-Cr} solution because both \ce{Fe} and \ce{Cr} have similar molar densities~\cite{coehn2008chapter}. In this limit, the representative nanostructure has a uniform distribution of molar density $(\rho_{\text{m}})$ or molar volume $(V_{\text{m}})$. Spinoidal decomposition is linked to the material distribution, which is expressed by the molar fraction of chromium $(\chi_{\text{Cr}})$. From the $\rho_{\text{m}}$ and $\chi_{\text{Cr}}$ values, the SLD values at any point of the nanostructure can be calculated using equation~\ref{eqn:SLD_cal}.
+
+To demonstrate the presented framework, the nanostructure of the spinodal decomposition of iron (\ce{Fe}) and chromium (\ce{Cr}) at a temperature of 773\,K ($500\,^{\circ}$C) over a real time of 1 day (86400\,s) was simulated. An incompressible, isotropic binary solution free of imperfections was assumed in the simulation, with the molar volume being independent of both composition and pressure~\cite{cahn1961on, coehn2008chapter}. This approximation is reasonable for metallic systems such as the \ce{Fe-Cr} solution, because \ce{Fe} and \ce{Cr} possess similar molar densities~\cite{coehn2008chapter}. Under this assumption, the representative nanostructure could be considered to have a uniform distribution of molar density $(\rho_{\text{m}})$ or, equivalently, molar volume $(V_{\text{m}})$. Spinodal decomposition is then governed by the material distribution, expressed through the molar fraction of chromium $(\chi_{\text{Cr}})$. From the values of $\rho_{\text{m}}$ and $\chi_{\text{Cr}}$, the scattering length density (SLD) at any point within the nanostructure can be calculated using equation~\ref{eqn:SLD_cal}.
+
+The unitless molar fraction of chromium $\chi_{\text{Cr}}$ was obtained by solving the \emph{Cahn-Hilliard} equation~\cite{cahn1958free, cahn1961on, moosetutorial}
+%
+\begin{equation}
+\label{eqn:cahn_hilliard_spiniodal}
+    \dfrac{\partial \chi_{\text{Cr}}}{ \partial t} = \nabla \cdot M(\chi_{\text{Cr}}) \nabla \left( \dfrac{\partial g_{\text{f}}(\chi_{\text{Cr}})}{\partial \chi_{\text{Cr}}} - k \nabla^2 \chi_{\text{Cr}} \right),
+\end{equation}
+%
+with the mobility of chromium $M(\chi_{\text{Cr}})\,[\text{m}^2\cdot\text{mol}/(\text{Js})]$, the free energy density $g_{\text{loc}}(\chi_{\text{Cr}})\,[\text{J}/\text{mol}]$, and the gradient energy density $k\,[\text{J}\cdot\text{m}^2/\text{mol}]$. The numerical value of $k$ in this unit was chosen as 8.125 $\times$ 10$^{-16}$~\cite{moosetutorial}. The chosen mobility function $M(\chi)$ was
+%
+\begin{equation}
+    M(\chi_{\text{Cr}}) = (1-\chi_{\text{Cr}})^2 \chi_{\text{Cr}} \cdot 10^{g_{\text{Cr}}(\chi_{\text{Cr}})} + \chi_{\text{Cr}}^2 (1-\chi_{\text{Cr}}) \cdot 10^{g_{\text{Fe}}(\chi_{\text{Cr}})}.
+\end{equation}
+%
+The functions $g_{\text{loc}}(\chi_{\text{Cr}})$, $g_{\text{Cr}}(\chi_{\text{Cr}})$, and $g_{\text{Fe}}(\chi_{\text{Cr}})$ were approximated by the expansion
+%
+\begin{multline}
+\label{eqn:g_j(c)}
+        g(\chi_{\text{Cr}}) = A \chi_{\text{Cr}} + B (1-\chi_{\text{Cr}}) + C \chi_{\text{Cr}} \ln(\chi_{\text{Cr}})\\
+        + D(1-\chi_{\text{Cr}}) \ln(1-\chi_{\text{Cr}}) + E \chi_{\text{Cr}}(1-\chi_{\text{Cr}}) \\
+        + F \chi_{\text{Cr}}(1-\chi_{\text{Cr}})(2\chi_{\text{Cr}}-1)\\ 
+        + G \chi_{\text{Cr}}(1-\chi_{\text{Cr}})(2\chi_{\text{Cr}}-1)^2 .
+\end{multline}
+%
+The empirical values of the coefficients $A$ to $G$ for $g_{\text{f}}(\chi_{\text{Cr}})$, $g_{\text{Cr}}(\chi_{\text{Cr}})$, and $g_{\text{Fe}}(\chi_{\text{Cr}})$ were taken from the literature~\cite{moosetutorial} and are listed in table~\ref{tab:spiniodal_params}.
+
+Equations~\ref{eqn:cahn_hilliard_spiniodal} to~\ref{eqn:g_j(c)} were solved numerically using FEM in a cubic simulation box with a side length of~25\,nm, meshed with $1000000~(100 \times 100 \times 100)$ cubic first-order Lagrangian elements. The chosen software solution was MOOSE~\cite{moose}. The initial structure was generated by randomly assigning values of $\chi_{\text{Cr}}$ to different nodes within the range of 0.236 and 0.823. The simulation was performed for a simulation time of 86400\,s (1 day) with a time step of 100\,s with periodic boundary conditions in all directions.
+
 
 \begin{figure*}
     \centering
