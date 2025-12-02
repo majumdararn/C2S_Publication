@@ -37,6 +37,11 @@ with tarfile.open(tar_path, "r:xz") as tar:
     for member in tar.getmembers():
         if member.name.startswith("dataset/data/"):
             tar.extract(member, path=paths.data)
+# extract moose folder
+with tarfile.open(tar_path, "r:xz") as tar:
+    for member in tar.getmembers():
+        if member.name.startswith("dataset/moose/"):
+            tar.extract(member, path=paths.data)
 # working dir (or data folder) path
 working_dir = paths.data / "dataset"
 
@@ -49,7 +54,7 @@ for sim_t_idx, sim_time in enumerate(sim_times):
 
     # read moose input file
     moose_inp_file_name='{0}_{1:0>5}.h5'.format(phenm, sim_time)
-    moose_inp_file=os.path.join('moose', moose_inp_file_name)
+    moose_inp_file=os.path.join(working_dir / 'moose', moose_inp_file_name)
     moose_inp=h5py.File(moose_inp_file,'r')
 
     ### struct gen ###
@@ -144,11 +149,11 @@ for sim_t_idx, sim_time in enumerate(sim_times):
     model_param_dir=os.path.join(model_dir,model_param_dir_name)
 
     # create folder for figure (one level up from data folder)
-    figure_dir=os.path.join(mother_dir, '../../figure/')
-    os.makedirs(figure_dir, exist_ok=True)
+    # figure_dir=os.path.join(mother_dir, '../../figure/')
+    # os.makedirs(figure_dir, exist_ok=True)
     ## folder for this suit of figures
-    plot_dir=os.path.join(figure_dir, sim_model + '_paper')
-    os.makedirs(plot_dir, exist_ok=True)
+    plot_dir=paths.figures # os.path.join(figure_dir, sim_model + '_paper')
+    # os.makedirs(plot_dir, exist_ok=True)
 
     for i in range(len(t_arr)):
         t=t_arr[i]
