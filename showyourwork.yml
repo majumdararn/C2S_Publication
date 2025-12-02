@@ -73,15 +73,15 @@ overleaf:
   push:
     - src/tex/figures
     - src/tex/output
-  # List of files to pull from Overleaf
-  pull:
-    - src/tex/ms.tex
-    - src/tex/bib.bib
     - src/tex/format/elsarticle.dtx
     - src/tex/format/elsarticle.ins
     - src/tex/format/elsarticle-harv.bst
     - src/tex/format/elsarticle-num.bst
     - src/tex/format/elsarticle-num-names.bst
+  # List of files to pull from Overleaf
+  pull:
+    - src/tex/ms.tex
+    - src/tex/bib.bib
 
 # Always require all input files to be present on disk for workflow to pass?
 require_inputs: true
