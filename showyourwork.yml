@@ -39,9 +39,11 @@ dependencies:
   #   - src/data/dataset.tar.xz
   src/scripts/sas_val_qual.py:
     - src/data/dataset.tar.xz
-  src/scripts/fs_plot_paper.py:
-    - src/data/dataset.tar.xz
-  src/scripts/gg_plot_paper.py:
+  # src/scripts/fs_plot_paper.py:
+  #   - src/data/dataset.tar.xz
+  # src/scripts/gg_plot_paper.py:
+  #   - src/data/dataset.tar.xz
+  src/scripts/sas_val_quan.py:
     - src/data/dataset.tar.xz
   # src/figures/Iq_ball.pdf:
   #   - src/scripts/ball_plot_paper.py
