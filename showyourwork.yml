@@ -73,6 +73,7 @@ overleaf:
   push:
     - src/tex/figures
     - src/tex/output
+    - src/tex/format/elsarticle.cls
     - src/tex/format/elsarticle.dtx
     - src/tex/format/elsarticle.ins
     - src/tex/format/elsarticle-harv.bst
