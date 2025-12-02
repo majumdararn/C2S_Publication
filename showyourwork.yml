@@ -35,6 +35,8 @@ dependencies:
   #   - src/data/dataset.tar.xz
   # src/scripts/box_plot_paper.py:
   #   - src/data/dataset.tar.xz
+  src/scripts/sas_val_qual.py:
+    - src/data/dataset.tar.xz
   src/scripts/bib_ecc_plot_paper.py:
     - src/data/dataset.tar.xz
   src/scripts/fs_plot_paper.py:
