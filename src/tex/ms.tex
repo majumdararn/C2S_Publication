@@ -1,5 +1,43 @@
 % Define document class
-\documentclass[twocolumn]{aastex631}
+% \documentclass[twocolumn]{aastex631}
+\documentclass[final,5p,times,twocolumn]{elsarticle}
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+% \documentclass[final,1p,times]{elsarticle}
+% \documentclass[final,1p,times,twocolumn]{elsarticle}
+% \documentclass[final,3p,times]{elsarticle}
+% \documentclass[final,3p,times,twocolumn]{elsarticle}
+% \documentclass[final,5p,times]{elsarticle}
+
+\graphicspath{{./figures/}}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{comment}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{arydshln}
+\usepackage{tabularx}
+%\usepackage{setspace}
+%\doublespacing 
+\usepackage{hyperref}
+\biboptions{sort&compress}
+\usepackage[version=4]{mhchem}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,      
+    urlcolor=blue,
+    }
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers.
+%% \usepackage{lineno}
+
+\journal{Computer Physics Communications}
 
 % Add here any additional package you need
 % \usepackage{foo}
@@ -10,27 +48,83 @@
 % Begin!
 \begin{document}
 
-% Title
-\title{An open source scientific article}
+\begin{frontmatter}
 
-% Author list
-\author{@majumdararn}
+\title{Characterization of nanomaterials through complementary use of continuum simulations and small angle scattering measurements}
 
-% Abstract with filler text
+\affiliation[aff1]{organization={German Engineering Materials Science Centre (GEMS) at Heinz Maier-Leibnitz Zentrum (MLZ), Helmholtz-Zentrum Hereon GmbH},%Department and Organization
+            addressline={Lichtenbergstr.~1}, 
+            postcode={85748}, 
+            postcodesep={},
+            city={Garching},
+            country={Germany}}
+\affiliation[aff2]{organization={Institut für Experimentelle und Angewandte Physik (IEAP), Christian-Albrechts-Universität zu Kiel},%Department and Organization
+            addressline={Leibnizstr.~19}, 
+            postcode={24098}, 
+            postcodesep={},
+            city={Kiel},
+            country={Germany}}
+\affiliation[aff3]{organization={Institute of Materials Physics, Helmholtz-Zentrum Hereon GmbH},%Department and Organization
+            addressline={Max-Planck-Str.~1}, 
+            postcode={21502}, 
+            postcodesep={},
+            city={Geesthacht},
+            country={Germany}}
+
+\author[aff1,aff3]{Arnab Majumdar}
+\ead{arnab.majumdar@hereon.de}
+\author[aff1,aff2,aff3]{Martin M\"{u}ller}
+\ead{martin.mueller@hereon.de}
+\author[aff1]{Sebastian Busch\texorpdfstring{\corref{cor1}}{}}
+\ead{sebastian.busch@hereon.de}
+\cortext[cor1]{Corresponding author}
+
+
 \begin{abstract}
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-    Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis.
-    Curabitur dictum gravida mauris, consectetuer id, vulputate a, magna.
-    Donec vehicula augue eu neque, morbi tristique senectus et netus et.
-    Mauris ut leo, cras viverra metus rhoncus sem, nulla et lectus vestibulum.
-    Phasellus eu tellus sit amet tortor gravida placerat.
-    Integer sapien est, iaculis in, pretium quis, viverra ac, nunc.
-    Praesent eget sem vel leo ultrices bibendum.
-    Aenean faucibus, morbi dolor nulla, malesuada eu, pulvinar at, mollis ac.
-    Curabitur auctor semper nulla donec varius orci eget risus.
-    Duis nibh mi, congue eu, accumsan eleifend, sagittis quis, diam.
-    Duis eget orci sit amet orci dignissim rutrum.
+Continuum modelling provides an effective means of simulating nanostructures at scales where atomistic methods become computationally expensive, while Small Angle Scattering (SAS) with neutrons (SANS) and X-rays (SAXS) are powerful experimental techniques for probing their morphology and internal structure. Despite this complementarity, no established framework currently exists for directly computing SAS intensities from continuum-based simulations, limiting quantitative comparison between theory and experiment. This work presents a novel framework for bridging this gap, enabling the calculation of SAS patterns from simulated continuum nanostructures with sufficient accuracy. The framework is implemented in an open-source software package, validated using model systems and demonstrated on real-world examples, providing insights into its reliability, limitations, and potential applications in materials characterization and nanostructure design.
 \end{abstract}
+
+\begin{graphicalabstract}
+\centering
+\includegraphics[trim={0cm 0cm 0cm 0cm},clip,width=\textwidth]{figures/abstract.pdf}
+\end{graphicalabstract}
+
+\begin{highlights}
+\item Novel framework to compute Small Angle Scattering (SAS) patterns from simulated continuum nanostructures.
+\item Proposed framework implemented through a software solution.
+\item Validated on model systems and demonstrated on real-world nanostructures.
+\item Enables nanomaterial characterization through complementary use of continuum simulation and SAS experiments.
+\end{highlights}
+
+\begin{keyword}
+Nanomaterials \sep Continuum simulation \sep SANS \sep SAXS \sep Cont2SAS
+\end{keyword}
+
+\end{frontmatter}
+
+%% \linenumbers
+
+% % Title
+% \title{An open source scientific article}
+
+% % Author list
+% \author{@majumdararn}
+
+% % Abstract with filler text
+% \begin{abstract}
+%     Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+%     Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis.
+%     Curabitur dictum gravida mauris, consectetuer id, vulputate a, magna.
+%     Donec vehicula augue eu neque, morbi tristique senectus et netus et.
+%     Mauris ut leo, cras viverra metus rhoncus sem, nulla et lectus vestibulum.
+%     Phasellus eu tellus sit amet tortor gravida placerat.
+%     Integer sapien est, iaculis in, pretium quis, viverra ac, nunc.
+%     Praesent eget sem vel leo ultrices bibendum.
+%     Aenean faucibus, morbi dolor nulla, malesuada eu, pulvinar at, mollis ac.
+%     Curabitur auctor semper nulla donec varius orci eget risus.
+%     Duis nibh mi, congue eu, accumsan eleifend, sagittis quis, diam.
+%     Duis eget orci sit amet orci dignissim rutrum.
+% \end{abstract}
 
 % Main body with filler text
 \section{Introduction}
