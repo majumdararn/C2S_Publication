@@ -16,4 +16,3 @@ __pycache__
 src/scripts/models
 src/scripts/phase_field_img_plot_paper.py 
 src/scripts/phase_field_Iq_plot_paper.py
-src/scripts/gg_plot_paper.py
