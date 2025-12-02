@@ -1,15 +1,1553 @@
-@article{Luger2021,
-       author = { {Luger}, Rodrigo and {Bedell}, Megan and {Foreman-Mackey}, Daniel and {Crossfield}, Ian J.~M. and {Zhao}, Lily L. and {Hogg}, David W.},
-        title = "{Mapping stellar surfaces III: An Efficient, Scalable, and Open-Source Doppler Imaging Model}",
-      journal = {arXiv e-prints},
-     keywords = {Astrophysics - Solar and Stellar Astrophysics, Astrophysics - Earth and Planetary Astrophysics, Astrophysics - Instrumentation and Methods for Astrophysics},
-         year = 2021,
-        month = oct,
-          eid = {arXiv:2110.06271},
-        pages = {arXiv:2110.06271},
-archivePrefix = {arXiv},
-       eprint = {2110.06271},
- primaryClass = {astro-ph.SR},
-       adsurl = {https://ui.adsabs.harvard.edu/abs/2021arXiv211006271L},
-      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+%%%%%%%%%%%%%%%%%%% misc %%%%%%%%%%%%%%%%
+% includes 
+% 1) URL,
+% 2) software
+% 3) articles without doi
+%% 1) URL
+% PaNET ID
+@misc{PaNET_sas,
+	author = {{The Photon and Neutron Experimental Techniques Ontology}},
+	title = {small angle scattering},
+	howpublished = {\url{http://purl.org/pan-science/PaNET/PaNET01124}},
+	year = {2024},
+	note = {[Accessed 16-06-2025]}
 }
+% PaNET ID
+@misc{PaNET_sans,
+	author = {{The Photon and Neutron Experimental Techniques Ontology}},
+	title = {small angle neutron scattering},
+	howpublished = {\url{http://purl.org/pan-science/PaNET/PaNET01189}},
+	year = {2024},
+	note = {[Accessed 16-06-2025]}
+}
+% PaNET ID
+@misc{PaNET_saxs,
+	author = {{The Photon and Neutron Experimental Techniques Ontology}},
+	title = {small angle x-ray scattering},
+	howpublished = {\url{http://purl.org/pan-science/PaNET/PaNET01188}},
+	year = {2024},
+	note = {[Accessed 16-06-2025]}
+}
+% nist website
+@misc{NIST,
+  author = {{Munter, A.}},
+  title = {{NIST center of neutron research}},
+  year  = {2014},
+  howpublished = "\url{https://www.ncnr.nist.gov/resources/sldcalc.html}"
+}
+@misc{fuzzysphereurl,
+  author = {{The SasView Project}},
+  title = {Fuzzy sphere},
+  year  = {2025},
+  howpublished   = "\url{https://www.sasview.org/docs/user/models/fuzzy_sphere.html}",
+  note= {Accesses on: 28.04.2025}
+}
+@misc{moosetutorial,
+  author = {{Idaho National Laboratory}},
+  title = {{MOOSE} - Phase-Field Tutorial: Spinodal Decomposition of Iron-Chromium Alloy},
+  year  = {2023},
+  howpublished   = "\url{https://mooseframework.inl.gov/modules/phase_field/Tutorial.html}"
+}
+%% 2) software
+% FISH - ISIS data analysis software
+@techreport{heenan1989fish,
+    author = {Heenan, R. K.},
+    title = {{'FISH'} DATA ANALYSIS PROGRAM},
+    reportNumber = {RAL-89-129},
+    institution = {ISIS},
+    month = {12},
+    year = {1989}
+}
+% SASview website
+@misc{sasviewwebsite,
+    author = {Jeff Krzywon},
+    title = {{SasView - version 6.0.1}},
+    howpublished = {\url{http://www.sasview.org/}},
+    year={2025},
+    note = {Accessed: 2025-08-28}
+}
+% NCNR
+@article{kline2006reduction,
+  title={{Reduction and analysis of SANS and USANS data using IGOR Pro}},
+  author={Kline, Steven R},
+  journal={Applied Crystallography},
+  volume={39},
+  number={6},
+  pages={895--900},
+  year={2006},
+  publisher={International Union of Crystallography},
+  doi={10.1107/S0021889806035059}
+}
+% Irena
+@article{ilavsky2009irena,
+  title={Irena: tool suite for modeling and analysis of small-angle scattering},
+  author={Ilavsky, Jan and Jemian, Peter R},
+  journal={Applied Crystallography},
+  volume={42},
+  number={2},
+  pages={347--353},
+  year={2009},
+  publisher={International Union of Crystallography},
+  doi={10.1107/S0021889809002222}
+}
+% SASfit
+@misc{SASfit,
+    author = {Kohlbrecher, Joachim and Breßler, Ingo},
+    title = {{SASfit -- version 0.94.12}},
+    howpublished = {\url{https://github.com/SASfit/SASfit}},
+    note = {Accessed: 2025-08-13},
+    year = {2023}
+}
+% original sassena
+@misc{sassenaorg,
+  author = {B. Lindner},
+  title = {Sassena},
+  year  = {2017},
+  howpublished   = "\url{https://github.com/camm/sassena}",
+}
+@misc{sassena,
+  author = {Majumdar, A. and Lindner, B.},
+  title = {Sassena},
+  year  = {2023},
+  howpublished   = "\url{https://codebase.helmholtz.cloud/DAPHNE4NFDI/sassena}",
+  doi={10.5281/zenodo.10037485}
+}
+% liquidlib software
+@misc{liquidlib,
+  author = {{Z-laboratory}},
+  title = {{LiquidLib}},
+  year  = {2023}, howpublished="\url{https://github.com/Z-Laboratory/LiquidLib/tree/master}"
+}
+% MDANSE
+@misc{mdanse,
+  author = {{UKRI STFC ISIS Neutron and Muon Facility}},
+  title = {MDANSE - version 1.5.2},
+  year  = {2023}, howpublished="\url{https://github.com/ISISNeutronMuon/MDANSE/}"
+}
+% scipy
+@article{2020SciPy-NMeth,
+  author  = {Virtanen, Pauli and Gommers, Ralf and Oliphant, Travis E. and
+            Haberland, Matt and Reddy, Tyler and Cournapeau, David and
+            Burovski, Evgeni and Peterson, Pearu and Weckesser, Warren and
+            Bright, Jonathan and {van der Walt}, St{\'e}fan J. and
+            Brett, Matthew and Wilson, Joshua and Millman, K. Jarrod and
+            Mayorov, Nikolay and Nelson, Andrew R. J. and Jones, Eric and
+            Kern, Robert and Larson, Eric and Carey, C J and
+            Polat, {\.I}lhan and Feng, Yu and Moore, Eric W. and
+            {VanderPlas}, Jake and Laxalde, Denis and Perktold, Josef and
+            Cimrman, Robert and Henriksen, Ian and Quintero, E. A. and
+            Harris, Charles R. and Archibald, Anne M. and
+            Ribeiro, Ant{\^o}nio H. and Pedregosa, Fabian and
+            {van Mulbregt}, Paul and {SciPy 1.0 Contributors}},
+  title   = {{{SciPy} 1.0: Fundamental Algorithms for Scientific
+            Computing in Python}},
+  journal = {Nature Methods},
+  year    = {2020},
+  volume  = {17},
+  pages   = {261--272},
+  adsurl  = {https://rdcu.be/b08Wh},
+  doi     = {10.1038/s41592-019-0686-2},
+}
+% python programming languange
+@techreport{python,
+    author = {G. van Rossum},
+    title = {Python tutorial, Technical Report CS-R9526},
+    institution = {Centrum voor Wiskunde en Informatica (CWI), Amsterdam},
+    year ={1995}
+}
+% moose
+@misc{moose,
+  author = {{Idaho National Laboratory}},
+  title = {{Multiphysics Object-Oriented Simulation Environment (MOOSE) - version 2.1}},
+  year  = {2023},
+  howpublished   = "\url{https://github.com/idaholab/moose}"
+}
+% Cont2SAS
+@misc{cont2sas,
+  author = {Majumdar, A. and M\"{u}ller, M. and Busch, S.},
+  title = {Cont2SAS - version 1.0.0},
+  year  = {2025},
+  howpublished="\url{https://codebase.helmholtz.cloud/arnab.majumdar/continuum-to-scattering}"
+}
+%% 3) articles without doi
+@misc{potovnik2011commission,
+    title = {Commission recommendation of 18 October 2011 on the definition of nanomaterial},
+    author = {Poto{\v{c}}nik, Janez},
+    organization={European Commission},
+    howpublished = {\url{http://ec.europa.eu/health/scientific_committees/emerging/docs/scenihr_o_032.pdf}},
+    note = {Accessed: 2025-04-24},
+    year = {2011}
+}
+%%%%%%%%%%%%%%%%% article %%%%%%%%%%%%%%%
+% includes 
+% 1) articles,
+% 2) thesis,
+% 3) book
+%% 1) articles
+% review paper
+@article{modena2019nanoparticle,
+  title={Nanoparticle characterization: what to measure?},
+  author={Modena, Mario M and R{\"u}hle, Bastian and Burg, Thomas P and Wuttke, Stefan},
+  journal={Advanced Materials},
+  volume={31},
+  number={32},
+  pages={1901556},
+  year={2019},
+  publisher={Wiley Online Library},
+  doi={10.1002/adma.201901556}
+}
+% modena2019nanoparticle [14]
+@article{lin2015introduction,
+  title={Introduction: nanoparticles in medicine},
+  author={Lin, Wenbin},
+  journal={Chemical reviews},
+  volume={115},
+  number={19},
+  pages={10407--10409},
+  year={2015},
+  publisher={ACS Publications},
+  doi={10.1021/acs.chemrev.5b00534}
+}
+% modena2019nanoparticle [15]
+@article{kunjachan2015noninvasive,
+  title={Noninvasive imaging of nanomedicines and nanotheranostics: principles, progress, and prospects},
+  author={Kunjachan, Sijumon and Ehling, Josef and Storm, Gert and Kiessling, Fabian and Lammers, Twan},
+  journal={Chemical Reviews},
+  volume={115},
+  number={19},
+  pages={10907--10937},
+  year={2015},
+  publisher={ACS Publications},
+  doi={10.1021/cr500314d}
+}
+% modena2019nanoparticle [16]
+@article{chinen2015nanoparticle,
+  title={Nanoparticle probes for the detection of cancer biomarkers, cells, and tissues by fluorescence},
+  author={Chinen, Alyssa B and Guan, Chenxia M and Ferrer, Jennifer R and Barnaby, Stacey N and Merkel, Timothy J and Mirkin, Chad A},
+  journal={Chemical Reviews},
+  volume={115},
+  number={19},
+  pages={10530--10574},
+  year={2015},
+  publisher={ACS Publications},
+  doi={10.1021/acs.chemrev.5b00321}
+}
+% modena2019nanoparticle [17]
+@article{pelaz2017diverse,
+  title={Diverse applications of nanomedicine},
+  author={Pelaz, Beatriz and Alexiou, Christoph and Alvarez-Puebla, Ramon A. and Alves, Frauke and Andrews, Anne M. and Ashraf, Sumaira and Balogh, Lajos P. and Ballerini, Laura and Bestetti, Alessandra and Brendel, Cornelia and Bosi, Susanna and Carril, Monica and Chan, Warren C. W. and Chen, Chunying and Chen, Xiaodong and Chen, Xiaoyuan and Cheng, Zhen and Cui, Daxiang and Du, Jianzhong and Dullin, Christian and Escudero, Alberto and Feliu, Neus and Gao, Mingyuan and George, Michael and Gogotsi, Yury and Gr{\"u}nweller, Arnold and Gu, Zhongwei and Halas, Naomi J. and Hampp, Norbert and Hartmann, Roland K. and Hersam, Mark C. and Hunziker, Patrick and Jian, Ji and Jiang, Xingyu and Jungebluth, Philipp and Kadhiresan, Pranav and Kataoka, Kazunori and Khademhosseini, Ali and Kope{\v{c}}ek, Jind{\v{r}}ich and Kotov, Nicholas A. and Krug, Harald F. and Lee, Dong Soo and Lehr, Claus-Michael and Leong, Kam W. and Liang, Xing-Jie and Ling Lim, Mei and Liz-Marz{\'a}n, Luis M. and Ma, Xiaowei and Macchiarini, Paolo and Meng, Huan and M{\"o}hwald, Helmuth and Mulvaney, Paul and Nel, Andre E. and Nie, Shuming and Nordlander, Peter and Okano, Teruo and Oliveira, Jose and Park, Tai Hyun and Penner, Reginald M. and Prato, Maurizio and Puntes, Victor and Rotello, Vincent M. and Samarakoon, Amila and Schaak, Raymond E. and Shen, Youqing and Sj{\"o}qvist, Sebastian and Skirtach, Andre G. and Soliman, Mahmoud G. and Stevens, Molly M. and Sung, Hsing-Wen and Tang, Ben Zhong and Tietze, Rainer and Udugama, Buddhisha N. and VanEpps, J. Scott and Weil, Tanja and Weiss, Paul S. and Willner, Itamar and Wu, Yuzhou and Yang, Lily and Yue, Zhao and Zhang, Qian and Zhang, Qiang and Zhang, Xian-En and Zhao, Yuliang and Zhou, Xin and Parak, Wolfgang J.},
+  journal={ACS nano},
+  volume={11},
+  number={3},
+  pages={2313--2381},
+  year={2017},
+  publisher={ACS Publications},
+  doi={10.1021/acsnano.6b06040}
+}
+% modena2019nanoparticle [18]
+@article{freund2018multifunctional,
+  title={Multifunctional efficiency: extending the concept of atom economy to functional nanomaterials},
+  author={Freund, Ralph and L{\"a}chelt, Ulrich and Gruber, Tobias and R{\"u}hle, Bastian and Wuttke, Stefan},
+  journal={ACS nano},
+  volume={12},
+  number={3},
+  pages={2094--2105},
+  year={2018},
+  publisher={ACS Publications},
+  doi={10.1021/acsnano.8b00932}
+}
+% modena2019nanoparticle [19]
+@article{wuttke2017positioning,
+  title={Positioning metal-organic framework nanoparticles within the context of drug delivery--a comparison with mesoporous silica nanoparticles and dendrimers},
+  author={Wuttke, Stefan and Lismont, Marjorie and Escudero, Alberto and Rungtaweevoranit, Bunyarat and Parak, Wolfgang J},
+  journal={Biomaterials},
+  volume={123},
+  pages={172--183},
+  year={2017},
+  publisher={Elsevier},
+  doi={10.1016/j.biomaterials.2017.01.025}
+}
+% modena2019nanoparticle [20]
+@article{rosenblum2018progress,
+  title={Progress and challenges towards targeted delivery of cancer therapeutics},
+  author={Rosenblum, Daniel and Joshi, Nitin and Tao, Wei and Karp, Jeffrey M and Peer, Dan},
+  journal={Nature Communications},
+  volume={9},
+  number={1},
+  pages={1410},
+  year={2018},
+  publisher={Nature Publishing Group UK London},
+  doi={10.1038/s41467-018-03705-y}
+}
+% modena2019nanoparticle [21]
+@article{peller2018metal,
+  title={Metal--organic framework nanoparticles for magnetic resonance imaging},
+  author={Peller, Michael and B{\"o}ll, Konstantin and Zimpel, Andreas and Wuttke, Stefan},
+  journal={Inorganic Chemistry Frontiers},
+  volume={5},
+  number={8},
+  pages={1760--1779},
+  year={2018},
+  publisher={Royal Society of Chemistry},
+  doi={10.1039/C8QI00149A}
+}
+% modena2019nanoparticle [22]
+@article{li2017dynamic,
+  title={Dynamic nanoparticle assemblies for biomedical applications},
+  author={Li, Fangyuan and Lu, Jingxiong and Kong, Xueqian and Hyeon, Taeghwan and Ling, Daishun},
+  journal={Advanced Materials},
+  volume={29},
+  number={14},
+  pages={1605897},
+  year={2017},
+  publisher={Wiley Online Library},
+  doi={10.1002/adma.201605897}
+}
+% bulk properties rely on nano properties
+@article{baig2021nanomaterials,
+  title={Nanomaterials: A review of synthesis methods, properties, recent progress, and challenges},
+  author={Baig, Nadeem and Kammakakam, Irshad and Falath, Wail},
+  journal={Materials Advances},
+  volume={2},
+  number={6},
+  pages={1821--1871},
+  year={2021},
+  publisher={Royal Society of Chemistry},
+  doi={10.1039/D0MA00807A}
+}
+% modena2019nanoparticle [3]
+@article{kodama1999magnetic,
+  title={Magnetic nanoparticles},
+  author={Kodama, RH},
+  journal={Journal of Magnetism and Magnetic Materials},
+  volume={200},
+  number={1-3},
+  pages={359--372},
+  year={1999},
+  publisher={Elsevier},
+  doi={10.1016/S0304-8853(99)00347-9}
+}
+% modena2019nanoparticle [4]
+@article{kim2012synthesis,
+  title={Synthesis and Characterization of Janus Gold Nanoparticles},
+  author={Kim, Hyewon and Carney, Randy P and Reguera, Javier and Ong, Quy K and Liu, Xiang and Stellacci, Francesco},
+  year={2012},
+  journal = {Advanced Materials},
+  doi={10.1002/adma.201200926}
+}
+% modena2019nanoparticle [5]
+@article{cirri2015ligand,
+  title={Ligand control over the electronic properties within the metallic core of gold nanoparticles},
+  author={Cirri, Anthony and Silakov, Alexey and Lear, Benjamin J},
+  journal={Angewandte Chemie International Edition},
+  volume={54},
+  number={40},
+  pages={11750--11753},
+  year={2015},
+  publisher={Wiley Online Library},
+  doi={10.1002/anie.201505933}
+}
+% modena2019nanoparticle [6]
+@article{nejadnik2015measurement,
+  title={Measurement of the average mass of proteins adsorbed to a nanoparticle by using a suspended microchannel resonator},
+  author={Nejadnik, M Reza and Jiskoot, Wim},
+  journal={Journal of Pharmaceutical Sciences},
+  volume={104},
+  number={2},
+  pages={698--704},
+  year={2015},
+  publisher={Elsevier},
+  doi={10.1002/jps.24206}
+}
+% modena2019nanoparticle [2]
+@article{talapin2016introduction,
+  title={Introduction: nanoparticle chemistry},
+  author={Talapin, Dmitri V and Shevchenko, Elena V},
+  journal={Chemical Reviews},
+  volume={116},
+  number={18},
+  pages={10343--10345},
+  year={2016},
+  publisher={ACS Publications},
+  doi={10.1021/acs.chemrev.6b00566}
+}
+% modena2019nanoparticle [7]
+@article{gong2017near,
+  title={Near-field optical properties of fully alloyed noble metal nanoparticles},
+  author={Gong, Chen and Dias, Mariama Rebello Sousa and Wessler, Garrett C and Taillon, Joshua A and Salamanca-Riba, Lourdes G and Leite, Marina S},
+  journal={Advanced Optical Materials},
+  volume={5},
+  number={1},
+  pages={1600568},
+  year={2017},
+  doi={10.1002/adom.201600568}
+}
+% modena2019nanoparticle [8]
+@article{lai1996size,
+  title={Size-dependent melting properties of small tin particles: nanocalorimetric measurements},
+  author={Lai, SL and Guo, JY and Petrova, V and Ramanath, G and Allen, LH},
+  journal={Physical Review Letters},
+  volume={77},
+  number={1},
+  pages={99},
+  year={1996},
+  publisher={APS},
+  doi={10.1103/PhysRevLett.77.99}
+}
+% modena2019nanoparticle [9]
+@article{qi2005size,
+  title={Size and shape dependent lattice parameters of metallic nanoparticles},
+  author={Qi, WH and Wang, MP},
+  journal={Journal of Nanoparticle Research},
+  volume={7},
+  pages={51--57},
+  year={2005},
+  publisher={Springer},
+  doi={10.1007/s11051-004-7771-9}
+}
+% modena2019nanoparticle [10]
+@article{deshpande2005size,
+  title={Size dependency variation in lattice parameter and valency states in nanocrystalline cerium oxide},
+  author={Deshpande, Sameer and Patil, Swanand and Kuchibhatla, Satyanarayana VNT and Seal, Sudipta},
+  journal={Applied Physics Letters},
+  volume={87},
+  number={13},
+  year={2005},
+  publisher={AIP Publishing},
+  doi={10.1063/1.2061873}
+}
+% engineering nanomaterials
+@article{marques2021porous,
+author = {Marques, Ana C. and Vale, Mário and Vicente, Daniel and Schreck, Murielle and Tervoort, Elena and Niederberger, Markus},
+title = {Porous Silica Microspheres with Immobilized Titania Nanoparticles for In-Flow Solar-Driven Purification of Wastewater},
+journal = {Global Challenges},
+volume = {5},
+number = {5},
+pages = {2000116},
+keywords = {microspheres, photocatalysis, porous silica, solar light, sol–gel, titania nanoparticles},
+doi = {10.1002/gch2.202000116},
+year = {2021}
+}
+% wang2016review [3]
+@article{falvo1997bending,
+  title={Bending and buckling of carbon nanotubes under large strain},
+  author={Falvo, Michael R and Clary, Greg J and Taylor, Russell M and Chi, Vernon and Brooks Jr, FP and Washburn, Sean and Superfine, Richard},
+  journal={Nature},
+  volume={389},
+  number={6651},
+  pages={582--584},
+  year={1997},
+  publisher={Nature Publishing Group UK London},
+  doi={10.1038/39282}
+}
+% wang2016review [2]
+@article{chiu2008atomic,
+  title={Atomic-scale mass sensing using carbon nanotube resonators},
+  author={Chiu, Hsin-Ying and Hung, Peter and Postma, Henk W Ch and Bockrath, Marc},
+  journal={Nano Letters},
+  volume={8},
+  number={12},
+  pages={4342--4346},
+  year={2008},
+  publisher={ACS Publications},
+  doi={10.1021/nl802181c}
+}
+% continuum simulations make complicated structures 
+@article{wang2016review,
+  title={A review on the application of modified continuum models in modeling and simulation of nanostructures},
+  author={Wang, KF and Wang, BL and Kitamura, T34627671342},
+  journal={Acta Mechanica Sinica},
+  volume={32},
+  pages={83--100},
+  year={2016},
+  publisher={Springer},
+  doi={10.1007/s10409-015-0508-4}
+}
+% nanoscale fluctuations
+@article{williams2004nanoscale,
+  title={Nanoscale structures: Lability, length scales, and fluctuations},
+  author={Williams, Ellen D},
+  journal={MRS Bulletin},
+  volume={29},
+  number={9},
+  pages={621--629},
+  year={2004},
+  publisher={Cambridge University Press},
+  doi={10.1557/mrs2004.182}
+}
+% combine MD and continuum
+@article{li2003structural,
+  title={A structural mechanics approach for the analysis of carbon nanotubes},
+  author={Li, Chunyu and Chou, Tsu-Wei},
+  journal={International Journal of Solids and Structures},
+  volume={40},
+  number={10},
+  pages={2487--2499},
+  year={2003},
+  publisher={Elsevier},
+  doi={10.1016/S0020-7683(03)00056-8}
+}
+% combine MD and continuum
+@article{bodily2003structural,
+  title={Structural and equivalent continuum properties of single-walled carbon nanotubes},
+  author={Bodily, BH and Sun, CT},
+  journal={International Journal of Materials and Product Technology},
+  volume={18},
+  number={4-6},
+  pages={381--397},
+  year={2003},
+  publisher={Inderscience Publishers},
+  doi={10.1504/IJMPT.2003.002498}
+}
+% combine MD and continuum
+@article{li2003single,
+  title={Single-walled carbon nanotubes as ultrahigh frequency nanomechanical resonators},
+  author={Li, Chunyu and Chou, Tsu-Wei},
+  journal={Physical review B},
+  volume={68},
+  number={7},
+  pages={073405},
+  year={2003},
+  publisher={APS},
+  doi={10.1103/PhysRevB.68.073405}
+}
+% energy functional is important in phase field modeling
+@article{yao2017bridging,
+    title = {Bridging the multi phase-field and molecular dynamics models for the solidification of nano-crystals},
+    author = {Yao Fu and John G. Michopoulos and Jeong-Hoon Song},
+    journal = {Journal of Computational Science},
+    volume = {20},
+    pages = {187-197},
+    year = {2017},
+    issn = {1877-7503},
+    doi = {https://doi.org/10.1016/j.jocs.2016.10.014}
+}
+% phase field modelling
+@article{liu2021calphad,
+  title={{CALPHAD}-informed phase-field modeling of grain boundary microchemistry and precipitation in {Al-Zn-Mg-Cu} alloys},
+  author={Liu, Chuanlai and Garner, Alistair and Zhao, Huan and Prangnell, Philip B and Gault, Baptiste and Raabe, Dierk and Shanthraj, Pratheek},
+  journal={Acta Materialia},
+  volume={214},
+  pages={116966},
+  year={2021},
+  publisher={Elsevier},
+  doi={10.1016/j.actamat.2021.116966}
+}
+% num error in phase field modelling
+@article{eiken2012numerical,
+  title={Numerical solution of the phase-field equation with minimized discretization error},
+  author={Eiken, Janin},
+  journal = {IOP Conference Series: Materials Science and Engineering},
+  volume={33},
+  number={1},
+  pages={012105},
+  year={2012},
+  doi={10.1088/1757-899X/33/1/012105}
+}
+% simulation philosophy
+@article{duran2020simulation,
+  title={What is a simulation model?},
+  author={Dur{\'a}n, Juan M},
+  journal={Minds and Machines},
+  volume={30},
+  number={3},
+  pages={301--323},
+  year={2020},
+  publisher={Springer},
+  doi={10.1007/s11023-020-09520-z}
+}
+% spinodal decomposition
+@article{hoernqvist2015early,
+    author = {H\"{o}rnqvist, M. and Thuvander, M. and Steuwer, A. and King, S. and Odqvist, J. and Hedstr\"{o}m, P.},
+    title = {Early stages of spinodal decomposition in {Fe–Cr} resolved by in-situ small-angle neutron scattering},
+    journal = {Applied Physics Letters},
+    volume = {106},
+    number = {6},
+    pages = {061911},
+    year = {2015},
+    month = {02},
+    doi = {10.1063/1.4908250}
+}
+% AFM example
+@article{butt2005force,
+  title={Force measurements with the atomic force microscope: Technique, interpretation and applications},
+  author={Butt, Hans-J{\"u}rgen and Cappella, Brunero and Kappl, Michael},
+  journal={Surface Science Reports},
+  volume={59},
+  number={1-6},
+  pages={1--152},
+  year={2005},
+  publisher={Elsevier},
+  doi={10.1016/j.surfrep.2005.08.003}
+}
+% SEM example
+@article{buhr2009characterization,
+  title={Characterization of nanoparticles by scanning electron microscopy in transmission mode},
+  author={Buhr, E and Senftleben, N and Klein, T and Bergmann, D and Gnieser, D and Frase, CG and Bosse, H},
+  journal={Measurement Science and Technology},
+  volume={20},
+  number={8},
+  pages={084025},
+  year={2009},
+  publisher={IOP Publishing},
+  doi={10.1088/0957-0233/20/8/084025}
+}
+% TEM example
+@article{surrey2012quantitative,
+  title={Quantitative measurement of the surface self-diffusion on $\mathrm{Au}$ nanoparticles by aberration-corrected transmission electron microscopy},
+  author={Surrey, A and Pohl, D and Schultz, L and Rellinghaus, B},
+  journal={Nano Letters},
+  volume={12},
+  number={12},
+  pages={6071--6077},
+  year={2012},
+  publisher={ACS Publications},
+  doi={10.1021/nl302280x}
+}
+% Microscopy and FFT
+@article{taylor2013objective,
+  title={Objective morphological quantification of microscopic images using a fast Fourier transform ({FFT}) analysis},
+  author={Taylor, Samuel E and Cao, Tuoxin and Talauliker, Pooja M and Lifshitz, Jonathan},
+  journal={Current protocols essential laboratory techniques},
+  volume={7},
+  number={1},
+  pages={9--5},
+  year={2013},
+  publisher={Wiley Online Library},
+  doi={10.1002/9780470089941.et0905s07}
+}
+% Microscopy and FFT
+@article{lieberman2016microstructural,
+  title={Microstructural effects on damage evolution in shocked copper polycrystals},
+  author={Lieberman, Evan J and Lebensohn, Ricardo A and Menasche, David B and Bronkhorst, Curt A and Rollett, Anthony D},
+  journal={Acta Materialia},
+  volume={116},
+  pages={270--280},
+  year={2016},
+  publisher={Elsevier},
+  doi={10.1016/j.actamat.2016.06.054}
+}
+% small angle scattering covers larger volume
+@article{li2016small,
+  title={Small angle {X-ray} scattering for nanoparticle research},
+  author={Li, Tao and Senesi, Andrew J and Lee, Byeongdu},
+  journal={Chemical Reviews},
+  volume={116},
+  number={18},
+  pages={11128--11180},
+  year={2016},
+  publisher={ACS Publications},
+  doi={10.1021/acs.chemrev.5b00690}
+}
+% neutron scattering review paper
+@article{hosseini2021neutron,
+  title={Neutron scattering: A subsurface application review},
+  author={Hosseini, Mirhasan and Arif, Muhammad and Keshavarz, Alireza and Iglauer, Stefan},
+  journal={Earth-Science Reviews},
+  volume={221},
+  pages={103755},
+  year={2021},
+  publisher={Elsevier},
+  doi={10.1016/j.earscirev.2021.103755}
+}
+% phase problem paper
+@article{billinge2007problem,
+  title={The problem with determining atomic structure at the nanoscale},
+  author={Billinge, Simon JL and Levin, Igor},
+  journal={Science},
+  volume={316},
+  number={5824},
+  pages={561--565},
+  year={2007},
+  publisher={American Association for the Advancement of Science},
+  doi={10.1126/science.1135080}
+}
+% first mention of phase problem
+@article{eckert2012max,
+  title={{Max von Laue and the discovery of X-ray diffraction in 1912}},
+  author={Eckert, Michael},
+  journal={Annalen der Physik},
+  volume={524},
+  number={5},
+  pages={A83--A85},
+  year={2012},
+  publisher={WILEY-VCH Verlag Berlin},
+  doi={10.1002/andp.201200724}
+}
+% analytical SAS formula - sphere
+@book{guinier1955small,
+  title={Small-angle Scattering of X-rays},
+  author={Guinier, Andr{\'e} and Fournet, G{\'e}rard and Walker, Christopher B and Yudowitch, Kenneth L},
+  year={1955},
+  publisher={Wiley New York}
+}
+% porod paper: analytical SAS formula - sphere
+@article{porod1960formfactors,
+  title={{Zur R{\"o}ntgenkleinwinkelstreuung verd{\"u}nnter kolloider Systeme. Die Berechnung der Streukurven von Parallelepipeden}},
+  author={Mittelbach, P and Porod, G},
+  journal={Institut f{\"u}r physikalische Chemie der Universit{\"a}t Graz},
+  volume={14},
+  pages={185--211},
+  year={1961},
+  publisher={De Gruyter Oldenbourg Berlin Germany}
+}
+% Nayuk paper: analytical SAS formula - sphere
+@article{nayuk2012formfactors,
+  title={Formfactors of Hollow and Massive Rectangular Parallelepipeds at Variable Degree of Anisometry},
+  author={Nayuk, Roman and Huber, Klaus},
+  journal={Zeitschrift f{\"u}r Physikalische Chemie},
+  volume={226},
+  number={7-8},
+  pages={837--854},
+  year={2012},
+  publisher={De Gruyter Oldenbourg Berlin Germany},
+  doi={10.1524/zpch.2012.0257}
+}
+% fedorov first paper: cube method
+@article{fedorov1972x,
+  title={X-ray diffuse scattering of globular protein solutions: consideration of the solvent influence},
+  author={Fedorov, BA and Ptitsyn, OB and Voronin, LA},
+  journal={FEBS lett},
+  volume={28},
+  number={2},
+  pages={188--190},
+  year={1972},
+  doi={10.1016/0014-5793(72)80708-7}
+}
+% ninio paper for cube method
+@article{ninio1972comparative,
+title = {{Comparative small-angle X-ray scattering studies on unacylated, acylated and cross-linked Escherichia coli transfer RNAIVal}},
+journal = {Journal of Molecular Biology},
+volume = {71},
+number = {2},
+pages = {217-229},
+year = {1972},
+issn = {0022-2836},
+doi = {10.1016/0022-2836(72)90347-6},
+author = {Jacques Ninio and Vittorio Luzzati and Moshe Yaniv}
+}
+% sphere method without any reference of the word
+@article{roess1947xray,
+  title={X-Ray Scattering at Small Angles by Finely-Divided Solids. {II}. {Exact} Theory for Random Distributions of Spheroidal Particles},
+  author={Roess, LC and Shull, CG},
+  journal={Journal of Applied Physics},
+  volume={18},
+  number={3},
+  pages={308--313},
+  year={1947},
+  publisher={American Institute of Physics},
+  doi={10.1063/1.1697651}
+}
+% fedorov second paper (probably cube method)
+@article{fedorov1974xray,
+  title={{X-ray diffuse scattering by proteins in solution. Consideration of solvent influence}},
+  author={Fedorov, BA and Ptitsyn, OB and Voronin, LA},
+  journal={Journal of Applied Crystallography},
+  volume={7},
+  number={2},
+  pages={181--186},
+  year={1974},
+  publisher={International Union of Crystallography},
+  doi={10.1107/S0021889874009137}
+}
+% form free methods
+@article{glatter1977data,
+  title={Data evaluation in small angle scattering: calculation of the radial electron density distribution by means of indirect Fourier transformation},
+  author={Glatter, O},
+  journal={Acta Phys. Austriaca},
+  volume={47},
+  number={1},
+  year={1977}
+}
+% form free methods
+@article{magnani1988numerical,
+  title={Numerical solution of the inverse problem in the analysis of neutron small angle scattering experiments},
+  author={Magnani, Marco and Puliti, Paolo and Stefanon, Mario},
+  journal={Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment},
+  volume={271},
+  number={3},
+  pages={611--616},
+  year={1988},
+  publisher={Elsevier},
+  doi={10.1016/0168-9002(88)90330-0}
+}
+% form free methods
+@article{pauw2013improvements,
+  title={Improvements and considerations for size distribution retrieval from small-angle scattering data by Monte Carlo methods},
+  author={Pauw, Brian R and Pedersen, Jan Skov and Tardif, Samuel and Takata, Masaki and Iversen, Bo Brummersted},
+  journal={Applied Crystallography},
+  volume={46},
+  number={2},
+  pages={365--371},
+  year={2013},
+  publisher={International Union of Crystallography},
+  doi={10.1107/S0021889813001295}
+}
+% hypred is computationally expensive
+@article{svergun1995crysol,
+  title={{CRYSOL--a program to evaluate X-ray solution scattering of biological macromolecules from atomic coordinates}},
+  author={Svergun, DIBC and Barberato, Claudio and Koch, Michel HJ},
+  journal={Journal of Applied Crystallography},
+  volume={28},
+  number={6},
+  pages={768--773},
+  year={1995},
+  publisher={International Union of Crystallography},
+  doi={10.1107/S0021889895007047}
+}
+% SANS review
+@article{hollamby2013practical,
+  title={Practical applications of small-angle neutron scattering},
+  author={Hollamby, Martin J},
+  journal={Physical chemistry chemical physics},
+  volume={15},
+  number={26},
+  pages={10566--10579},
+  year={2013},
+  publisher={Royal Society of Chemistry},
+  doi={10.1039/C3CP50293G}
+}
+% Lindner - Sassena publication
+@article{lindner2012sassena,
+  title={{Sassena—X-ray and neutron scattering calculated from molecular dynamics trajectories using massively parallel computers}},
+  author={Lindner, Benjamin and Smith, Jeremy C},
+  journal={Computer Physics Communications},
+  volume={183},
+  number={7},
+  pages={1491--1501},
+  year={2012},
+  publisher={Elsevier},
+  doi={10.1016/j.cpc.2012.02.010}
+}
+% liquidlib
+@article{walter2018liquidlib,
+  title={{LiquidLib}: A comprehensive toolbox for analyzing classical and ab initio molecular dynamics simulations of liquids and liquid-like matter with applications to neutron scattering experiments},
+  author={Walter, Nathan P and Jaiswal, Abhishek and Cai, Zhikun and Zhang, Yang},
+  journal={Computer Physics Communications},
+  volume={228},
+  pages={209--218},
+  year={2018},
+  publisher={Elsevier},
+  doi={10.1016/j.cpc.2018.03.005}
+}
+% MDANSE
+@article{goret2017mdanse,
+  title={{MDANSE}: An Interactive Analysis Environment for Molecular Dynamics Simulations},
+  author={Goret, G and Aoun, B and Pellegrini, Eric},
+  journal={Journal of Chemical Information and Modeling},
+  volume={57},
+  number={1},
+  pages={1--5},
+  year={2017},
+  publisher={ACS Publications},
+  doi={10.1021/acs.jcim.6b00571}
+}
+% Arnab MDPI
+@article{majumdar2024computation,
+  title={Computation of {X-ray} and Neutron Scattering Patterns to Benchmark Atomistic Simulations against Experiments},
+  author={Majumdar, Arnab and M{\"u}ller, Martin and Busch, Sebastian},
+  journal={International Journal of Molecular Sciences},
+  volume={25},
+  number={3},
+  pages={1547},
+  year={2024},
+  publisher={MDPI},
+  doi={10.3390/ijms25031547}
+}
+% coherent neutron scattering
+@article{sears1992neutron,
+  title={Neutron scattering lengths and cross sections},
+  author={Sears, Varley F},
+  journal={Neutron news},
+  volume={3},
+  number={3},
+  pages={26--37},
+  year={1992},
+  publisher={Taylor \& Francis},
+  doi={10.1080/10448639208218770}
+}
+% SANS of aligned systems
+@article{lee2006magnetic,
+  title={Magnetic uniaxial alignment of the columnar superstructure of discotic metallomesogens over the centimetre length scale},
+  author={Lee, Ji-Hwan and Choi, Sung-Min and Pate, Brian D and Chisholm, Malcolm H and Han, Young-Soo},
+  journal={Journal of Materials Chemistry},
+  volume={16},
+  number={27},
+  pages={2785--2791},
+  year={2006},
+  publisher={Royal Society of Chemistry},
+  doi={10.1039/B603902B}
+}
+% SANS of aligned systems
+@article{mcmullan2010directed,
+  title={Directed self-assembly of colloidal crystals by dielectrophoretic ordering observed with small angle neutron scattering ({SANS})},
+  author={McMullan, Jason M and Wagner, Norman J},
+  journal={Soft Matter},
+  volume={6},
+  number={21},
+  pages={5443--5450},
+  year={2010},
+  publisher={Royal Society of Chemistry},
+  doi={10.1039/C0SM00400F}
+}
+% SANS of aligned systems
+@article{vallooran2011macroscopic,
+  title={Macroscopic alignment of lyotropic liquid crystals using magnetic nanoparticles},
+  author={Vallooran, Jijo J and Bolisetty, Sreenath and Mezzenga, Raffaele},
+  journal={Advanced Materials},
+  volume={23},
+  number={34},
+  pages={3932--3937},
+  year={2011},
+  publisher={Wiley Online Library},
+  doi={10.1002/adma.201101760}
+}
+% SANS of aligned systems
+@article{cerclier2012structure,
+  title={Structure and phase behavior of a discotic columnar liquid crystal confined in nanochannels},
+  author={Cerclier, Carole V and Ndao, Makha and Busselez, R\"{e}mi and Lefort, Ronan and Grelet, Eric and Huber, Patrick and Kityk, Andriy V and Noirez, Laurence and Sch\"{o}nhals, Andreas and Morineau, Denis},
+  journal={The Journal of Physical Chemistry C},
+  volume={116},
+  number={35},
+  pages={18990--18998},
+  year={2012},
+  publisher={ACS Publications},
+  doi={10.1021/jp303690q}
+}
+% SANS apply soft matter
+@article{hollamby2008effect,
+  title={Effect of solvent quality on aggregate structures of common surfactants},
+  author={Hollamby, Martin J and Tabor, Rico and Mutch, Kevin J and Trickett, Kieran and Eastoe, Julian and Heenan, Richard K and Grillo, Isabelle},
+  journal={Langmuir},
+  volume={24},
+  number={21},
+  pages={12235--12240},
+  year={2008},
+  publisher={ACS Publications},
+  doi={10.1021/la8020854}
+}
+%synchrotron source at desy
+@article{weckert2004petraIII,
+    author = {Weckert, E. and Balewski, K. and Brefeld, W. and Decking, W. and Drube, W. and Franz, H. and Gürtler, P. and Hahn, U. and Pflüger, J. and Schulte‐Schrepping, H. and Tischer, M. and Schneider, J.},
+    title = "{PETRA III: A New High Brilliance Synchrotron Radiation Source at DESY}",
+    journal = {AIP Conference Proceedings},
+    volume = {705},
+    number = {1},
+    pages = {73-76},
+    year = {2004},
+    month = {05},
+    issn = {0094-243X},
+    doi = {10.1063/1.1757737},
+}
+%synchrotron source at esrf
+@article{raimondi2016esrf,
+  title={{ESRF-EBS}: The extremely brilliant source project},
+  author={Raimondi, Pantaleo},
+  journal={Synchrotron Radiation News},
+  volume={29},
+  number={6},
+  pages={8--15},
+  year={2016},
+  publisher={Taylor \& Francis},
+  doi={10.1080/08940886.2016.1244462}
+}
+% Example reactor - FRM2
+@article{roegler2002new,
+  title={{The new high flux neutron source FRM-2 in Munich}},
+  author={Roegler, HJ and Wierheim, G},
+  journal={Revue Generale Nucleaire},
+  pages={76--85},
+  year={2002}
+}
+% Example reactor - ILL
+@article{ageron1989cold,
+  title={Cold neutron sources at {ILL}},
+  author={Ageron, Paul},
+  journal={Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment},
+  volume={284},
+  number={1},
+  pages={197--199},
+  year={1989},
+  publisher={Elsevier},
+  doi={10.1016/0168-9002(89)90281-7}
+}
+% Example spallation - ISIS
+@article{thomason2019isis,
+  title={{The ISIS spallation neutron and muon source—the first thirty-three years}},
+  author={Thomason, JWG},
+  journal={Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment},
+  volume={917},
+  pages={61--67},
+  year={2019},
+  publisher={Elsevier},
+  doi={10.1016/j.nima.2018.11.129}
+}
+% Example spallation - PSI
+@article{fischer1997sinq,
+  title={{SINQ—the spallation neutron source, a new research facility at PSI}},
+  author={Fischer, WE},
+  journal = {AIP Conference Proceedings},
+  volume={392},
+  number={1},
+  pages={1119--1122},
+  year={1997},
+  month = {02},
+  doi={10.1063/1.52691}
+}
+% ACF is useful
+@article{chenxin2023phase,
+  title = {Phase-field simulation of the microstructure and properties evolution in cast austenitic stainless steels for nuclear power plants during thermal aging and annealing},
+  author ={Chenxin Lu and Zhichao Yang and Feida Chen and Minyu Fan and Pin Huang and Guojia Ge and Xiaobin Tang},
+  journal = {Nuclear Engineering and Design},
+  volume = {415},
+  pages = {112604},
+  year = {2023},
+  doi = {j.nucengdes.2023.112604}
+}
+% simulation of large volume with high resolution is expensive
+@article{gates2005computational,
+  title={Computational materials: multi-scale modeling and simulation of nanostructured materials},
+  author={Gates, TS and Odegard, GM and Frankland, SJV and Clancy, TC},
+  journal={Composites Science and Technology},
+  volume={65},
+  number={15-16},
+  pages={2416--2434},
+  year={2005},
+  publisher={Elsevier},
+  doi={10.1016/j.compscitech.2005.06.009}
+}
+% a simulation box is required
+@article{chen2004square,
+  title={Square representative volume elements for evaluating the effective material properties of carbon nanotube-based composites},
+  author={Chen, XL and Liu, YJ},
+  journal={Computational Materials Science},
+  volume={29},
+  number={1},
+  pages={1--11},
+  year={2004},
+  publisher={Elsevier},
+  doi={10.1016/S0927-0256(03)00090-9}
+}
+% simulation box is cubic or rectangular
+@article{steinbach2009phase,
+  title={Phase-field models in materials science},
+  author={Steinbach, Ingo},
+  journal={Modelling and Simulation in Materials Science and Engineering},
+  volume={17},
+  number={7},
+  pages={073001},
+  year={2009},
+  publisher={IOP Publishing},
+  doi={10.1088/0965-0393/17/7/073001}
+}
+% simulation box is cubic or rectangular
+@article{tourret2022phase,
+  title={Phase-field modeling of microstructure evolution: Recent applications, perspectives and challenges},
+  author={Tourret, Damien and Liu, Hong and LLorca, Javier},
+  journal={Progress in Materials Science},
+  volume={123},
+  pages={100810},
+  year={2022},
+  publisher={Elsevier},
+  doi={10.1016/j.pmatsci.2021.100810}
+}
+% sign of contrast does not matter
+@article{jeffries2021small,
+  title={Small-angle X-ray and neutron scattering},
+  author={Jeffries, Cy M and Ilavsky, Jan and Martel, Anne and Hinrichs, Stephan and Meyer, Andreas and Pedersen, Jan Skov and Sokolova, Anna V and Svergun, Dmitri I},
+  journal={Nature Reviews Methods Primers},
+  volume={1},
+  number={1},
+  pages={70},
+  year={2021},
+  publisher={Nature Publishing Group UK London},
+  doi={10.1038/s43586-021-00064-9}
+}
+% interdiffusion citation
+@article{stieger2004are,
+author = {Stieger, Markus and Pedersen, Jan Skov and Lindner, Peter and Richtering, Walter},
+title = {Are Thermoresponsive Microgels Model Systems for Concentrated Colloidal Suspensions? {A} Rheology and Small-Angle Neutron Scattering Study},
+journal = {Langmuir},
+volume = {20},
+number = {17},
+pages = {7283-7292},
+year = {2004},
+doi = {10.1021/la049518x}
+}
+% In Cahn Hilliard equation with molar fraction, molar density is conserved
+@article{cahn1961on,
+  title = {On spinodal decomposition},
+  author = {John W Cahn},
+  journal = {Acta Metallurgica},
+  volume = {9},
+  number = {9},
+  pages = {795-801},
+  year = {1961},
+  doi = {10.1016/0001-6160(61)90182-1}
+}
+% Cahn-Hilliard equation
+@article{cahn1958free,
+  title={{Free energy of a nonuniform system. I. Interfacial free energy}},
+  author={Cahn, John W and Hilliard, John E},
+  journal={The Journal of chemical physics},
+  volume={28},
+  number={2},
+  pages={258--267},
+  year={1958},
+  publisher={American Institute of Physics},
+  doi={10.1063/1.1744102}
+}
+% real materials are heterogeneous and continuum modelling is difficult
+@article{huang2007continuum,
+  title={Continuum modelling of solids with micro/nanostructures},
+  author={Huang, GL and Sun, CT},
+  journal={Philosophical Magazine},
+  volume={87},
+  number={24},
+  pages={3689--3707},
+  year={2007},
+  publisher={Taylor \& Francis},
+  doi={10.1080/14786430701400137}
+}
+% real materials are heterogeneous
+@article{zhu20143d,
+  title={{3D} nanostructure reconstruction based on the SEM imaging principle, and applications},
+  author={Zhu, Fu-Yun and Wang, Qi-Qi and Zhang, Xiao-Sheng and Hu, Wei and Zhao, Xin and Zhang, Hai-Xia},
+  journal={Nanotechnology},
+  volume={25},
+  number={18},
+  pages={185705},
+  year={2014},
+  publisher={IOP Publishing},
+  doi={10.1088/0957-4484/25/18/185705}
+}
+% frenkel method of reciprocal lattice
+@article{frenkel1986structure,
+  title={{Structure factors of polydisperse systems of hard spheres: A comparison of Monte Carlo simulations and Percus--Yevick theory}},
+  author={Frenkel, Daan and Vos, RJ and de Kruif, CG d and Vrij, A},
+  journal={The Journal of Chemical Physics},
+  volume={84},
+  number={8},
+  pages={4625--4630},
+  year={1986},
+  publisher={American institute of physics},
+  doi={10.1063/1.449987}
+}
+% spinodal decomposition of Fe Cr requires inital random structure
+@article{zhou2017effect,
+  title={Effect of solution treatment on spinodal decomposition during aging of an {Fe}-46.5 at.\% {Cr} alloy},
+  author={Zhou, Jing and Odqvist, Joakim and Ruban, Andrei and Thuvander, Mattias and Xiong, Wei and {\AA}gren, John and Olson, Gregory B and Hedstr{\"o}m, Peter},
+  journal={Journal of Materials Science},
+  volume={52},
+  number={1},
+  pages={326--335},
+  year={2017},
+  publisher={Springer},
+  doi={10.1007/s10853-016-0333-6}
+}
+% spinodal Fe-Cr experiments
+@article{furusaka1983spinodal,
+  title={Spinodal decomposition in {Fe-Cr} alloys studied by small angle neutron scattering},
+  author={Furusaka, M and Ishikawa, Y and Yamaguchi, S and Fujino, Y},
+  journal={Physica B+C},
+  volume={120},
+  number={1-3},
+  pages={383--386},
+  year={1983},
+  publisher={Elsevier},
+  doi={10.1016/0378-4363(83)90411-4}
+}
+% numerical error effects phase field modelling - FDM
+@article{mecozzi2011quantitative,
+  title={Quantitative comparison of the phase-transformation kinetics in a sharp-interface and a phase-field model},
+  author={Mecozzi, MG and Eiken, J and Apel, M and Sietsma, J},
+  journal={Computational Materials Science},
+  volume={50},
+  number={6},
+  pages={1846--1853},
+  year={2011},
+  publisher={Elsevier},
+  doi={10.1016/j.commatsci.2011.01.028}
+}
+% numerical error effects phase field modelling - FEM
+@article{heister2015primal,
+  title={A primal-dual active set method and predictor-corrector mesh adaptivity for computing fracture propagation using a phase-field approach},
+  author={Heister, Timo and Wheeler, Mary F and Wick, Thomas},
+  journal={Computer Methods in Applied Mechanics and Engineering},
+  volume={290},
+  pages={466--495},
+  year={2015},
+  publisher={Elsevier},
+  doi={10.1016/j.cma.2015.03.009}
+}
+% numerical error effects phase field modelling - FEM
+@article{wick2016goal,
+  title={Goal functional evaluations for phase-field fracture using {PU}-based {DWR} mesh adaptivity},
+  author={Wick, Thomas},
+  journal={Computational Mechanics},
+  volume={57},
+  number={6},
+  pages={1017--1035},
+  year={2016},
+  publisher={Springer},
+  doi={10.1007/s00466-016-1275-1}
+}
+% numerical error effects phase field modelling - FEM
+@article{zhuang2022phase,
+  title={Phase field modeling and computer implementation: A review},
+  author={Zhuang, X and Zhou, S and Huynh, GD and Areias, P and Rabczuk, T},
+  journal={Engineering Fracture Mechanics},
+  volume={262},
+  pages={108234},
+  year={2022},
+  publisher={Elsevier},
+  doi={10.1016/j.engfracmech.2022.108234}
+}
+% size of meshing matters
+@article{wasisto2014finite,
+  title={Finite element modeling and experimental proof of {NEMS}-based silicon pillar resonators for nanoparticle mass sensing applications},
+  author={Wasisto, Hutomo Suryo and Huang, Kai and Merzsch, Stephan and Stranz, Andrej and Waag, Andreas and Peiner, Erwin},
+  journal={Microsystem Technologies},
+  volume={20},
+  pages={571--584},
+  year={2014},
+  publisher={Springer},
+  doi={10.1007/s00542-013-1992-8}
+}
+% adaptive meshing 
+@article{lo2002finite,
+  title={Finite element mesh generation and adaptive meshing},
+  author={Lo, SH},
+  journal={Progress in Structural Engineering and Materials},
+  volume={4},
+  number={4},
+  pages={381--399},
+  year={2002},
+  publisher={Wiley Online Library},
+  doi={10.1002/pse.135}
+}
+% coarse mesh vs fine mesh
+@article{suresh2014effect,
+  title={Effect of mesh parameters in finite element simulation of single point incremental sheet forming process},
+  author={Suresh, Kurra and Regalla, Srinivasa Prakash},
+  journal={Procedia materials science},
+  volume={6},
+  pages={376--382},
+  year={2014},
+  publisher={Elsevier},
+  doi={10.1016/j.mspro.2014.07.048}
+}
+% effect of shape function or interolation function
+@article{taylor1972completeness,
+  title={On completeness of shape functions for finite element analysis},
+  author={Taylor, Robert L},
+  journal={International Journal for Numerical Methods in Engineering},
+  volume={4},
+  number={1},
+  pages={17--22},
+  year={1972},
+  publisher={Wiley Online Library},
+  doi={10.1002/nme.1620040105}
+}
+% continuum to small angle scattering
+@article{dorrell2020combined,
+  title={A combined molecular/continuum-modeling approach to predict the small-angle neutron scattering of curved membranes},
+  author={Dorrell, Mitchell W and Beaven, Andrew H and Sodt, Alexander J},
+  journal={Chemistry and Physics of Lipids},
+  volume={233},
+  pages={104983},
+  year={2020},
+  publisher={Elsevier}
+}
+% Monte Carlo Approach Simullated Annealing
+@article{svergun1999restoring,
+  title={Restoring low resolution structure of biological macromolecules from solution scattering using simulated annealing},
+  author={Svergun, Dmitri I},
+  journal={Biophysical journal},
+  volume={76},
+  number={6},
+  pages={2879--2886},
+  year={1999},
+  publisher={Elsevier}
+}
+% DAMMIN (dummy atoms)
+@article{arndt2003small,
+  title={Small angle {X-ray} scattering of the hemoglobin from Biomphalaria glabrata},
+  author={Arndt, M{\'a}rcio HL and Oliveira, Cristiano LP de and R{\'e}gis, Wiliam CB and Torriani, Iris L and Santoro, Marcelo M},
+  journal={Biopolymers: Original Research on Biomolecules},
+  volume={69},
+  number={4},
+  pages={470--479},
+  year={2003},
+  publisher={Wiley Online Library},
+  doi={10.1002/bip.10367}
+}
+% continuum simulation with 
+@article{mondal2020regularization,
+  title={Regularization of continuum damage mechanics models for {3-D} brittle materials using implicit gradient enhancement},
+  author={Mondal, S and Olsen-Kettle, LM and Gross, L},
+  journal={Computers and Geotechnics},
+  volume={122},
+  pages={103505},
+  year={2020},
+  publisher={Elsevier},
+  doi={10.1016/j.compgeo.2020.103505}
+}
+% definition of nyquist
+@article{mazo1975faster,
+  title={{Faster-than-Nyquist signaling}},
+  author={Mazo, James E},
+  journal={The Bell System Technical Journal},
+  volume={54},
+  number={8},
+  pages={1451--1462},
+  year={1975},
+  publisher={Nokia Bell Labs},
+  doi={10.1002/j.1538-7305.1975.tb02043.x}
+}
+% Direct FT original paper
+@article{schmidt2007simulation,
+  title={Simulation of small-angle scattering curves by numerical Fourier transformation},
+  author={Schmidt-Rohr, Klaus},
+  journal={Journal of Applied Crystallography},
+  volume={40},
+  number={1},
+  pages={16--25},
+  year={2007},
+  publisher={International Union of Crystallography}
+}
+% phase-field of Fe-Cr spinodal decomposition
+@article{soriano2010effect,
+  title={Effect of spinodal decomposition on the mechanical behavior of {Fe-Cr} alloys},
+  author={Soriano-Vargas, Orlando and Avila-Davila, Erika O and Lopez-Hirata, Victor M and Cayetano-Castro, Nicolas and Gonzalez-Velazquez, Jorge L},
+  journal={Materials Science and Engineering: A},
+  volume={527},
+  number={12},
+  pages={2910--2914},
+  year={2010},
+  publisher={Elsevier},
+  doi={10.1016/j.msea.2010.01.020}
+}
+% phase-field of Fe-Cr spinodal decomposition
+@article{hedstrom2012phase,
+  title={A phase-field and electron microscopy study of phase separation in {Fe--Cr} alloys},
+  author={Hedstr{\"o}m, Peter and Baghsheikhi, Saeed and Liu, Ping and Odqvist, Joakim},
+  journal={Materials Science and Engineering: A},
+  volume={534},
+  pages={552--556},
+  year={2012},
+  publisher={Elsevier},
+  doi={10.1016/j.msea.2011.12.007}
+}
+% compare simulation and SAS in real space
+@article{knutsson2013microstructure,
+  title={Microstructure evolution during the isostructural decomposition of TiAlN—A combined in-situ small angle x-ray scattering and phase field study},
+  author={Knutsson, Axel and Ullbrand, Jennifer and Rogstr{\"o}m, Lina and Norrby, Niklas and Johnson, LJS and Hultman, Lars and Almer, J and Johansson J{\"o}esaar, MP and Jansson, B and Od{\'e}n, Magnus},
+  journal={Journal of Applied Physics},
+  volume={113},
+  number={21},
+  year={2013},
+  publisher={AIP Publishing},
+  doi={10.1063/1.4809573}
+}
+% compare simulation and other scattering experiment in real space
+@article{girelli2021microscopic,
+  title={Microscopic dynamics of liquid-liquid phase separation and domain coarsening in a protein solution revealed by {X-ray} photon correlation spectroscopy},
+  author={Girelli, Anita and Rahmann, Hendrik and Begam, Nafisa and Ragulskaya, Anastasia and Reiser, Mario and Chandran, Sivasurender and Westermeier, Fabian and Sprung, Michael and Zhang, Fajun and Gutt, Christian and others},
+  journal={Physical Review Letters},
+  volume={126},
+  number={13},
+  pages={138004},
+  year={2021},
+  publisher={APS},
+  doi={10.1103/PhysRevLett.126.138004}
+}
+% Nesli - SANS and hydrogen storage
+@article{aslan2019high,
+  title={High-pressure cell for in situ neutron studies of hydrogen storage materials},
+  author={Aslan, Neslihan and Horstmann, Christian and Metz, Oliver and Kotlyar, Oleg and Dornheim, Martin and Pistidda, Claudio and Busch, Sebastian and Lohstroh, Wiebke and M{\"u}ller, Martin and Pranzas, Klaus},
+  journal={Journal of Neutron Research},
+  volume={21},
+  number={3-4},
+  pages={125--135},
+  year={2019},
+  publisher={IOS Press},
+  doi={10.3233/JNR-190116}
+}
+% bio system using TR-SANS
+@article{tabor2009time,
+  title={Time-resolved small-angle neutron scattering as a lamellar phase evolves into a microemulsion},
+  author={Tabor, Rico F and Eastoe, Julian and Grillo, Isabelle},
+  journal={Soft Matter},
+  volume={5},
+  number={10},
+  pages={2125--2129},
+  year={2009},
+  publisher={Royal Society of Chemistry},
+  doi={10.1039/B819196D}
+}
+% Fe Cr power law slope simulation
+@article{marro1975time,
+  title={Time evolution of a quenched binary alloy. II. Computer simulation of a three-dimensional model system},
+  author={Marro, J and Bortz, AB and Kalos, MH and Lebowitz, JL},
+  journal={Physical Review B},
+  volume={12},
+  number={6},
+  pages={2000},
+  year={1975},
+  publisher={APS},
+  doi={10.1103/PhysRevB.12.2000}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%% need to sort
+% Fe Cr power law slope simulation
+@article{marro1979computer,
+  title={Computer simulation of the time evolution of a quenched model alloy in the nucleation region},
+  author={Marro, J and Lebowitz, Joel L and Kalos, MH},
+  journal={Physical Review Letters},
+  volume={43},
+  number={4},
+  pages={282},
+  year={1979},
+  publisher={APS},
+  doi={10.1103/PhysRevLett.43.282}
+}
+% Phase field FeCr improvement
+@article{xiong2011investigation,
+  title={Investigation of spinodal decomposition in Fe-Cr Alloys: CALPHAD modeling and phase field simulation},
+  author={Xiong, Wei and Gr{\"o}nhagen, Klara Asp and {\AA}gren, John and Selleby, Malin and Odqvist, Joakim and Chen, Qing},
+  journal={Solid State Phenomena},
+  volume={172},
+  pages={1060--1065},
+  year={2011},
+  publisher={Trans Tech Publ},
+  doi={10.4028/www.scientific.net/SSP.172-174.1060}
+}
+% Phase field FeCr improvement
+@article{yang2023effects,
+  title={Effects of grain boundaries and temperature on spinodal decomposition in a binary Fe-Cr alloy: A phase-field simulation},
+  author={Yang, Zhaoxi and Liu, Wenbo and Liu, Xuxi and Jiang, Yanbo and Yun, Di},
+  journal={Annals of Nuclear Energy},
+  volume={193},
+  pages={110030},
+  year={2023},
+  publisher={Elsevier},
+  doi={10.1016/j.anucene.2023.110030}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%% need to sort
+%% 2) thesis
+% references from modena2019nanoparticle
+@phdthesis{mihai2023development,
+    author = {Mihai, Elena M{\u{a}}d{\u{a}}lina},
+    title =  {Development of new hybrid nanomaterials based on {3D} graphene and $\mathrm{TiO_2}$ for the degradation of dyes in industrial waters},
+    school = {Polytechnica University of Bucharest Faculty of Materials Science and Engineering},
+    year = {2023}
+}
+% Lindner thesis
+@phdthesis{lindner2012towards,
+  title={Towards a Unification of Supercomputing, Molecular Dynamics Simulation and Experimental Neutron and {X-ray} Scattering Techniques},
+  author={Lindner, Benjamin},
+  school={University of Tennessee, United States},
+  year={2012}
+}
+%% 3) book
+% simulation of large volume with high resolution is expensive
+@book{ghavanloo2019computational,
+  title={Computational continuum mechanics of nanoscopic structures},
+  author={Ghavanloo, Esmaeal and Rafii-Tabar, Hashem and Fazelzadeh, Seyed Ahmad},
+  year={2019},
+  publisher={Springer},
+  isbn={978-3-030-11650-7},
+  doi={10.1007/978-3-030-11650-7},
+  note={{ISBN:} 978-3-030-11650-7}
+}
+% numerical methods book
+@book{holmes2007introduction,
+  title={Introduction to numerical methods in differential equations},
+  author={Holmes, Mark H},
+  year={2007},
+  publisher={Springer},
+  isbn={978-0-387-68121-4},
+  doi={10.1007/978-0-387-68121-4},
+  note={{ISBN:} 978-0-387-68121-4}
+}
+% sivia book
+@book{sivia2011elementary,
+  title={Elementary scattering theory: for X-ray and neutron users},
+  author={Sivia, Deviderjit Singh},
+  year={2011},
+  month = {01},
+  publisher={Oxford University Press},
+  isbn = {9780199228676},
+  doi={10.1093/acprof:oso/9780199228676.001.0001},
+  note={{ISBN:} 9780199228676}
+}
+% comparison of penetration depth
+@book{wenk2018neutron,
+  title={Neutron scattering in earth sciences},
+  author={Wenk, Hans Rudolf},
+  volume={63},
+  year={2018},
+  publisher={Walter de Gruyter GmbH \& Co KG},
+  isbn={9781501509445},
+  doi={10.1515/9781501509445},
+  note={{ISBN:} 9781501509445}
+}
+% summary of all small angle scattering
+@incollection{alves2018calculation,
+  author    = {C{\'a}ssio Alves and Cristiano Luis Pinto Oliveira},
+  title     = {Calculation of Small-Angle Scattering Patterns},
+  booktitle = {Small Angle Scattering and Diffraction},
+  editor    = {Margareth K. K. D. Franco and Fabiano Yokaichiya},
+  publisher = {IntechOpen},
+  address   = {Rijeka},
+  year      = {2018},
+  chapter   = {1},
+  pages     = {3 -- 27},
+  doi       = {10.5772/intechopen.74345}
+}
+% FEM in CFD (FEM definition)
+@incollection{dick2009introduction,
+    author={Dick, E.},
+    editor={Wendt, John F.},
+    title={Introduction to Finite Element Methods in Computational Fluid Dynamics},
+    bookTitle={Computational Fluid Dynamics},
+    year={2009},
+    publisher={Springer Berlin Heidelberg},
+    address={Berlin, Heidelberg},
+    pages={235--274},
+    isbn={978-3-540-85056-4},
+    doi={10.1007/978-3-540-85056-4_10},
+    note={{ISBN:} 978-3-540-85056-4}
+}
+% reference for error function
+@book{andrews1998special,
+  title={Special functions of mathematics for engineers},
+  author={Andrews, Larry C},
+  volume={49},
+  year={1998},
+  publisher={SPIE Press},
+  isbn={9780819478467},
+  doi={10.1117/3.270709},
+  note={{ISBN:} 9781501509445}
+}
+% In Cahn Hilliard equation with molar fraction, molar density is conserved
+@incollection{coehn2008chapter,
+  title = {{Chapter 4 The Cahn–Hilliard equation}},
+  booktitle={Handbook of Differential Equations: Evolutionary Equations},
+  author = {Amy Novick-Cohen},
+  editor = {Constantine M. Dafermos and Milan Pokorny},
+  series = {Handbook of Differential Equations: Evolutionary Equations},
+  publisher = {North-Holland},
+  volume = {4},
+  pages = {201-228},
+  year = {2008},
+  doi = {10.1016/S1874-5717(08)00004-2}
+}
+% debye formula
+@book{guinier1994x,
+  title={X-ray diffraction in crystals, imperfect crystals, and amorphous bodies},
+  author={Guinier, Andr{\'e}},
+  year={1994},
+  publisher={Courier Corporation}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

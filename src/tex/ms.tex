@@ -115,52 +115,36 @@ Nanomaterials \sep Continuum simulation \sep SANS \sep SAXS \sep Cont2SAS
 
 %% \linenumbers
 
-% Title
-% \title{An open source scientific article}
-
-% Author list
-% \author{@majumdararn}
-
-% Abstract with filler text
-% \begin{abstract}
-%     Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-%     Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis.
-%     Curabitur dictum gravida mauris, consectetuer id, vulputate a, magna.
-%     Donec vehicula augue eu neque, morbi tristique senectus et netus et.
-%     Mauris ut leo, cras viverra metus rhoncus sem, nulla et lectus vestibulum.
-%     Phasellus eu tellus sit amet tortor gravida placerat.
-%     Integer sapien est, iaculis in, pretium quis, viverra ac, nunc.
-%     Praesent eget sem vel leo ultrices bibendum.
-%     Aenean faucibus, morbi dolor nulla, malesuada eu, pulvinar at, mollis ac.
-%     Curabitur auctor semper nulla donec varius orci eget risus.
-%     Duis nibh mi, congue eu, accumsan eleifend, sagittis quis, diam.
-%     Duis eget orci sit amet orci dignissim rutrum.
-% \end{abstract}
-
 % Main body with filler text
 \section{Introduction}
 \label{sec:intro}
 
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis.
-Curabitur dictum gravida mauris, consectetuer id, vulputate a, magna.
-Donec vehicula augue eu neque, morbi tristique senectus et netus et.
-Mauris ut leo, cras viverra metus rhoncus sem, nulla et lectus vestibulum.
-Phasellus eu tellus sit amet tortor gravida placerat.
-Integer sapien est, iaculis in, pretium quis, viverra ac, nunc.
-Praesent eget sem vel leo ultrices bibendum.
-Aenean faucibus, morbi dolor nulla, malesuada eu, pulvinar at, mollis ac.
-Curabitur auctor semper nulla donec varius orci eget risus.
-Duis nibh mi, congue eu, accumsan eleifend, sagittis quis, diam.
-Duis eget orci sit amet orci dignissim rutrum.
+% introduction to nano (setup why it is important to investigate nano)
+Nanomaterials are typically defined as materials in which at least 50\% of the constituent particles have one or more dimensions ranging from 1 to 100\,nm~\cite{potovnik2011commission, modena2019nanoparticle, mihai2023development}. In recent years, they have found widespread use in diverse applications, including catalysis, gas and energy storage, photovoltaics, electronic and optical devices, and biomedical technologies~\cite{lin2015introduction, kunjachan2015noninvasive, chinen2015nanoparticle, pelaz2017diverse, freund2018multifunctional, wuttke2017positioning, rosenblum2018progress, peller2018metal, li2017dynamic}. These applications rely on the bulk properties of nanomaterials, which are strongly influenced by their nanoscale properties~\cite{baig2021nanomaterials}. These nanoscale properties often differ significantly from those of bulk materials~\cite{kodama1999magnetic, kim2012synthesis, cirri2015ligand, nejadnik2015measurement, talapin2016introduction, gong2017near}. Therefore, it is essential to characterize the nanostructure and its influence on nanoscale properties~\cite{lai1996size, qi2005size, deshpande2005size}. A deeper understanding of nanostructures enables the rational design of materials with tailored bulk properties~\cite{marques2021porous, baig2021nanomaterials}.
 
-Nam dui ligula, fringilla a, euismod sodales, sollici- tudin vel, wisi.
-Morbi auctor lorem non justo, nam lacus libero, pretium at, lobortis vitae.
-Donec aliquet, tortor sed accumsan bibendum, erat ligula aliquet magna.
-Morbi ac orci et nisl hendrerit mollis, suspendisse ut massa, cras nec ante.
-Pellentesque a nulla cum sociis natoque penatibus et magnis dis parturient.
-Aliquam tincidunt urna, nulla ullamcorper vestibulum turpis.
-Pellentesque cursus luctus mauris \cite{Luger2021}.
+% Role of simulations in investigation
+Characterizing nanostructures through experiments often encounters significant technical and financial challenges~\cite{falvo1997bending, chiu2008atomic, wang2016review}. So, various simulation methodologies have been developed to reduce the reliance on experimentation. Among these, continuum simulations approximate materials as continuous media and neglect atomic-scale details. This approximation enables simulating large time and length scales at a relatively low computational cost~\cite{ghavanloo2019computational}, but it can be problematic at the nanometer length scale due to significant structural fluctuations~\cite{williams2004nanoscale}.
+%To achieve both accuracy and efficiency, considerable efforts have been directed toward bridging the gap between atomistic and continuum simulations~\cite{li2003structural, bodily2003structural, li2003single, wang2016review, ghavanloo2019computational}.
+% role of validation
+Such fluctuations are caused by local atomic interactions, which may not be fully captured by empirical free energy functionals governing continuum simulations.
+% In continuum simulations, one key approximation lies in using empirical free energy functionals, which may not fully capture local atomic interactions 
+\cite{yao2017bridging, ghavanloo2019computational, liu2021calphad}. Additional approximations arise during the numerical solution of the governing differential equations, typically implemented using methods such as the Finite Element Method (FEM), Finite Difference Method (FDM), or Finite Volume Method (FVM)~\cite{eiken2012numerical, holmes2007introduction}. To assess the impact of these approximations, simulations must be validated against experimental data~\cite{duran2020simulation}. 
+
+% focus on SAS
+Various experimental techniques are available to probe structural information at the nanometer scale, either in real or reciprocal space~\cite{hoernqvist2015early}. In real space, some relevant techniques are Transmission Electron Microscopy (TEM), Scanning Electron Microscopy (SEM), and Atomic Force Microscopy (AFM) \cite{butt2005force, buhr2009characterization, surrey2012quantitative}. These techniques capture nanostructure images, which can also be analyzed in reciprocal space after a Fourier transform~\cite{taylor2013objective, lieberman2016microstructural}. The present contribution focuses on Small-Angle Scattering (SAS)~\cite{PaNET_sas} using neutrons (SANS)~\cite{PaNET_sans} and X-rays (SAXS)~\cite{PaNET_saxs}, which 
+probes the Scattering Length Density (SLD) of materials in reciprocal space to reveal structural information~\cite{sivia2011elementary}. The SLD can be directly calculated from the simulated density and composition, enabling the comparison between simulations and experiments.
+
+% SAS advantages and role of complementary use
+One advantage of SAS over real-space imaging is its ability to probe a large volume of the sample because it is an ensemble method~\cite{li2016small}. Apart from that, it is also a non-destructive technique, which allows it to probe materials \textit{in-situ}~\cite{hosseini2021neutron, wenk2018neutron}. From the SAS data, nanostructures can be characterized by measuring different properties such as nanoscopic size, shape, surface charge, and porosity~\cite{modena2019nanoparticle}. A direct retrieval of the nanostructure from measured data is not possible due to the so-called phase problem~\cite{billinge2007problem, eckert2012max}. However, some parameters can be retrieved from measured data when other information about the nanostructure is known. For example, the size of nanoparticles of known shapes can be resolved by fitting analytical SAS patterns~\cite{guinier1955small, porod1960formfactors, nayuk2012formfactors} to measured data using well-established programs~\cite{heenan1989fish, sasviewwebsite,kline2006reduction,ilavsky2009irena, SASfit}. For complicated shapes, the nanostructure can be represented by a collection of small volumes of simple shape whose arrangement is fitted to resolve the shape~\cite{fedorov1972x, ninio1972comparative, roess1947xray, fedorov1974xray, svergun1995crysol, alves2018calculation}. For an assembly of nanoparticles, the distribution of sizes can be resolved using form-free methods~\cite{glatter1977data, magnani1988numerical, pauw2013improvements, hollamby2013practical}.
+
+% why simulations should be used
+Despite being useful, these methods fail to produce reliable results if the available prior knowledge is insufficient~\cite{hollamby2013practical}. For such a scenario, the complementary use of simulation and SAS data is a useful way to obtain nanostructure information. Continuum simulations are particularly advantageous because they can model volumes and timescales comparable to the macroscopic sample volume (micrometre range) and temporal resolution (millisecond range) probed by SAS experiments~\cite{hollamby2013practical}.
+
+% compare simu and SAS
+To compare with SAS data, continuum simulations need to calculate the Fourier Transform (FT) of the Auto Correlation Function (ACF) of the SLD. However, the calculation of ACF requires the SLD distribution to be expressed by an analytical formulation, which is difficult to retrieve from the numerical solution obtained from the simulations. Therefore, a novel method is proposed in this work, which converts the simulated continuous SLD distribution to a collection of point-like scatterers that are representative of the continuum nanostructure. The SAS pattern is then calculated numerically from the scattering lengths and positions of these scatterers using Sassena~\cite{lindner2012sassena, lindner2012towards, sassenaorg, sassena}. Sassena was preferred over other possible options~\cite{walter2018liquidlib, liquidlib,goret2017mdanse, mdanse} due to its fast computation speed, flexibility, and robustness~\cite{majumdar2024computation}. The proposed method is implemented in an open source software package named \emph{Cont2SAS} \cite{cont2sas}.
+
+% overview 
+In this article, the proposed numerical algorithm to calculate SAS patterns from continuum simulations is described. The algorithm is verified using different examples for which SAS patterns can be calculated analytically. The analytical curves are used for qualitative comparisons of the overall shapes and also for quantitative assessments of the accuracy of parameter determination in reciprocal space. The calculation procedure is then illustrated on the example of spinodal decomposition of an iron chromium (\ce{Fe-Cr}) alloy.
 
 
 \begin{figure*}
