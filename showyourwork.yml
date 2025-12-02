@@ -45,7 +45,7 @@ dependencies:
   #   - src/data/dataset.tar.xz
   src/scripts/sas_val_quan.py:
     - src/data/dataset.tar.xz
-  src/scripts/phase_fiels_img_plot_paper.py:
+  src/scripts/phase_field_img_plot_paper.py:
     - src/data/dataset.tar.xz
   # src/figures/Iq_ball.pdf:
   #   - src/scripts/ball_plot_paper.py
