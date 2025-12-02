@@ -166,11 +166,11 @@ for sim_t_idx, sim_time in enumerate(sim_times):
     model_param_dir=os.path.join(model_dir,model_param_dir_name)
 
     # create folder for figure (one level up from data folder)
-    figure_dir=os.path.join(mother_dir, '../../figure/')
-    os.makedirs(figure_dir, exist_ok=True)
+    # figure_dir=os.path.join(mother_dir, '../../figure/')
+    # os.makedirs(figure_dir, exist_ok=True)
     ## folder for this suit of figures
-    plot_dir=os.path.join(figure_dir, sim_model + '_paper')
-    os.makedirs(plot_dir, exist_ok=True)
+    plot_dir=paths.figures # os.path.join(figure_dir, sim_model + '_paper')
+    # os.makedirs(plot_dir, exist_ok=True)
     ## file for output
     report_file=os.path.join(plot_dir, 'report.txt')
 
