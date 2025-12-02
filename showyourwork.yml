@@ -77,6 +77,11 @@ overleaf:
   pull:
     - src/tex/ms.tex
     - src/tex/bib.bib
+    - src/tex/format/elsarticle.dtx
+    - src/tex/format/elsarticle.ins
+    - src/tex/format/elsarticle-harv.bst
+    - src/tex/format/elsarticle-num.bst
+    - src/tex/format/elsarticle-num-names.bst
 
 # Always require all input files to be present on disk for workflow to pass?
 require_inputs: true
