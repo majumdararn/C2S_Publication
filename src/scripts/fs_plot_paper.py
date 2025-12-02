@@ -179,12 +179,12 @@ for vary_idx in range(len(nx_arr)):
     # folder name for model with particular run param
     model_param_dir=os.path.join(model_dir,model_param_dir_name)
 
-    # create folder for figure (one level up from data folder)
-    figure_dir=os.path.join(mother_dir, '../../figure/')
-    os.makedirs(figure_dir, exist_ok=True)
+    # # create folder for figure (one level up from data folder)
+    # figure_dir=os.path.join(mother_dir, '../../figure/')
+    # os.makedirs(figure_dir, exist_ok=True)
     ## folder for this suit of figures
-    plot_dir=os.path.join(figure_dir, sim_model + '_paper')
-    os.makedirs(plot_dir, exist_ok=True)
+    plot_dir=paths.figures # os.path.join(figure_dir, sim_model + '_paper')
+    # os.makedirs(plot_dir, exist_ok=True)
     # color scheme
     color_rainbow = plt.cm.rainbow(np.linspace(0, 1, len(t_arr)))
 
@@ -421,4 +421,4 @@ ax3[1].grid(True)
 
 plot_file_name='all_fit_{0}.pdf'.format(sim_model)
 plot_file=os.path.join(plot_dir,plot_file_name)
-fig3.savefig(plot_file, format='pdf', )
+fig3.savefig(plot_file, format='pdf')
