@@ -47,6 +47,8 @@ dependencies:
     - src/data/dataset.tar.xz
   src/scripts/phase_field_img_plot_paper.py:
     - src/data/dataset.tar.xz
+  src/scripts/phase_field_Iq_plot_paper.py:
+    - src/data/dataset.tar.xz
   # src/figures/Iq_ball.pdf:
   #   - src/scripts/ball_plot_paper.py
   # src/figures/Iq_bib_ecc.pdf:
