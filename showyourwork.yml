@@ -33,6 +33,8 @@ datasets:
 dependencies:
   src/scripts/ball_plot_paper.py:
     - src/data/dataset.tar.xz
+  src/scripts/box_plot_paper.py:
+    - src/data/dataset.tar.xz
   src/scripts/bib_ecc_plot_paper.py:
     - src/data/dataset.tar.xz
   # src/figures/Iq_ball.pdf:
