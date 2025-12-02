@@ -14,4 +14,3 @@ src/tex/figures/*
 __pycache__
 *.synctex.gz
 src/scripts/models
-src/scripts/phase_field_Iq_plot_paper.py
