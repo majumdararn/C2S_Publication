@@ -338,6 +338,6 @@ for sim_t_idx, sim_time in enumerate(sim_times):
                         rect_center_x=idx1*cell_x
                         rect_center_y=idx2*cell_y
                         ax.add_patch(Rectangle((rect_center_x, rect_center_y), cell_x, cell_y, 
-                                            edgecolor='r', facecolor='none', linewidth=0.5))
+                                            edgecolor='k', facecolor='none', linewidth=0.5))
                 plt.savefig(plot_file, format='pdf')
                 plt.close(fig)
