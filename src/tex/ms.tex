@@ -123,19 +123,14 @@ Nanomaterials \sep Continuum simulation \sep SANS \sep SAXS \sep Cont2SAS
 Nanomaterials are typically defined as materials in which at least 50\% of the constituent particles have one or more dimensions ranging from 1 to 100\,nm~\cite{potovnik2011commission, modena2019nanoparticle, mihai2023development}. In recent years, they have found widespread use in diverse applications, including catalysis, gas and energy storage, photovoltaics, electronic and optical devices, and biomedical technologies~\cite{lin2015introduction, kunjachan2015noninvasive, chinen2015nanoparticle, pelaz2017diverse, freund2018multifunctional, wuttke2017positioning, rosenblum2018progress, peller2018metal, li2017dynamic}. These applications rely on the bulk properties of nanomaterials, which are strongly influenced by their nanoscale properties~\cite{baig2021nanomaterials}. These nanoscale properties often differ significantly from those of bulk materials~\cite{kodama1999magnetic, kim2012synthesis, cirri2015ligand, nejadnik2015measurement, talapin2016introduction, gong2017near}. Therefore, it is essential to characterize the nanostructure and its influence on nanoscale properties~\cite{lai1996size, qi2005size, deshpande2005size}. A deeper understanding of nanostructures enables the rational design of materials with tailored bulk properties~\cite{marques2021porous, baig2021nanomaterials}.
 
 % Role of simulations in investigation
-Characterizing nanostructures through experiments often encounters significant technical and financial challenges~\cite{falvo1997bending, chiu2008atomic, wang2016review}. So, various simulation methodologies have been developed to reduce the reliance on experimentation. Among these, continuum simulations approximate materials as continuous media and neglect atomic-scale details. This approximation enables simulating large time and length scales at a relatively low computational cost~\cite{ghavanloo2019computational}, but it can be problematic at the nanometer length scale due to significant structural fluctuations~\cite{williams2004nanoscale}.
-%To achieve both accuracy and efficiency, considerable efforts have been directed toward bridging the gap between atomistic and continuum simulations~\cite{li2003structural, bodily2003structural, li2003single, wang2016review, ghavanloo2019computational}.
-% role of validation
-Such fluctuations are caused by local atomic interactions, which may not be fully captured by empirical free energy functionals governing continuum simulations.
-% In continuum simulations, one key approximation lies in using empirical free energy functionals, which may not fully capture local atomic interactions 
-\cite{yao2017bridging, ghavanloo2019computational, liu2021calphad}. Additional approximations arise during the numerical solution of the governing differential equations, typically implemented using methods such as the Finite Element Method (FEM), Finite Difference Method (FDM), or Finite Volume Method (FVM)~\cite{eiken2012numerical, holmes2007introduction}. To assess the impact of these approximations, simulations must be validated against experimental data~\cite{duran2020simulation}. 
+Characterizing nanostructures through experiments often encounters significant technical and financial challenges~\cite{falvo1997bending, chiu2008atomic, wang2016review}. So, various simulation methodologies have been developed to reduce the reliance on experimentation. Among these, continuum simulations approximate materials as continuous media and neglect atomic-scale details. This approximation enables simulating large time and length scales at a relatively low computational cost~\cite{ghavanloo2019computational}, but it can be problematic at the nanometer length scale due to significant structural fluctuations~\cite{williams2004nanoscale}. Such fluctuations are caused by local atomic interactions, which may not be fully captured by empirical free energy functionals governing continuum simulations \cite{yao2017bridging, ghavanloo2019computational, liu2021calphad}. Additional approximations arise during the numerical solution of the governing differential equations, typically implemented using methods such as the Finite Element Method (FEM), Finite Difference Method (FDM), or Finite Volume Method (FVM)~\cite{eiken2012numerical, holmes2007introduction}. To assess the impact of these approximations, simulations must be validated against experimental data~\cite{duran2020simulation}. 
 
 % focus on SAS
 Various experimental techniques are available to probe structural information at the nanometer scale, either in real or reciprocal space~\cite{hoernqvist2015early}. In real space, some relevant techniques are Transmission Electron Microscopy (TEM), Scanning Electron Microscopy (SEM), and Atomic Force Microscopy (AFM) \cite{butt2005force, buhr2009characterization, surrey2012quantitative}. These techniques capture nanostructure images, which can also be analyzed in reciprocal space after a Fourier transform~\cite{taylor2013objective, lieberman2016microstructural}. The present contribution focuses on Small-Angle Scattering (SAS)~\cite{PaNET_sas} using neutrons (SANS)~\cite{PaNET_sans} and X-rays (SAXS)~\cite{PaNET_saxs}, which 
 probes the Scattering Length Density (SLD) of materials in reciprocal space to reveal structural information~\cite{sivia2011elementary}. The SLD can be directly calculated from the simulated density and composition, enabling the comparison between simulations and experiments.
 
 % SAS advantages and role of complementary use
-One advantage of SAS over real-space imaging is its ability to probe a large volume of the sample because it is an ensemble method~\cite{li2016small}. Apart from that, it is also a non-destructive technique, which allows it to probe materials \textit{in-situ}~\cite{hosseini2021neutron, wenk2018neutron}. From the SAS data, nanostructures can be characterized by measuring different properties such as nanoscopic size, shape, surface charge, and porosity~\cite{modena2019nanoparticle}. A direct retrieval of the nanostructure from measured data is not possible due to the so-called phase problem~\cite{billinge2007problem, eckert2012max}. However, some parameters can be retrieved from measured data when other information about the nanostructure is known. For example, the size of nanoparticles of known shapes can be resolved by fitting analytical SAS patterns~\cite{guinier1955small, porod1960formfactors, nayuk2012formfactors} to measured data using well-established programs~\cite{heenan1989fish, sasviewwebsite,kline2006reduction,ilavsky2009irena, SASfit}. For complicated shapes, the nanostructure can be represented by a collection of small volumes of simple shape whose arrangement is fitted to resolve the shape~\cite{fedorov1972x, ninio1972comparative, roess1947xray, fedorov1974xray, svergun1995crysol, alves2018calculation}. For an assembly of nanoparticles, the distribution of sizes can be resolved using form-free methods~\cite{glatter1977data, magnani1988numerical, pauw2013improvements, hollamby2013practical}.
+One advantage of SAS over real-space imaging is its ability to probe a large volume of the sample because it is an ensemble method~\cite{li2016small}. Apart from that, it is also a non-destructive technique, which allows it to probe materials \textit{in-situ}~\cite{hosseini2021neutron, wenk2018neutron}. From the SAS data, nanostructures can be characterized by measuring different properties such as nanoscopic size, shape, surface charge, and porosity~\cite{modena2019nanoparticle}. However, a direct retrieval of the nanostructure from measured data is not possible due to the so-called phase problem~\cite{billinge2007problem, eckert2012max}. Some parameters can be retrieved from measured data when other information about the nanostructure is known. For example, the size of nanoparticles of known shapes can be resolved by fitting analytical SAS patterns~\cite{guinier1955small, porod1960formfactors, nayuk2012formfactors} to measured data using well-established programs~\cite{heenan1989fish, sasviewwebsite,kline2006reduction,ilavsky2009irena, SASfit}. For complicated shapes, the nanostructure can be represented by a collection of small volumes of simple shape whose arrangement is fitted to resolve the shape~\cite{fedorov1972x, ninio1972comparative, roess1947xray, fedorov1974xray, svergun1995crysol, alves2018calculation}. For an assembly of nanoparticles, the distribution of sizes can be resolved using form-free methods~\cite{glatter1977data, magnani1988numerical, pauw2013improvements, hollamby2013practical}.
 
 % why simulations should be used
 Despite being useful, these methods fail to produce reliable results if the available prior knowledge is insufficient~\cite{hollamby2013practical}. For such a scenario, the complementary use of simulation and SAS data is a useful way to obtain nanostructure information. Continuum simulations are particularly advantageous because they can model volumes and timescales comparable to the macroscopic sample volume (micrometre range) and temporal resolution (millisecond range) probed by SAS experiments~\cite{hollamby2013practical}.
@@ -190,7 +185,7 @@ For numerically simulated nanostructures, this formula cannot be used directly t
 %
 \begin{equation}
     \label{eqn:SANS_atomic}
-    I(Q)=\left\langle\left|\sum_{j=1}^{N}\sum_{k=1}^{N} b_j b_k e^{\mathrm{i} \vec{Q} \cdot (\vec{R}_j -\vec{R}_k)}\right|^2\right\rangle_{\Omega}.
+    I(Q)=\left\langle\sum_{j=1}^{N}\sum_{k=1}^{N} b_j b_k e^{\mathrm{i} \vec{Q} \cdot (\vec{R}_j -\vec{R}_k)}\right\rangle_{\Omega}.
 \end{equation}
 %
 This equation finds widespread use for calculating the scattering intensity from atomistic simulations~\cite{majumdar2024computation}, where it sums over atoms instead of the point-like scatterers proposed in this work.
@@ -220,17 +215,17 @@ In this work, first and second-order Lagrangian elements were used as shape func
 \begin{multline}
     \label{eqn:interpole_lagrange}
     \beta_i(x,y,z)=\\
-    \sum_{k=1}^{(\mathcal{O}+1)}\sum_{l=1}^{(\mathcal{O}+1)}\sum_{m=1}^{(\mathcal{O}+1)} N_{i,k,l,m}(x,y,z) \cdot \beta(x_{i,k,l,m}, y_{i,k,l,m}, z_{i,k,l,m}).
+    \sum_{k=1}^{(\mathcal{O}+1)}\sum_{l=1}^{(\mathcal{O}+1)}\sum_{m=1}^{(\mathcal{O}+1)} N_{i,(k,l,m)}(x,y,z) \cdot \beta(x_{i,(k,l,m)}, y_{i,(k,l,m)}, z_{i,(k,l,m)}).
 \end{multline}
 %
-Here, $(x_{i,k,l,m}, y_{i,k,l,m}, z_{i,k,l,m})$ are the coordinates of the node indexed by $(k,l,m)$ in the $i^{\text{th}}$ element as visualized in fig.~\ref{fig:lagrangian_elements}, and $N_{i,k,l,m}(x,y,z)$ is the shape function associated with that node. These shape functions are products of 1D Lagrange polynomials in each spatial dimension:
+Here, $(x_{i,(k,l,m)}, y_{i,(k,l,m)}, z_{i,(k,l,m)})$ are the coordinates of the node indexed by $(k,l,m)$ in the $i^{\text{th}}$ element as visualized in fig.~\ref{fig:lagrangian_elements}, and $N_{i,(k,l,m)}(x,y,z)$ is the shape function associated with that node. These shape functions are products of 1D Lagrange polynomials in each spatial dimension:
 %
 \begin{multline}
 \label{eqn:lagrange_shape_func}
-    N_{i,k,l,m}(x,y,z) = N_{i,k,l,m}(x) \cdot N_{i,k,l,m}(y) \cdot N_{i,k,l,m}(z)=\\
-    \prod_{\substack{\bar{k}=1 \\ (\bar{k} \neq k)}}^{\mathcal{O}+1} \frac{x-x_{i,\bar{k},l,m}}{x_{i,k,l,m}-x_{i,\bar{k},l,m}} \cdot
-    \prod_{\substack{\bar{l}=1 \\ (\bar{l} \neq l)}}^{\mathcal{O}+1} \frac{y-y_{i,k,\bar{l},m}}{y_{i,k,l,m}-y_{i,k,\bar{l},m}} \cdot
-    \prod_{\substack{\bar{m}=1 \\ (\bar{m} \neq m)}}^{\mathcal{O}+1} \frac{z-z_{i,k,l,\bar{m}}}{z_{i,k,l,m}-z_{i,k,l,\bar{m}}}.
+    N_{i,(k,l,m)}(x,y,z) = N_{i,(k,l,m)}(x) \cdot N_{i,(k,l,m)}(y) \cdot N_{i,(k,l,m)}(z)=\\
+    \prod_{\substack{\bar{k}=1 \\ (\bar{k} \neq k)}}^{\mathcal{O}+1} \frac{x-x_{i,(\bar{k},l,m)}}{x_{i,(k,l,m)}-x_{i,(\bar{k},l,m)}} \cdot
+    \prod_{\substack{\bar{l}=1 \\ (\bar{l} \neq l)}}^{\mathcal{O}+1} \frac{y-y_{i,(k,\bar{l},m)}}{y_{i,(k,l,m)}-y_{i,(k,\bar{l},m)}} \cdot
+    \prod_{\substack{\bar{m}=1 \\ (\bar{m} \neq m)}}^{\mathcal{O}+1} \frac{z-z_{i,(k,l,\bar{m})}}{z_{i,(k,l,m)}-z_{i,(k,l,\bar{m})}}.
 \end{multline}
 
 \subsection{Validation nanostructures}
@@ -290,7 +285,7 @@ The analytical SAS intensity for the general structure can be calculated as
 \begin{multline}
 \label{eqn:I_ana_ecc_sph_cube}
     I^{\text{ana}}_{\text{ecc-sph-cube}}(Q)=
-    \Bigl\langle\bigl|\Delta\beta_{\text{cube}}V_{\text{cube}}F_{\text{cube}}(Q,\alpha,\psi)-\\
+    \Bigl\langle\bigl|\Delta\beta_{\text{cube}}V_{\text{cube}}F_{\text{cube}}(Q,\alpha,\psi)+\\
     e^{i\vec{Q}\cdot\vec{R}_{\text{ecc}}}\Delta\beta_{\text{sph}}
     V_{\text{sph}}F_{\text{sph}}(Q)\bigr|^2\Bigr\rangle_{\Omega}.
 \end{multline}
