@@ -213,7 +213,7 @@ for i,t in enumerate(t_arr):
         # loglog plot
         ax.loglog(q, Iq,color=colors[idx], linestyle='', marker=markers[idx],
                    markersize=ms_arr[idx],
-                     label='Categorization method: ' + method_cat + ', ' + str(num_cat) + ' categories' )
+                     label='Cat method: ' + method_cat + ', ' + str(num_cat) + ' categories' )
 
     # ananlytical intensity
     ## Intensity unit 10^-10 \AA^2
