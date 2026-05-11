@@ -273,7 +273,7 @@ for i,t in enumerate(t_arr):
     plot_file_name='Iq_ball.pdf'
     plot_file=os.path.join(plot_dir,plot_file_name)
     #fig_ins, ax_ins = plt.subplots(figsize=(5, 5))
-    ax_ins = inset_axes(ax, width="100%", height="100%", bbox_to_anchor=(0, 0.3, 0.5, 0.5),
+    ax_ins = inset_axes(ax, width="100%", height="100%", bbox_to_anchor=(0, 0.35, 0.5, 0.5),
                          bbox_transform=ax.transAxes)
     ## image plot
     ### .T is required to exchange x and y axis
