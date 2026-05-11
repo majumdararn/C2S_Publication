@@ -230,7 +230,7 @@ for i,t in enumerate(t_arr):
 
     # plot formatting
     ## legend
-    ax.legend(labelsize=12)
+    ax.legend(fontsize=12)
     ## labels
     ax.set_xlabel(r'Q [$\mathrm{\AA}^{-1}$]', fontsize=12)
     ax.set_ylabel(r'I(Q) [$\mathrm{cm}^{-1}$]', fontsize=12)
