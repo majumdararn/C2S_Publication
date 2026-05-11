@@ -186,7 +186,7 @@ plot_dir=paths.figures #os.path.join(figure_dir, sim_model + '_paper')
 # os.makedirs(plot_dir, exist_ok=True)
 # initialize figures (1: SAS pattern, 2: Fit param)
 fig_scatt_all, ax_scatt_all = plt.subplots(figsize=(7, 5))
-fig_fit_all, ax_fit_all = plt.subplots(figsize=(7, 5))
+fig_fit_all, ax_fit_all = plt.subplots(figsize=(7, 6))
 # color scheme
 color_rainbow = plt.cm.rainbow(np.linspace(0, 1, len(t_arr)))
 
