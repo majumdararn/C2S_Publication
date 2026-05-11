@@ -858,9 +858,9 @@ for idx in range(len(ecc_vec_arr)):
         
         # loglog plot
         ax.loglog(q, Iq,color=num_colors[idx], linestyle='', marker=markers[idx], markersize=ms_arr[idx], 
-                  label= r'Numerical calculation: $ \overrightarrow{R}_{\mathrm{ecc}} = $' + '({0}, {1}, {2})'.format(ecc_vec[0], ecc_vec[1], ecc_vec[2]))
+                  label= r'Numerical: $ \overrightarrow{R}_{\mathrm{ecc}} = $' + '({0}, {1}, {2})'.format(ecc_vec[0], ecc_vec[1], ecc_vec[2]))
         ax.loglog(q_ana, Iq_ana, 'gray', linestyle=ana_linestyles[idx], 
-                  label= r'Analytical calculation: $ \overrightarrow{R}_{\mathrm{ecc}} = $' + '({0}, {1}, {2})'.format(ecc_vec[0], ecc_vec[1], ecc_vec[2]))
+                  label= r'Analytical: $ \overrightarrow{R}_{\mathrm{ecc}} = $' + '({0}, {1}, {2})'.format(ecc_vec[0], ecc_vec[1], ecc_vec[2]))
 
         # plot formatting
         ## legend
