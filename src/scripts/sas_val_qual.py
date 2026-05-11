@@ -872,7 +872,7 @@ for idx in range(len(ecc_vec_arr)):
         ## SANS upper boundary Q=1 \AA^-1
         ax.set_xlim(right=1)
 
-ax_ins1 = inset_axes(ax, width="100%", height="100%", bbox_to_anchor=(0, 0.4, 0.5, 0.5),
+ax_ins1 = inset_axes(ax, width="100%", height="100%", bbox_to_anchor=(0, 0.5, 0.4, 0.4),
         bbox_transform=ax.transAxes)
 
 ax_ins1.axis('off')
