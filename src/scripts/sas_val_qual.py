@@ -529,10 +529,11 @@ for i in range(len(t_arr)):
 
     # plot formatting
     ## legend
-    ax.legend()
+    ax.legend(fontsize=14)
     ## labels
-    ax.set_xlabel(r'Q [$\mathrm{\AA}^{-1}$]')
-    ax.set_ylabel(r'I(Q) [$\mathrm{cm}^{-1}$]')
+    ax.set_xlabel(r'Q [$\mathrm{\AA}^{-1}$]', fontsize=14)
+    ax.set_ylabel(r'I(Q) [$\mathrm{cm}^{-1}$]', fontsize=14)
+    ax.tick_params(axis='both', labelsize=14)
     ## SANS upper boundary Q=1 \AA^-1
     ax.set_xlim(right=1)
 
