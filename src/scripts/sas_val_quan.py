@@ -785,6 +785,9 @@ ax3[1].set_ylim([rad-1,rad+5])
 ax3[1].grid(True)
 # tick params
 ax3[1].tick_params(axis='both', labelsize=12)
+ax3[1].xaxis.set_major_locator(MultipleLocator(1))
+# adjust bbox position
+fig3.subplots_adjust(left=0.14, right=0.9)
 
 plot_file_name='all_fit_{0}.pdf'.format(sim_model)
 plot_file=os.path.join(plot_dir,plot_file_name)
