@@ -764,23 +764,27 @@ ax3[1].plot(t_arr, rad_ana, 'gray', zorder=-10, label= 'Simulation value')
 
 # top plot formatting
 ## legend
-ax3[0].legend(loc='upper left')
+ax3[0].legend(loc='upper left', fontsize=12)
 ## labels
 # ax3[0].set_xlabel('Time [s]')
 ax3[0].set_xticklabels([])
-ax3[0].set_ylabel(r'Fuzzyness [$\mathrm{\AA}$]')
+ax3[0].set_ylabel(r'Fuzzyness [$\mathrm{\AA}$]', fontsize=12)
 ## limits
 ax3[0].grid(True)
+# tick params
+ax3[0].tick_params(axis='both', labelsize=12)
 
 # bottom plot formatting
 # ## legend
 # ax3[0].legend(loc='upper left')
 ## labels
-ax3[1].set_xlabel('Time [s]')
-ax3[1].set_ylabel(r'Radius of grain [$\mathrm{\AA}$]')
+ax3[1].set_xlabel('Time [s]', fontsize=12)
+ax3[1].set_ylabel(r'Radius of grain [$\mathrm{\AA}$]', fontsize=12)
 ## limits
 ax3[1].set_ylim([rad-1,rad+5])
 ax3[1].grid(True)
+# tick params
+ax3[1].tick_params(axis='both', labelsize=12)
 
 plot_file_name='all_fit_{0}.pdf'.format(sim_model)
 plot_file=os.path.join(plot_dir,plot_file_name)
