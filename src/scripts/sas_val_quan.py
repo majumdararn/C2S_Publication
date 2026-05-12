@@ -302,7 +302,7 @@ for i in range(len(t_arr)):
                 # Draw a horizontal line (to the right)
                 ax_fit_all.plot([10, 8], [9, 9], linewidth=1, color='black', linestyle='--')
                 # Draw arrowhead
-                ax_fit_all.arrow(8.8, 9, -0.001, 0, linewidth=1, head_width=0.5, head_length=0.3, 
+                ax_fit_all.arrow(8.85, 9, -0.001, 0, linewidth=1, head_width=0.5, head_length=0.3, 
                                  fc='black', ec='black')
     
     # box geometry
