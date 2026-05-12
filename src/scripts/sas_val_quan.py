@@ -274,7 +274,7 @@ for i in range(len(t_arr)):
                 # Draw a horizontal line (to the right)
                 ax_fit_all.plot([0, 2], [13, 13], linewidth=1, color='black', linestyle='--')
                 # Draw arrowhead
-                ax_fit_all.arrow(1.3, 131, 0.001, 0, linewidth=1, head_width=0.5, head_length=0.3, 
+                ax_fit_all.arrow(1.31, 13, 0.001, 0, linewidth=1, head_width=0.5, head_length=0.3, 
                                  fc='black', ec='black')
                                 
 
