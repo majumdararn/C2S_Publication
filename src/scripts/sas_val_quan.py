@@ -354,7 +354,7 @@ ax_fit_all.set_xlabel('Time [s]', fontsize=12)
 ax_fit_all.set_ylabel(r'Radius of grain [$\mathrm{\AA}$]', fontsize=12)
 ax_fit_all.tick_params(axis='both', labelsize=12)
 ax_fit_all.set_xlim([-0.2, 10.2])
-fig_fit_all.subplots_adjust(left=0.35, right=0.9)
+fig_fit_all.subplots_adjust(left=0.25, right=0.9)
 ## limits
 ax_fit_all.grid(True)
 ## save plot
