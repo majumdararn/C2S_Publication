@@ -785,7 +785,7 @@ ax3[1].set_ylim([rad-1,rad+5])
 ax3[1].grid(True)
 # tick params
 ax3[1].tick_params(axis='both', labelsize=12)
-ax3[1].xaxis.set_major_locator(MultipleLocator(1))
+ax3[1].set_xticks([60, 61, 62, 63, 65])
 # adjust bbox position
 fig3.subplots_adjust(left=0.14, right=0.9)
 
