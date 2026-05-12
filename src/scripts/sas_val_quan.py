@@ -270,11 +270,11 @@ for i in range(len(t_arr)):
                 
                 ## Draw arrow
                 # Draw a vertical line (upward)
-                ax_fit_all.plot([0, 0], [7, 14], linewidth=1, color='black', linestyle='--')
+                ax_fit_all.plot([0, 0], [7, 13], linewidth=1, color='black', linestyle='--')
                 # Draw a horizontal line (to the right)
                 ax_fit_all.plot([0, 2], [13, 13], linewidth=1, color='black', linestyle='--')
                 # Draw arrowhead
-                ax_fit_all.arrow(1.2, 14, 0.001, 0, linewidth=1, head_width=0.5, head_length=0.3, 
+                ax_fit_all.arrow(1.3, 13, 0.001, 0, linewidth=1, head_width=0.5, head_length=0.3, 
                                  fc='black', ec='black')
                                 
 
