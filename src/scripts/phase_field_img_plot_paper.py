@@ -218,9 +218,9 @@ for sim_t_idx, sim_time in enumerate(sim_times):
                                 extent=[0, length_a, 0, length_b], 
                                 origin='lower', vmin=sld_min, vmax=sld_max, interpolation='bilinear')
                 ## color bar
-                cbar = plt.colorbar(img, ax=ax)  # Add colorbar to subplot 1
+                cbar = plt.colorbar(img, ax=ax, pad=0.05)  # Add colorbar to subplot 1
                 cbar_label=r"Scattering length density (SLD) [$10^{-5} \cdot \mathrm{\AA}^{-2}$]"
-                cbar.set_label(cbar_label, labelpad=15, fontsize=14)
+                cbar.set_label(cbar_label, labelpad=10, fontsize=14)
                 cbar.ax.tick_params(labelsize=14)
                 ## plot title
                 title_text=" Cut at Z = {0} {1}".format(z_val, r"$\mathrm{\AA}$")
