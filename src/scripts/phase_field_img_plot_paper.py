@@ -218,7 +218,7 @@ for sim_t_idx, sim_time in enumerate(sim_times):
                                 extent=[0, length_a, 0, length_b], 
                                 origin='lower', vmin=sld_min, vmax=sld_max, interpolation='bilinear')
                 ## color bar
-                cbar = plt.colorbar(img, ax=ax, pad=0.2)  # Add colorbar to subplot 1
+                cbar = plt.colorbar(img, ax=ax, pad=0.1)  # Add colorbar to subplot 1
                 cbar_label=r"Scattering length density (SLD) [$10^{-5} \cdot \mathrm{\AA}^{-2}$]"
                 cbar.set_label(cbar_label, labelpad=10, fontsize=14)
                 cbar.ax.tick_params(labelsize=14)
