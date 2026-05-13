@@ -498,7 +498,7 @@ The qualitative comparison was performed by plotting numerical and analytical ca
     \includegraphics[trim={0cm 0cm 1cm 0cm},clip,width=0.33\textwidth]{figures/Iq_box_orien.pdf}
     \hfill
     \includegraphics[trim={0cm 0cm 1cm 0cm},clip,width=0.33\textwidth]{figures/Iq_bib_ecc.pdf}
-    \caption{Validation through qualitative comparison of numerical results (points) and analytical expectation (lines): Shown are [left] sphere, [middle] cube, [right] sphere at cube-center $(\vec{R}_{\text{ecc}}=(0,0,0))$, and sphere off cube-center $(\vec{R}_{\text{ecc}}\neq(0,0,0))$. A 2D cut of the generated structure for the sphere and cube model, and a schematic diagram of the generated structure for other models are shown in the inset. Numerical effects, such as the effect of categorization and orientational averaging, are demonstrated using the sphere and cube model, respectively. \label{fig:sas_val_qual}}
+    \caption{Validation through qualitative comparison of numerical results (points) and analytical expectation (lines): Shown are [left] sphere, [middle] cube, [right] sphere at cube-center $(\vec{R}_{\text{ecc}}=(0,0,0))$, and sphere off cube-center $(\vec{R}_{\text{ecc}}\neq(0,0,0))$. A 2D cut of the generated structure for the sphere and cube model, and a schematic diagram of the generated structure for other models are shown in the inset. Numerical effects, such as the effect of categorization (cat method) and orientational averaging, are demonstrated using the sphere and cube model, respectively. \label{fig:sas_val_qual}}
     \script{sas_val_qual.py}
 \end{figure*}
 %
@@ -523,7 +523,7 @@ A quantitative comparison was performed by fitting the analytical formula to the
     \includegraphics[trim={1cm 0cm 1.75cm 0cm},clip,width=\columnwidth]{figures/all_fit_fs.pdf}
     \caption{Validation through quantitative comparison: Shown are [left] particle growth, and [right] interdiffusion models.
     [left] The particle growth model was validated by comparing the particle radius, retrieved from fits to the numerically obtained scattering intensity calculations, to the values used for their simulation. The simulated nanostructures are shown in the inset for the first and last time steps.
-    [right] The interdiffusion model was validated by comparing the retrieved fuzz value and particle radius from the fits to their corresponding simulation input values. The comparison was performed with different meshing and element orders. The nanostructures shown in the inset represent the simulation with coarsest meshing and the lowest element order used. \label{fig:sas_val_quan}}
+    [right] The interdiffusion model was validated by comparing the retrieved fuzz value and particle radius from the fits to their corresponding simulation input values. The comparison was performed with meshing of different element numbers and element orders. The nanostructures shown in the inset represent the simulation with the highest element number and the lowest element order used. \label{fig:sas_val_quan}}
     \script{sas_val_quan.py}
 \end{figure*}
 
