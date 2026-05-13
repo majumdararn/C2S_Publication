@@ -225,8 +225,10 @@ for sim_t_idx, sim_time in enumerate(sim_times):
                 title_text=" Cut at Z = {0} {1}".format(z_val, r"$\mathrm{\AA}$")
                 ax.set_title(title_text)
                 # labels
-                ax.set_xlabel(r'X [$\mathrm{\AA}$]')
-                ax.set_ylabel(r'Y [$\mathrm{\AA}$]')
+                ax.set_xlabel(r'X [$\mathrm{\AA}$]', fontsize=14)
+                ax.set_ylabel(r'Y [$\mathrm{\AA}$]', fontsize=14)
+                # tick params
+                ax.tick_params(axis='both', labelsize=14)
                 ## add mesh
                 cell_x=length_a/nx
                 cell_y=length_a/ny
