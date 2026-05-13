@@ -323,7 +323,7 @@ ax_ch_len.annotate(
 ax_ch_len.legend(fontsize=14)
 ax_ch_len.set_xscale('log')
 ax_ch_len.set_yscale('log')
-ax_ch_len.set_xlabel('t [s]', fontsize=14)
+ax_ch_len.set_xlabel('Time [s]', fontsize=14)
 ax_ch_len.set_ylabel('Characteristic length [nm]', fontsize=14)
 ax_ch_len.tick_params(axis='both', which='major', labelsize=14)
 ax_ch_len.tick_params(axis='both', which='minor', labelsize=12)
