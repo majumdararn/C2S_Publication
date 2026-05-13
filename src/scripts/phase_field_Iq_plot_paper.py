@@ -329,5 +329,8 @@ ax_ch_len.tick_params(axis='both', which='major', labelsize=14)
 ax_ch_len.tick_params(axis='both', which='minor', labelsize=12)
 ax_ch_len.grid(True, which='both', linestyle='-', linewidth=0.5, alpha=0.7)
 plot_file=os.path.join(plot_dir, 'ch_len.pdf')
+# adjust bbox position
+fig_ch_len.subplots_adjust(left=0.16, right=0.9)
+# saving
 fig_ch_len.savefig(plot_file, format='pdf')
 plt.close(fig_ch_len)
