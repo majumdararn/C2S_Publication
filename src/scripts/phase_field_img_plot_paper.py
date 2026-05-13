@@ -312,15 +312,18 @@ for sim_t_idx, sim_time in enumerate(sim_times):
                 pseudo_b_cat_val_xy=pseudo_b_cat_val_3d[:,:,z_idx_pseudo]
                 img = ax3.scatter(pseudo_pos_x, pseudo_pos_y, c=pseudo_b_cat_val_xy, s=5, cmap='viridis')
                 ## color bar
-                cbar=plt.colorbar(img, ax=ax3)  # Add colorbar to subplot 1
+                cbar=plt.colorbar(img, ax=ax3, pad=0.06)  # Add colorbar to subplot 1
                 cbar_label=r"Scattering length (b) [$10^{-5} \cdot \mathrm{\AA} = \mathrm{fm}$]"
-                cbar.set_label(cbar_label, labelpad=10)
+                cbar.set_label(cbar_label, labelpad=10, fontsize=14)
+                cbar.ax.tick_params(labelsize=14)
                 ## plot title
                 title_text=" Cut at Z = {0} {1}".format(z_val_pseudo, r"$\mathrm{\AA}$")
-                ax3.set_title(title_text)
+                ax3.set_title(title_text, fontsize=14)
                 # labels
-                ax3.set_xlabel(r'X [$\mathrm{\AA}$]')
-                ax3.set_ylabel(r'Y [$\mathrm{\AA}$]')
+                ax3.set_xlabel(r'X [$\mathrm{\AA}$]', fontsize=14)
+                ax3.set_ylabel(r'Y [$\mathrm{\AA}$]', fontsize=14)
+                # tick params
+                ax.tick_params(axis='both', labelsize=14)
                 # other formatting
                 ax3.set_aspect('equal')
                 ax3.set_xlim([0, length_a])
@@ -347,5 +350,6 @@ for sim_t_idx, sim_time in enumerate(sim_times):
                         rect_center_y=idx2*cell_y
                         ax3.add_patch(Rectangle((rect_center_x, rect_center_y), cell_x, cell_y, 
                                             edgecolor='k', facecolor='none', linewidth=0.5))
+                fig3.subplots_adjust(left=0.15, right=0.89)
                 fig3.savefig(plot_file, format='pdf')
                 plt.close(fig3)
