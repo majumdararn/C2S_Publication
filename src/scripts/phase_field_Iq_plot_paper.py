@@ -254,7 +254,7 @@ ax_ins1.axis('off')
 doc = fitz.open(working_dir / 'ppt/phase_field.pdf')
 page = doc.load_page(0)
 # Define crop area (x0, y0, x1, y1) in points
-crop_rect = fitz.Rect(220, 35, 550, 400)  # adjust as needed
+crop_rect = fitz.Rect(220, 35, 548, 400)  # adjust as needed
 # Render the cropped area to a pixmap (image)
 pix = page.get_pixmap(clip=crop_rect, dpi=200)
 img = np.frombuffer(pix.samples, dtype=np.uint8).reshape(pix.height, pix.width, pix.n)
@@ -267,7 +267,6 @@ ax_ins1.imshow(img)
 ax_scatt.set_xlabel(r'Q [$\mathrm{\AA}^{-1}$]', fontsize=14)
 ax_scatt.set_ylabel(r'I(Q) [$\mathrm{cm}^{-1}$]', fontsize=14)
 # adjust tick params 
-ax_scatt.tick_params(axis='both', labelsize=14)
 ax_scatt.tick_params(axis='both', labelsize=14)
 # adjust bbox position
 fig_scatt.subplots_adjust(left=0.16, right=0.88)
