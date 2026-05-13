@@ -246,6 +246,7 @@ for sim_t_idx, sim_time in enumerate(sim_times):
                 ax.add_patch(rect)
 
                 # save figure
+                fig.subplots_adjust(left=0.14, right=0.9)
                 plt.savefig(plot_file, format='pdf')
                 plt.close(fig)
 
