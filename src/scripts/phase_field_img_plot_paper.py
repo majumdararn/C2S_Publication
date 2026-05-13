@@ -224,7 +224,7 @@ for sim_t_idx, sim_time in enumerate(sim_times):
                 cbar.ax.tick_params(labelsize=14)
                 ## plot title
                 title_text=" Cut at Z = {0} {1}".format(z_val, r"$\mathrm{\AA}$")
-                ax.set_title(title_text)
+                ax.set_title(title_text, fontsize=14)
                 # labels
                 ax.set_xlabel(r'X [$\mathrm{\AA}$]', fontsize=14)
                 ax.set_ylabel(r'Y [$\mathrm{\AA}$]', fontsize=14)
