@@ -320,11 +320,12 @@ ax_ch_len.annotate(
 )
 
 ## plot format
-ax_ch_len.legend()
+ax_ch_len.legend(fontsize=14)
 ax_ch_len.set_xscale('log')
 ax_ch_len.set_yscale('log')
-ax_ch_len.set_xlabel('t [s]')
-ax_ch_len.set_ylabel('Characteristic length [nm]')
+ax_ch_len.set_xlabel('t [s]', fontsize=14)
+ax_ch_len.set_ylabel('Characteristic length [nm]', fontsize=14)
+ax_ch_len.tick_params(axis='both', labelsize=14)
 ax_ch_len.grid(True, which='both', linestyle='-', linewidth=0.5, alpha=0.7)
 plot_file=os.path.join(plot_dir, 'ch_len.pdf')
 fig_ch_len.savefig(plot_file, format='pdf')
