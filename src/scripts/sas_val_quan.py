@@ -252,7 +252,7 @@ for i in range(len(t_arr)):
             
             # inset in the final figure
             if i==0:
-                ax_ins = inset_axes(ax_fit_all, width="100%", height="100%", bbox_to_anchor=(0.15, 0.45, 0.3, 0.3),
+                ax_ins = inset_axes(ax_fit_all, width="100%", height="100%", bbox_to_anchor=(0.14, 0.45, 0.3, 0.3),
                         bbox_transform=ax_fit_all.transAxes)
                 img = ax_ins.imshow(node_sld_3d[:,:,z_idx].T, 
                                 extent=[0, length_a, 0, length_b], 
