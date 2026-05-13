@@ -315,8 +315,8 @@ for sim_t_idx, sim_time in enumerate(sim_times):
                 ax.set_ylabel(r'Y [$\mathrm{\AA}$]')
                 # other formatting
                 ax.set_aspect('equal')
-                ax.set_xlim([0, length_a])
-                ax.set_ylim([0, length_b])
+                # ax.set_xlim([0, length_a])
+                # ax.set_ylim([0, length_b])
                 # cut as per inset
                 ax.set_xlim([100,200])
                 ax.set_ylim([100,200])
