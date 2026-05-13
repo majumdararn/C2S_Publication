@@ -680,7 +680,7 @@ for vary_idx in range(len(nx_arr)):
              label= 'Meshing: {0} elements of order {1}'.format(nx*ny*nz, el_order))
     ax3[0].plot(t_arr, sig_fit, linestyle='', marker=marker[vary_idx], 
              color=colors[vary_idx], markersize=ms[vary_idx], markeredgecolor='k', markeredgewidth=0.5,
-             label= 'Meshing: {0} elements of order {1}'.format(nx*ny*nz, el_order))
+             label= '{0} elements of order {1}'.format(nx*ny*nz, el_order))
     if vary_idx==0:
         ## Draw arrow (t=0)
         # Draw a horrizontal line (rightward)
