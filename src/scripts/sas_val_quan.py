@@ -617,7 +617,7 @@ for vary_idx in range(len(nx_arr)):
                 
                 # inset in the final figure
                 if i==0:
-                    ax_ins = inset_axes(ax3[0], width="100%", height="100%", bbox_to_anchor=(0.1, -0.2, 0.56, 0.56),
+                    ax_ins = inset_axes(ax3[0], width="100%", height="100%", bbox_to_anchor=(0.2, -0.2, 0.54, 0.54),
                             bbox_transform=ax3[0].transAxes)
                     img = ax_ins.imshow(node_sld_3d[:,:,z_idx].T, 
                                     extent=[0, length_a, 0, length_b], 
