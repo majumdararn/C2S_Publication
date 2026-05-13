@@ -270,7 +270,7 @@ ax_scatt.set_ylabel(r'I(Q) [$\mathrm{cm}^{-1}$]', fontsize=14)
 ax_scatt.tick_params(axis='both', labelsize=14)
 ax_scatt.tick_params(axis='both', labelsize=14)
 # adjust bbox position
-ax_scatt.subplots_adjust(left=0.14, right=0.9)
+fig_scatt.subplots_adjust(left=0.14, right=0.9)
 ## SANS upper boundary Q=1 \AA^-1
 ax_scatt.set_xlim([Q_range[0], Q_range[1]])
 ## grid
