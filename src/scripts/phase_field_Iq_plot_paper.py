@@ -247,14 +247,14 @@ for sim_t_idx, sim_time in enumerate(sim_times):
         ch_len_err_arr[sim_t_idx]=ch_len_err_nm
 # add pdf in the inset axes
 ax_ins1 = inset_axes(ax_scatt, width="90%", height="90%", 
-                        bbox_to_anchor=(0.41, 0.3, 0.7, 0.7), 
+                        bbox_to_anchor=(0.39, 0.3, 0.7, 0.7), 
                         bbox_transform=ax_scatt.transAxes)
 ax_ins1.axis('off')
 # Load the PDF and select the first page
 doc = fitz.open(working_dir / 'ppt/phase_field.pdf')
 page = doc.load_page(0)
 # Define crop area (x0, y0, x1, y1) in points
-crop_rect = fitz.Rect(200, 35, 530, 400)  # adjust as needed
+crop_rect = fitz.Rect(220, 35, 540, 400)  # adjust as needed
 # Render the cropped area to a pixmap (image)
 pix = page.get_pixmap(clip=crop_rect, dpi=200)
 img = np.frombuffer(pix.samples, dtype=np.uint8).reshape(pix.height, pix.width, pix.n)
