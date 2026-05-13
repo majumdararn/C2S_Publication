@@ -323,7 +323,7 @@ for sim_t_idx, sim_time in enumerate(sim_times):
                 ax3.set_xlabel(r'X [$\mathrm{\AA}$]', fontsize=14)
                 ax3.set_ylabel(r'Y [$\mathrm{\AA}$]', fontsize=14)
                 # tick params
-                ax.tick_params(axis='both', labelsize=14)
+                ax3.tick_params(axis='both', labelsize=14)
                 # other formatting
                 ax3.set_aspect('equal')
                 ax3.set_xlim([0, length_a])
