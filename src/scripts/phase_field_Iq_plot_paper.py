@@ -266,7 +266,11 @@ ax_ins1.imshow(img)
 ## labels
 ax_scatt.set_xlabel(r'Q [$\mathrm{\AA}^{-1}$]', fontsize=14)
 ax_scatt.set_ylabel(r'I(Q) [$\mathrm{cm}^{-1}$]', fontsize=14)
+# adjust tick params 
 ax_scatt.tick_params(axis='both', labelsize=14)
+ax_scatt.tick_params(axis='both', labelsize=14)
+# adjust bbox position
+ax_scatt.subplots_adjust(left=0.14, right=0.9)
 ## SANS upper boundary Q=1 \AA^-1
 ax_scatt.set_xlim([Q_range[0], Q_range[1]])
 ## grid
