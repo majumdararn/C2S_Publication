@@ -298,38 +298,38 @@ for sim_t_idx, sim_time in enumerate(sim_times):
                 ## figure specification
                 plot_file_name='pseudo_cat_phase_field.pdf'
                 plot_file=os.path.join(plot_dir,plot_file_name)
-                fig, ax = plt.subplots(figsize=(5, 5))
+                fig3, ax3 = plt.subplots(figsize=(5, 5))
                 ## scatter plot
                 pseudo_b_cat_val_3d=pseudo_b_cat_val.reshape(nx, ny, nz)
                 pseudo_b_cat_val_xy=pseudo_b_cat_val_3d[:,:,z_idx_pseudo]
                 img = ax.scatter(pseudo_pos_x, pseudo_pos_y, c=pseudo_b_cat_val_xy, s=5, cmap='viridis')
                 ## color bar
-                cbar=plt.colorbar(img, ax=ax)  # Add colorbar to subplot 1
+                cbar=plt.colorbar(img, ax=ax3)  # Add colorbar to subplot 1
                 cbar_label=r"Scattering length (b) [$10^{-5} \cdot \mathrm{\AA} = \mathrm{fm}$]"
                 cbar.set_label(cbar_label, labelpad=10)
                 ## plot title
                 title_text=" Cut at Z = {0} {1}".format(z_val_pseudo, r"$\mathrm{\AA}$")
-                ax.set_title(title_text)
+                ax3.set_title(title_text)
                 # labels
-                ax.set_xlabel(r'X [$\mathrm{\AA}$]')
-                ax.set_ylabel(r'Y [$\mathrm{\AA}$]')
+                ax3.set_xlabel(r'X [$\mathrm{\AA}$]')
+                ax3.set_ylabel(r'Y [$\mathrm{\AA}$]')
                 # other formatting
-                ax.set_aspect('equal')
-                # ax.set_xlim([0, length_a])
-                # ax.set_ylim([0, length_b])
+                ax3.set_aspect('equal')
+                ax3.set_xlim([0, length_a])
+                ax3.set_ylim([0, length_b])
                 # cut as per inset
-                ax.set_xlim([150,200])
-                ax.set_ylim([100,200])
+                ax3.set_xlim([150,200])
+                ax3.set_ylim([100,200])
                 x_ticks_val=np.round(np.linspace(0, length_a, 5),2)
-                ax.set_xticks(list(x_ticks_val))
+                ax3.set_xticks(list(x_ticks_val))
                 y_ticks_val=np.round(np.linspace(0, length_b, 5),2)
-                ax.set_yticks(list(y_ticks_val))
+                ax3.set_yticks(list(y_ticks_val))
                 
                 # cut aspet inset
                 x_ticks_val=np.round(np.linspace(100, 200, 6),2)
-                ax.set_xticks(list(x_ticks_val))
+                ax3.set_xticks(list(x_ticks_val))
                 y_ticks_val=np.round(np.linspace(100, 200, 6),2)
-                ax.set_yticks(list(y_ticks_val))
+                ax3.set_yticks(list(y_ticks_val))
                 ## add mesh
                 cell_x=length_a/nx
                 cell_y=length_a/ny
@@ -337,7 +337,7 @@ for sim_t_idx, sim_time in enumerate(sim_times):
                     for idx2 in range(ny):
                         rect_center_x=idx1*cell_x
                         rect_center_y=idx2*cell_y
-                        ax.add_patch(Rectangle((rect_center_x, rect_center_y), cell_x, cell_y, 
+                        ax3.add_patch(Rectangle((rect_center_x, rect_center_y), cell_x, cell_y, 
                                             edgecolor='k', facecolor='none', linewidth=0.5))
-                plt.savefig(plot_file, format='pdf')
-                plt.close(fig)
+                fig3.savefig(plot_file, format='pdf')
+                plt.close(fig3)
