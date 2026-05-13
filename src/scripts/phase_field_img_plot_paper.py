@@ -318,7 +318,7 @@ for sim_t_idx, sim_time in enumerate(sim_times):
                 # ax.set_xlim([0, length_a])
                 # ax.set_ylim([0, length_b])
                 # cut as per inset
-                ax.set_xlim([100,200])
+                ax.set_xlim([150,200])
                 ax.set_ylim([100,200])
                 x_ticks_val=np.round(np.linspace(0, length_a, 5),2)
                 ax.set_xticks(list(x_ticks_val))
