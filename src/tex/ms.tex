@@ -536,12 +536,12 @@ The heterogenous model
 \label{subsec:res_fem}
 
 \begin{figure*}
+    \script{phase_field_Iq_plot_paper.py}
     \includegraphics[trim={0.25cm 0cm 1.5cm 0cm},clip,width=\columnwidth]{figures/spinod_fe_cr.pdf}
     \hfill
     \includegraphics[trim={0.25cm 0cm 1.5cm 0cm},clip,width=\columnwidth]{figures/ch_len.pdf}
     \hfill
     \caption{[left] Numerical SANS intensity calculated from an FEM simulation of \ce{Fe-Cr} spinodal decomposition at different times. A snapshot of the simulation box is shown in the inset, colour-coded according to the molar fraction of chromium, from which the SLD values were calculated. [right] The time evolution of characteristic length $(\Lambda)$, calculated using $\Lambda=\frac{2\pi}{Q_{\text{p}}}$ with $Q_{\text{p}}$ as $Q$ value of maximal calculated intensity. The error bar is calculated using $Q$ values from either side of $Q_{\text{p}}$. The initial time step is excluded due to randomness in the structure. A linear trend of simulated $\Lambda$ corresponds to a power law in this double-logarithmic plot.\label{fig:sans_fe_cr}}
-    \script{phase_field_Iq_plot_paper.py}
 \end{figure*}
 
 Real-life phenomena hardly ever produce structures as simple as the ones used in the validation section~\cite{huang2007continuum, zhu20143d}. To demonstrate the applicability of the presented algorithm, also to realistic cases, the well-known phenomenon of \ce{Fe-Cr} spinodal decomposition was chosen. The time evolution of this phenomenon has already been investigated using SANS~\cite{furusaka1983spinodal, hoernqvist2015early}. In this work, the FEM simulation of the corresponding nanostructure was performed using the method detailed in section~\ref{subsec:mat_method_fem}. Thereafter, the SANS intensities were calculated numerically from simulated nanostructures at different time steps.
