@@ -46,7 +46,7 @@ k0 = 0.32
 sigma = 0.02
 del_rho = 1
 # CRW calculation
-r_arr = np.linspace(0, 250, 200)
+r_arr = np.linspace(0, 500, 500)
 ## step 1
 g_arr = np.array([g(r) for r in r_arr])
 g_arr /= g_arr[0]
