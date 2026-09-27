@@ -114,7 +114,7 @@ Iq = np.zeros(len(Q_arr))
 for i, Q in enumerate(Q_arr):
 
     integrand = (
-        0.5 * 0.5 * 4**2
+        phi_1 * phi_2 * del_rho**2
         * 4 * np.pi
         * r_arr**2
         * Gamma_arr
