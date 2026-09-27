@@ -171,8 +171,8 @@ sld_3d=sld.reshape((125+1, 125+1, 125+1))+1.5
 fs=10
 fig, ax1 = plt.subplots(1,2,figsize=(15, 5))
 ax1[1].plot(Q_arr, Iq, label='Analytical formula')
-ax1[1].plot(q_num_1, Iq_num_1, '*', ms=4, label=r'Numerical (L = 250 \AA)')
-ax1[1].plot(q_num_2, Iq_num_2, '^', ms=4, label=r'Numerical (L = 600 \AA)')
+ax1[1].plot(q_num_1, Iq_num_1, '*', ms=4, label=r'Numerical (L = 250 $\mathrm{\AA}$)')
+ax1[1].plot(q_num_2, Iq_num_2, '^', ms=4, label=r'Numerical (L = 600 $\mathrm{\AA}$)')
 ax1[1].axvline(x=k0, color='black', linestyle='--', label=fr'$Q_{{\mathrm{{peak}}}} = {k0}\,\mathrm{{\AA}}^{{-1}}$')
 ax1[1].set_xlabel("Q", fontsize=fs)
 ax1[1].set_ylabel("I(Q)", fontsize=fs)
