@@ -169,7 +169,7 @@ sld_3d=sld.reshape((125+1, 125+1, 125+1))+1.5
 # Step 2. plotting
 # plot Iq (right)
 fs=10
-fig, ax1 = plt.subplots(1,2,figsize=(10, 5))
+fig, ax1 = plt.subplots(1,2,figsize=(15, 5))
 ax1[1].plot(Q_arr, Iq, label='Analytical formula')
 ax1[1].plot(q_num_1, Iq_num_1, '*', ms=4, label=r'Box length = 250 $\mathrm{\AA}^{-1}$')
 ax1[1].plot(q_num_2, Iq_num_2, '^', ms=4, label=r'Box length = 600 $\mathrm{\AA}^{-1}$')
