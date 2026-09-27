@@ -11,7 +11,7 @@ import tarfile
 # funktionsbereich
 
 # Gaussian f(k)
-def f(k):
+def f(k, k0, sigma):
     """
     Input frequency distrobution f(k)
     1. normal distribution is assumed
@@ -22,7 +22,7 @@ def f(k):
     )
 
 # g(r)
-def g(r):
+def g(r, k0, sigma):
     """
     Calculation of g(r)
     """
@@ -30,7 +30,7 @@ def g(r):
         return (
             4 * np.pi
             * k**2
-            * f(k)
+            * f(k, k0, sigma)
             * spherical_jn(0, k * r)
         )
 
@@ -42,15 +42,15 @@ def g(r):
 
 # Parameters (analytical calculation)
 # input
-k0 = 0.32
-sigma = 0.02
+k0_val = 0.32
+sigma_val = 0.02
 phi_1=0.5
 phi_2=1-phi_1
 del_rho = 4
 # CRW calculation
 r_arr = np.linspace(0, 250, 200)
 ## step 1
-g_arr = np.array([g(r) for r in r_arr])
+g_arr = np.array([g(r, k0_val, sigma_val) for r in r_arr])
 g_arr /= g_arr[0]
 ## step 2
 Gamma_arr = (2 / np.pi) * np.arcsin(g_arr)
@@ -66,6 +66,63 @@ for i, Q in enumerate(Q_arr):
         * spherical_jn(0, Q * r_arr)
     )
 Iq[i] = simpson(integrand, x=r_arr)
+
+# # Parameters
+# k0 = 0.32
+# sigma = 0.02
+
+
+# # Gaussian f(k)
+# def f(k):
+#     return (
+#         np.exp(-(k - k0)**2 / (2 * sigma**2))
+#         / (sigma * np.sqrt(2 * np.pi))
+#     )
+
+
+# # g(r)
+# def g(r):
+#     def integrand(k):
+#         return (
+#             4 * np.pi
+#             * k**2
+#             * f(k)
+#             * spherical_jn(0, k * r)
+#         )
+
+#     return quad(integrand, 0, np.inf)[0]
+
+
+# # r grid
+# r_arr = np.linspace(0, 250, 200)
+
+# # Calculate g(r)
+# g_arr = np.array([g(r) for r in r_arr])
+
+# g_arr /= g_arr[0]
+
+# # Gamma(r)
+# Gamma_arr = (2 / np.pi) * np.arcsin(g_arr)
+
+
+# # Q grid
+# Q_arr = np.linspace(0.001, 1, 200)
+
+
+# # I(Q)
+# Iq = np.zeros(len(Q_arr))
+
+# for i, Q in enumerate(Q_arr):
+
+#     integrand = (
+#         0.5 * 0.5 * 4**2
+#         * 4 * np.pi
+#         * r_arr**2
+#         * Gamma_arr
+#         * spherical_jn(0, Q * r_arr)
+#     )
+    
+#     Iq[i] = simpson(integrand, x=r_arr)
 
 ###############################
 # numerical calcularion
