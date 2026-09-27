@@ -141,18 +141,18 @@ with tarfile.open(tar_path, "r:gz") as tar:
 # smaller box
 h5_file_1=paths.data / 'Iq_box_250.h5'
 file_1=h5py.File(h5_file_1,'r')
-# vol_norm=628.3185**3
-# Iq_num=file['Iq'][:]/vol_norm*10**2
-Iq_num_1=file_1['Iq'][:]/1.3e7
+vol_norm=250**3
+# Iq_num=file['Iq'][:]/vol_norm*10**2 (1.3e7)
+Iq_num_1=file_1['Iq'][:]/vol_norm*10**2
 q_num_1=file_1['Q'][:]
 file_1.close()
 
 # bigger box
 h5_file_2=paths.data / 'Iq_box_600.h5'
 file_2=h5py.File(h5_file_2,'r')
-# vol_norm=628.3185**3
-# Iq_num=file['Iq'][:]/vol_norm*10**2
-Iq_num_2=file_2['Iq'][:]/2e8
+vol_norm=600**3
+# Iq_num=file['Iq'][:]/vol_norm*10**2 (2e8)
+Iq_num_2=file_2['Iq'][:]/vol_norm*10**2
 q_num_2=file_2['Q'][:]
 file_2.close()
 
