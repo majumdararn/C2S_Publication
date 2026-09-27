@@ -46,7 +46,7 @@ k0 = 0.32
 sigma = 0.02
 phi_1=0.5
 phi_2=1-phi_1
-del_rho = 1
+del_rho = 4
 # CRW calculation
 r_arr = np.linspace(0, 250, 200)
 ## step 1
