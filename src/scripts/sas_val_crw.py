@@ -9,9 +9,10 @@ import paths
 import tarfile
 
 # funktionsbereich
-
+k0_val = 0.32
+sigma_val = 0.02
 # Gaussian f(k)
-def f(k, k0, sigma):
+def f(k, k0=k0_val, sigma=sigma_val):
     """
     Input frequency distrobution f(k)
     1. normal distribution is assumed
@@ -22,7 +23,7 @@ def f(k, k0, sigma):
     )
 
 # g(r)
-def g(r, k0, sigma):
+def g(r):
     """
     Calculation of g(r)
     """
@@ -30,7 +31,7 @@ def g(r, k0, sigma):
         return (
             4 * np.pi
             * k**2
-            * f(k, k0, sigma)
+            * f(k)
             * spherical_jn(0, k * r)
         )
 
@@ -42,8 +43,6 @@ def g(r, k0, sigma):
 
 # Parameters (analytical calculation)
 # input
-k0_val = 0.32
-sigma_val = 0.02
 phi_1=0.5
 phi_2=1-phi_1
 del_rho = 4
