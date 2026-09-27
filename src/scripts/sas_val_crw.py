@@ -9,11 +9,7 @@ import paths
 import tarfile
 
 # funktionsbereich
-k0 = 0.32
-sigma = 0.02
-phi_1=0.5
-phi_2=1-phi_1
-del_rho = 1
+
 # Gaussian f(k)
 def f(k):
     """
@@ -46,6 +42,11 @@ def g(r):
 
 # Parameters (analytical calculation)
 # input
+k0 = 0.32
+sigma = 0.02
+phi_1=0.5
+phi_2=1-phi_1
+del_rho = 1
 # CRW calculation
 r_arr = np.linspace(0, 250, 200)
 ## step 1
