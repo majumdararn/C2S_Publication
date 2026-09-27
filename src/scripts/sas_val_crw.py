@@ -75,9 +75,11 @@ Iq[i] = simpson(integrand, x=r_arr)
 tar_path = paths.data / "crw.tar.gz"
 # extract data folder
 with tarfile.open(tar_path, "r:gz") as tar:
-    for member in tar.getmembers():
-        if member.name.startswith("dataset/data/"):
-            tar.extract(member, path=paths.data)
+    tar.extractall(path=paths.data)
+# with tarfile.open(tar_path, "r:gz") as tar:
+#     for member in tar.getmembers():
+#         if member.name.startswith("dataset/data/"):
+#             tar.extract(member, path=paths.data)
 
 # smaller box
 h5_file_1=paths.data / 'Iq_box_250.h5'
