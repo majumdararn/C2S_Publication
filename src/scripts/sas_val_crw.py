@@ -49,7 +49,7 @@ del_rho = 4
 # CRW calculation
 r_arr = np.linspace(0, 250, 200)
 ## step 1
-g_arr = np.array([g(r, k0_val, sigma_val) for r in r_arr])
+g_arr = np.array([g(r) for r in r_arr])
 g_arr /= g_arr[0]
 ## step 2
 Gamma_arr = (2 / np.pi) * np.arcsin(g_arr)
