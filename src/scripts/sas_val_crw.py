@@ -176,7 +176,7 @@ ax1[1].plot(q_num_1, Iq_num_1, '*', ms=4, label=r'Numerical (L = 250 $\mathrm{\A
 ax1[1].plot(q_num_2, Iq_num_2, '^', ms=4, label=r'Numerical (L = 600 $\mathrm{\AA}$)')
 ax1[1].axvline(x=k0, color='black', linestyle='--', label=fr'$Q_{{\mathrm{{peak}}}} = {k0}\,\mathrm{{\AA}}^{{-1}}$')
 ax1[1].set_xlabel(r"Q $[\AA^{-1}]$", fontsize=fs)
-ax1[1].set_ylabel(r"I(Q) $[\cdot 10^{-12}\,\mathrm{\AA}^{-4}]$", fontsize=fs)
+ax1[1].set_ylabel(r"I(Q) $[10^{-12}\,\mathrm{\AA}^{-4}]$", fontsize=fs)
 ax1[1].set_xscale("log")
 ax1[1].set_xlim([0.09,0.7])
 ax1[1].set_ylim([0,700])
