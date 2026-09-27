@@ -66,62 +66,62 @@ for i, Q in enumerate(Q_arr):
     )
 Iq[i] = simpson(integrand, x=r_arr)
 
-# # Parameters
-# k0 = 0.32
-# sigma = 0.02
+# Parameters
+k0 = 0.32
+sigma = 0.02
 
 
-# # Gaussian f(k)
-# def f(k):
-#     return (
-#         np.exp(-(k - k0)**2 / (2 * sigma**2))
-#         / (sigma * np.sqrt(2 * np.pi))
-#     )
+# Gaussian f(k)
+def f(k):
+    return (
+        np.exp(-(k - k0)**2 / (2 * sigma**2))
+        / (sigma * np.sqrt(2 * np.pi))
+    )
 
 
-# # g(r)
-# def g(r):
-#     def integrand(k):
-#         return (
-#             4 * np.pi
-#             * k**2
-#             * f(k)
-#             * spherical_jn(0, k * r)
-#         )
+# g(r)
+def g(r):
+    def integrand(k):
+        return (
+            4 * np.pi
+            * k**2
+            * f(k)
+            * spherical_jn(0, k * r)
+        )
 
-#     return quad(integrand, 0, np.inf)[0]
-
-
-# # r grid
-# r_arr = np.linspace(0, 250, 200)
-
-# # Calculate g(r)
-# g_arr = np.array([g(r) for r in r_arr])
-
-# g_arr /= g_arr[0]
-
-# # Gamma(r)
-# Gamma_arr = (2 / np.pi) * np.arcsin(g_arr)
+    return quad(integrand, 0, np.inf)[0]
 
 
-# # Q grid
-# Q_arr = np.linspace(0.001, 1, 200)
+# r grid
+r_arr = np.linspace(0, 250, 200)
+
+# Calculate g(r)
+g_arr = np.array([g(r) for r in r_arr])
+
+g_arr /= g_arr[0]
+
+# Gamma(r)
+Gamma_arr = (2 / np.pi) * np.arcsin(g_arr)
 
 
-# # I(Q)
-# Iq = np.zeros(len(Q_arr))
+# Q grid
+Q_arr = np.linspace(0.001, 1, 200)
 
-# for i, Q in enumerate(Q_arr):
 
-#     integrand = (
-#         0.5 * 0.5 * 4**2
-#         * 4 * np.pi
-#         * r_arr**2
-#         * Gamma_arr
-#         * spherical_jn(0, Q * r_arr)
-#     )
+# I(Q)
+Iq = np.zeros(len(Q_arr))
+
+for i, Q in enumerate(Q_arr):
+
+    integrand = (
+        0.5 * 0.5 * 4**2
+        * 4 * np.pi
+        * r_arr**2
+        * Gamma_arr
+        * spherical_jn(0, Q * r_arr)
+    )
     
-#     Iq[i] = simpson(integrand, x=r_arr)
+    Iq[i] = simpson(integrand, x=r_arr)
 
 ###############################
 # numerical calcularion
