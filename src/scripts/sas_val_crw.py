@@ -32,13 +32,14 @@ def g(r):
     """
     def integrand(k):
         return (
+            0.5 * 0.5 * 1**2 *
             4 * np.pi
             * k**2
             * f(k)
             * spherical_jn(0, k * r)
         )
 
-    return phi_1 * phi_2 * del_rho**2 * quad(integrand, 0, np.inf)[0]
+    return quad(integrand, 0, np.inf)[0]
 
 ########################
 # analytical calculation
