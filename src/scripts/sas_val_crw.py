@@ -32,7 +32,6 @@ def g(r):
     """
     def integrand(k):
         return (
-            0.5 * 0.5 * 1**2 *
             4 * np.pi
             * k**2
             * f(k)
