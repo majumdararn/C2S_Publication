@@ -101,10 +101,10 @@ file_2.close()
 
 # sld for smaller box
 h5_file_3=paths.data / 'sld_box_250.h5'
-file_3=h5py.File(h5_file,'r')
+file_3=h5py.File(h5_file_3,'r')
 # Iq_num=file['Iq'][:]/vol_norm*10**2
-sld=file['sld'][:]
-file.close()
+sld=file_3['sld'][:]
+file_3.close()
 # reshape and undo r clean
 sld_3d=sld.reshape((125+1, 125+1, 125+1))+1.5
 
