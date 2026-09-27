@@ -28,6 +28,9 @@ datasets:
   10.5072/zenodo.410077:
     contents:
       dataset.tar.xz: src/data/dataset.tar.xz
+  10.5072/zenodo.609964:
+    contents:
+      crw.tar.xz: src/data/crw.tar.xz
 
 # Custom file dependencies
 dependencies:
@@ -45,6 +48,8 @@ dependencies:
   #   - src/data/dataset.tar.xz
   src/scripts/sas_val_quan.py:
     - src/data/dataset.tar.xz
+  src/scripts/sas_val_crw.py:
+    - src/data/crw.tar.xz
   src/scripts/phase_field_img_plot_paper.py:
     - src/data/dataset.tar.xz
   src/scripts/phase_field_Iq_plot_paper.py:
