@@ -49,7 +49,7 @@ dependencies:
   src/scripts/sas_val_quan.py:
     - src/data/dataset.tar.xz
   src/scripts/sas_val_crw.py:
-    - src/data/crw.tar.xz
+    - src/data/crw.tar.gz
   src/scripts/phase_field_img_plot_paper.py:
     - src/data/dataset.tar.xz
   src/scripts/phase_field_Iq_plot_paper.py:
