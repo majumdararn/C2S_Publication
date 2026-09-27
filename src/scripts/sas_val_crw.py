@@ -44,7 +44,7 @@ def g(r):
 # input
 k0 = 0.32
 sigma = 0.02
-del_rho = 1
+del_rho = 2
 # CRW calculation
 r_arr = np.linspace(0, 250, 200)
 ## step 1
