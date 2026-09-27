@@ -9,10 +9,10 @@ import paths
 import tarfile
 
 # funktionsbereich
-k0_val = 0.32
-sigma_val = 0.02
+k0 = 0.32
+sigma = 0.02
 # Gaussian f(k)
-def f(k, k0=k0_val, sigma=sigma_val):
+def f(k):
     """
     Input frequency distrobution f(k)
     1. normal distribution is assumed
@@ -171,7 +171,7 @@ fig, ax1 = plt.subplots(1,2,figsize=(12, 5))
 ax1[1].plot(Q_arr, Iq, label='analytical')
 # ax1[1].plot(q_num_1, Iq_num_1, '*', ms=4, label='Smaller box')
 # ax1[1].plot(q_num_2, Iq_num_2, '^', ms=4, label='Bigger box')
-ax1[1].axvline(x=k0_val, color='black', linestyle='--', label=f'Input Peak k0 ({k0_val})')
+ax1[1].axvline(x=k0, color='black', linestyle='--', label=f'Input Peak k0 ({k0})')
 ax1[1].set_xlabel("Q")
 ax1[1].set_ylabel("I(Q)")
 ax1[1].set_xscale("log")
