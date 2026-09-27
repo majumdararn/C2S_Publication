@@ -120,7 +120,7 @@ ax1[1].set_xlabel("Q")
 ax1[1].set_ylabel("I(Q)")
 ax1[1].set_xscale("log")
 ax1[1].set_xlim([0.09,0.7])
-ax1[1].set_ylim([0,11000])
+# ax1[1].set_ylim([0,11000])
 ax1[1].legend()
 ax1[1].grid()
 
