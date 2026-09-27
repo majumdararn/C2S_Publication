@@ -168,17 +168,17 @@ sld_3d=sld.reshape((125+1, 125+1, 125+1))+1.5
 
 # Step 2. plotting
 # plot Iq (right)
-fig, ax1 = plt.subplots(1,2,figsize=(12, 5))
+fig, ax1 = plt.subplots(1,2,figsize=(10, 5))
 ax1[1].plot(Q_arr, Iq, label='Analytical formula')
 ax1[1].plot(q_num_1, Iq_num_1, '*', ms=4, label=r'Box length = 250 $\mathrm{\AA}^{-1}$')
 ax1[1].plot(q_num_2, Iq_num_2, '^', ms=4, label=r'Box length = 600 $\mathrm{\AA}^{-1}$')
 ax1[1].axvline(x=k0, color='black', linestyle='--', label=fr'$Q_{{\mathrm{{peak}}}} = {k0}\,\mathrm{{\AA}}^{{-1}}$')
-ax1[1].set_xlabel("Q")
-ax1[1].set_ylabel("I(Q)")
+ax1[1].set_xlabel("Q", fontsize=14)
+ax1[1].set_ylabel("I(Q)", fontsize=14)
 ax1[1].set_xscale("log")
 ax1[1].set_xlim([0.09,0.7])
 ax1[1].set_ylim([0,700])
-ax1[1].legend()
+ax1[1].legend(fontsize=14)
 ax1[1].grid()
 
 # plot sld (left)
@@ -197,7 +197,7 @@ legend_elements = [Patch(facecolor=cmap(norm(1)), edgecolor='black', label=r'$0^
 ax1[0].legend(handles=legend_elements, 
               loc='upper right',
               frameon=True, facecolor='white',
-              framealpha=1.0)
-ax1[0].set_xlabel(r'X $[\mathrm{\AA}]$')
-ax1[0].set_ylabel(r'Y $[\mathrm{\AA}]$')
+              framealpha=1.0, fontsize=14)
+ax1[0].set_xlabel(r'X $[\mathrm{\AA}]$', fontsize=14)
+ax1[0].set_ylabel(r'Y $[\mathrm{\AA}]$', fontsize=14)
 plt.savefig(paths.figures / 'crw.pdf', format='pdf')
