@@ -58,7 +58,7 @@ Q_arr = np.linspace(0.001, 1, 200)
 Iq = np.zeros(len(Q_arr))
 for i, Q in enumerate(Q_arr):
     integrand = (
-        phi_1 * phi_2 * del_rho**2 *
+        phi_1 * phi_2 * del_rho**2
         * 4 * np.pi
         * r_arr**2
         * Gamma_arr
