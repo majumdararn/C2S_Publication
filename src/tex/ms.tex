@@ -504,13 +504,13 @@ The settings, optimized through the sphere and cube model, were used to calculat
 \label{subsubsec:res_val_quan}
 
 \begin{figure*}
+    \script{sas_val_quan.py}
     \includegraphics[trim={1cm 0cm 1.75cm 0cm},clip,width=\columnwidth]{figures/rad_fit_gg.pdf}
     \hfill
     \includegraphics[trim={1cm 0cm 1.75cm 0cm},clip,width=\columnwidth]{figures/all_fit_fs.pdf}
     \caption{Validation through quantitative comparison: Shown are [left] particle growth, and [right] interdiffusion models.
     [left] The particle growth model was validated by comparing the particle radius, retrieved from fits to the numerically obtained scattering intensity calculations, to the values used for their simulation. The simulated nanostructures are shown in the inset for the first and last time steps.
     [right] The interdiffusion model was validated by comparing the retrieved fuzz value and particle radius from the fits to their corresponding simulation input values. The comparison was performed with meshing of different element numbers and element orders. The nanostructures shown in the inset represent the simulation with the highest element number and the lowest element order. \label{fig:sas_val_quan}}
-    \script{sas_val_quan.py}
 \end{figure*}
 
 A quantitative comparison was performed by fitting the analytical formula to the calculated SAS patterns instead of comparing visually. Doing this for time-evolving nanostructures allowed determining the quality of the calculated SAS patterns. The fitting was performed for chosen parameters, including those affected by the time evolution. Two models were considered for this purpose: Particle growth and interdiffusion, with the respective parameter values listed in table~\ref{tab:param_val_struct}.
