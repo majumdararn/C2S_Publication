@@ -72,9 +72,9 @@ Iq[i] = simpson(integrand, x=r_arr)
 ###############################
 
 # Step 1. read Cont2Sas output
-tar_path = paths.data / "crw.tar.xz"
+tar_path = paths.data / "crw.tar.gz"
 # extract data folder
-with tarfile.open(tar_path, "r:xz") as tar:
+with tarfile.open(tar_path, "r:gz") as tar:
     for member in tar.getmembers():
         if member.name.startswith("dataset/data/"):
             tar.extract(member, path=paths.data)

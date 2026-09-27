@@ -30,7 +30,7 @@ datasets:
       dataset.tar.xz: src/data/dataset.tar.xz
   10.5072/zenodo.609965:
     contents:
-      crw.tar.xz: src/data/crw.tar.xz
+      crw.tar.gz: src/data/crw.tar.gz
 
 # Custom file dependencies
 dependencies:
