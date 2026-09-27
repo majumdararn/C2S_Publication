@@ -28,7 +28,7 @@ datasets:
   10.5072/zenodo.410077:
     contents:
       dataset.tar.xz: src/data/dataset.tar.xz
-  10.5072/zenodo.609964:
+  10.5072/zenodo.609965:
     contents:
       crw.tar.xz: src/data/crw.tar.xz
 
