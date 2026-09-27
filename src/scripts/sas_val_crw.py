@@ -143,7 +143,7 @@ h5_file_1=paths.data / 'Iq_box_250.h5'
 file_1=h5py.File(h5_file_1,'r')
 # vol_norm=628.3185**3
 # Iq_num=file['Iq'][:]/vol_norm*10**2
-Iq_num_1=file_1['Iq'][:]/1.55e9
+Iq_num_1=file_1['Iq'][:]/1.55e8
 q_num_1=file_1['Q'][:]
 file_1.close()
 
@@ -152,7 +152,7 @@ h5_file_2=paths.data / 'Iq_box_600.h5'
 file_2=h5py.File(h5_file_2,'r')
 # vol_norm=628.3185**3
 # Iq_num=file['Iq'][:]/vol_norm*10**2
-Iq_num_2=file_2['Iq'][:]/1.55e9
+Iq_num_2=file_2['Iq'][:]/1.55e8
 q_num_2=file_2['Q'][:]
 file_2.close()
 
