@@ -44,8 +44,6 @@ def g(r):
 # input
 k0 = 0.32
 sigma = 0.02
-phi_1=0.5
-phi_2=1-phi_1
 del_rho = 1
 # CRW calculation
 r_arr = np.linspace(0, 250, 200)
@@ -59,7 +57,7 @@ Q_arr = np.linspace(0.001, 1, 200)
 Iq = np.zeros(len(Q_arr))
 for i, Q in enumerate(Q_arr):
     integrand = (
-        0.5 * 0.5 * 1**2
+        0.5 * 0.5 * del_rho**2
         * 4 * np.pi
         * r_arr**2
         * Gamma_arr
