@@ -229,6 +229,8 @@ q_p_2=q_num_2_cut[np.argmax(Iq_num_2_cut)]
 file_01=paths.output / 'qp0.txt'
 file_11=paths.output / 'qp1.txt'
 file_21=paths.output / 'qp2.txt'
+file_02=paths.output / 'qres0.txt'
+file_12=paths.output / 'qres1.txt'
 # file_12=paths.output / 'qperr1.txt'
 
 # with open(file_11, "w") as f:
@@ -237,7 +239,12 @@ file_21=paths.output / 'qp2.txt'
 # with open(file_12, "w") as f:
 #     f.write(str(q_p_err))
 
+q_res_ana=Q_arr[1]-Q_arr[0]
+q_res_num=q_num_1[1]-q_num_1[0]
+
 np.savetxt(file_01, [q_p_0], fmt="%.4f")
 np.savetxt(file_11, [q_p_1], fmt="%.4f")
 np.savetxt(file_21, [q_p_2], fmt="%.4f")
+np.savetxt(file_02, [q_res_ana], fmt="%.4f")
+np.savetxt(file_12, [q_res_num], fmt="%.4f")
 # np.savetxt(file_12, [q_p_err], fmt="%.2f")
