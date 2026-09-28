@@ -206,6 +206,7 @@ plt.savefig(paths.figures / 'crw.pdf', format='pdf')
 
 #
 q_p_1=q_num_1[np.argmax(Iq_num_1)]
+print(np.argmax(Iq_num_1))
 q_p_1_l=q_num_1[np.argmax(Iq_num_1)-1]
 q_p_1_r=q_num_1[np.argmax(Iq_num_1)+1]
 q_p_err=(q_p_1_r-q_p_1_l)*0.5
