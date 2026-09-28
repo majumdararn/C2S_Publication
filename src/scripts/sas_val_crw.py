@@ -206,7 +206,7 @@ plt.savefig(paths.figures / 'crw.pdf', format='pdf')
 
 #
 q_mask_1 = (q_num_1 >= 0.09) & (q_num_1 <= 0.6)
- 
+
 q_num_1_cut = q_num_1[q_mask_1]
 Iq_num_1_cut = Iq_num_1[q_mask_1]
 # f_cut = f[mask]
