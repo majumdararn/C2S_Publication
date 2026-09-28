@@ -213,8 +213,11 @@ q_p_err=(q_p_1_r-q_p_1_l)*0.5
 file_11=paths.output / 'qp1.txt'
 file_12=paths.output / 'qperr1.txt'
 
-with open(file_11, "w") as f:
-    f.write(str(q_p_1))
+# with open(file_11, "w") as f:
+#     f.write(str(q_p_1))
 
-with open(file_12, "w") as f:
-    f.write(str(q_p_err))
+# with open(file_12, "w") as f:
+#     f.write(str(q_p_err))
+
+np.savetxt(file_11, [q_p_1])
+np.savetxt(file_12, [q_p_err])
