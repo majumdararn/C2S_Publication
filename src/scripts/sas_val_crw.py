@@ -210,11 +210,11 @@ q_mask_1 = (q_num_1 >= 0.09) & (q_num_1 <= 0.6)
 q_num_1_cut = q_num_1[q_mask_1]
 Iq_num_1_cut = Iq_num_1[q_mask_1]
 # f_cut = f[mask]
-q_p_1=q_num_1[np.argmax(Iq_num_1_cut)]
+q_p_1=q_num_1_cut[np.argmax(Iq_num_1_cut)]
 # print(np.max(Iq_num_1))
 # print(np.max(Iq))
-q_p_1_l=q_num_1[np.argmax(Iq_num_1_cut)-1]
-q_p_1_r=q_num_1[np.argmax(Iq_num_1_cut)+1]
+q_p_1_l=q_num_1_cut[np.argmax(Iq_num_1_cut)-1]
+q_p_1_r=q_num_1_cut[np.argmax(Iq_num_1_cut)+1]
 q_p_err=(q_p_1_r-q_p_1_l)*0.5
 
 file_11=paths.output / 'qp1.txt'
