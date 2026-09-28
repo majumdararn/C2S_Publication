@@ -205,20 +205,26 @@ ax1[0].set_ylabel(r'Y $[\mathrm{\AA}]$', fontsize=fs)
 plt.savefig(paths.figures / 'crw.pdf', format='pdf')
 
 #
-q_mask_1 = (q_num_1 >= 0.09) & (q_num_1 <= 0.6)
+q_mask = (q_num_1 >= 0.09) & (q_num_1 <= 0.6)
 
-q_num_1_cut = q_num_1[q_mask_1]
-Iq_num_1_cut = Iq_num_1[q_mask_1]
+q_num_1_cut = q_num_1[q_mask]
+Iq_num_1_cut = Iq_num_1[q_mask]
 # f_cut = f[mask]
 q_p_1=q_num_1_cut[np.argmax(Iq_num_1_cut)]
-# print(np.max(Iq_num_1))
+print(Iq_num_1_cut)
 # print(np.max(Iq))
-q_p_1_l=q_num_1_cut[np.argmax(Iq_num_1_cut)-1]
-q_p_1_r=q_num_1_cut[np.argmax(Iq_num_1_cut)+1]
-q_p_err=(q_p_1_r-q_p_1_l)*0.5
+# q_p_1_l=q_num_1_cut[np.argmax(Iq_num_1_cut)-1]
+# q_p_1_r=q_num_1_cut[np.argmax(Iq_num_1_cut)+1]
+# q_p_err=(q_p_1_r-q_p_1_l)*0.5
+
+q_num_2_cut = q_num_2[q_mask]
+Iq_num_2_cut = Iq_num_2[q_mask]
+
+q_p_2=q_num_2_cut[np.argmax(Iq_num_2_cut)]
 
 file_11=paths.output / 'qp1.txt'
-file_12=paths.output / 'qperr1.txt'
+file_21=paths.output / 'qp2.txt'
+# file_12=paths.output / 'qperr1.txt'
 
 # with open(file_11, "w") as f:
 #     f.write(str(q_p_1))
@@ -227,4 +233,5 @@ file_12=paths.output / 'qperr1.txt'
 #     f.write(str(q_p_err))
 
 np.savetxt(file_11, [q_p_1], fmt="%.2f")
-np.savetxt(file_12, [q_p_err], fmt="%.2f")
+np.savetxt(file_21, [q_p_2], fmt="%.2f")
+# np.savetxt(file_12, [q_p_err], fmt="%.2f")
