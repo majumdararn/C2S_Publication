@@ -204,6 +204,10 @@ ax1[0].set_xlabel(r'X $[\mathrm{\AA}]$', fontsize=fs)
 ax1[0].set_ylabel(r'Y $[\mathrm{\AA}]$', fontsize=fs)
 plt.savefig(paths.figures / 'crw.pdf', format='pdf')
 
+
+# 
+q_p_0=Q_arr[np.argmax(Iq)]
+
 #
 q_mask = (q_num_1 >= 0.09) & (q_num_1 <= 0.6)
 
@@ -222,6 +226,7 @@ Iq_num_2_cut = Iq_num_2[q_mask]
 
 q_p_2=q_num_2_cut[np.argmax(Iq_num_2_cut)]
 
+file_01=paths.output / 'qp0.txt'
 file_11=paths.output / 'qp1.txt'
 file_21=paths.output / 'qp2.txt'
 # file_12=paths.output / 'qperr1.txt'
@@ -232,6 +237,7 @@ file_21=paths.output / 'qp2.txt'
 # with open(file_12, "w") as f:
 #     f.write(str(q_p_err))
 
+np.savetxt(file_01, [q_p_0], fmt="%.4f")
 np.savetxt(file_11, [q_p_1], fmt="%.4f")
 np.savetxt(file_21, [q_p_2], fmt="%.4f")
 # np.savetxt(file_12, [q_p_err], fmt="%.2f")
