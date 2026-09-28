@@ -232,6 +232,6 @@ file_21=paths.output / 'qp2.txt'
 # with open(file_12, "w") as f:
 #     f.write(str(q_p_err))
 
-np.savetxt(file_11, [q_p_1], fmt="%.2f")
-np.savetxt(file_21, [q_p_2], fmt="%.2f")
+np.savetxt(file_11, [q_p_1], fmt="%.4f")
+np.savetxt(file_21, [q_p_2], fmt="%.4f")
 # np.savetxt(file_12, [q_p_err], fmt="%.2f")
