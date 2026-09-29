@@ -349,7 +349,7 @@ for sim_t_idx, sim_time in enumerate(sim_times):
                         rect_center_x=idx1*cell_x
                         rect_center_y=idx2*cell_y
                         ax3.add_patch(Rectangle((rect_center_x, rect_center_y), cell_x, cell_y, 
-                                            edgecolor='k', facecolor='none', linewidth=0.5))
+                                            edgecolor='r', facecolor='none', linewidth=0.5))
                 fig3.subplots_adjust(left=0.15, right=0.89)
                 fig3.savefig(plot_file, format='pdf')
                 plt.close(fig3)
