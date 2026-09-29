@@ -48,22 +48,22 @@ dependencies:
   #   - src/data/dataset.tar.xz
   src/scripts/sas_val_quan.py:
     - src/data/dataset.tar.xz
-  src/scripts/sas_val_crw.py:
-    - src/data/crw.tar.gz
+  # src/scripts/sas_val_crw.py:
+  #   - src/data/crw.tar.gz
   src/scripts/phase_field_img_plot_paper.py:
     - src/data/dataset.tar.xz
   src/scripts/phase_field_Iq_plot_paper.py:
     - src/data/dataset.tar.xz
-  src/tex/output/qp0.txt:
-    - src/scripts/sas_val_crw.py
-  src/tex/output/qp1.txt:
-    - src/scripts/sas_val_crw.py
-  src/tex/output/qp2.txt:
-    - src/scripts/sas_val_crw.py
-  src/tex/output/qres0.txt:
-    - src/scripts/sas_val_crw.py
-  src/tex/output/qres1.txt:
-    - src/scripts/sas_val_crw.py
+  # src/tex/output/qp0.txt:
+  #   - src/scripts/sas_val_crw.py
+  # src/tex/output/qp1.txt:
+  #   - src/scripts/sas_val_crw.py
+  # src/tex/output/qp2.txt:
+  #   - src/scripts/sas_val_crw.py
+  # src/tex/output/qres0.txt:
+  #   - src/scripts/sas_val_crw.py
+  # src/tex/output/qres1.txt:
+  #   - src/scripts/sas_val_crw.py
   # src/figures/Iq_ball.pdf:
   #   - src/scripts/ball_plot_paper.py
   # src/figures/Iq_bib_ecc.pdf:
