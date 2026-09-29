@@ -7,4 +7,4 @@ rule crw:
         qp2="src/tex/output/qp2.txt",
         qres0="src/tex/output/qres0.txt",
         qres1="src/tex/output/qres1.txt"
-    script: "src/scripts/crw.py"
+    script: "src/scripts/sas_val_crw.py"
