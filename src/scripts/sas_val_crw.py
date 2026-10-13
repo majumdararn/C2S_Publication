@@ -242,9 +242,9 @@ file_12=paths.output / 'qres1.txt'
 q_res_ana=Q_arr[1]-Q_arr[0]
 q_res_num=q_num_1[1]-q_num_1[0]
 
-np.savetxt(file_01, [q_p_0], fmt="%.3f")
-np.savetxt(file_11, [q_p_1], fmt="%.3f")
-np.savetxt(file_21, [q_p_2], fmt="%.3f")
-np.savetxt(file_02, [q_res_ana], fmt="%.3f")
-np.savetxt(file_12, [q_res_num], fmt="%.3f")
+np.savetxt(file_01, [q_p_0], fmt="%.3f", newline="")
+np.savetxt(file_11, [q_p_1], fmt="%.3f", newline="")
+np.savetxt(file_21, [q_p_2], fmt="%.3f", newline="")
+np.savetxt(file_02, [q_res_ana], fmt="%.3f", newline="")
+np.savetxt(file_12, [q_res_num], fmt="%.3f", newline="")
 # np.savetxt(file_12, [q_p_err], fmt="%.2f")
