@@ -251,7 +251,7 @@ Qualitative comparisons of analytical and numerical calculations were performed 
 \bottomrule
 \end{tabular}
 \caption{Parameters used for generating validation nanostructures. All models used for qualitative comparison and the particle growth model used for quantitative comparison can be generated with the given values of $r_{\text{sph}}$, $L$, $\beta_{\text{sph}}$, $\beta_{\text{cube}}$, and $\vec{R}_{\text{ecc}}$. The interdiffusion model used for quantitative comparison requires the $\sigma$ values additionally.\\
-\noindent $^{\dagger}$ The $r_{\text{sph}}$ value for cube model is irrelevant but has to be $\leq L$.\\
+\noindent $^{\dagger}$ The $r_{\text{sph}}$ value for cube model is irrelevant but has to be $\leq L/2$.\\
 \noindent $^{\dagger\dagger}$ $\sigma$ is only applicable for the interdiffusion example.\\
 \noindent $^{\dagger\dagger\dagger}$ [N1 -- N2] represents an inclusive range from N1 to N2.
 \label{tab:param_val_struct}}
@@ -336,7 +336,7 @@ So far, the test systems are aperiodic solute-solvent structures, for which the 
 
 The analytical structure was generated using the clipped random wave (CRW) model~\cite{berk1991scattering, chen1997measurement, choy2000clipped, hedstrom2004pore}. Based on the chosen model parameters, the interference peak is expected at $Q_{\text{peak}}=0.32$\,\text{\AA}$^{-1}$. The model assumes an isometric two-phase system with equal volume fractions, and SLD values $\beta_0=1\cdot 10^{-5}\,\text{\AA}^{-2}$ and $\beta_1=2\,\cdot 10^{-5}\,\text{\AA}^{-2}$. The mathematical formulation used to compute the node SLD values and the analytical SAS pattern is provided in the appendix (section~\ref{appxA}). The representative nanostructures were generated in two different simulation boxes meshed with $1953125$ $(125 \times 125 \times 125)$ cubic elements of side lengths $250$\,\AA{} and $600$\,\AA{}, making the length of cubic mesh elements $2$\,\AA{} and $4.8$\,\AA{}, respectively.
 
-\subsection{FEM simulation of a realistic nanostructure}
+    \subsection{FEM simulation of a realistic nanostructure}
 \label{subsec:mat_method_fem}
 
 \begin{table*}
@@ -553,7 +553,7 @@ The comparison between the analytical and numerical SAS patterns with an expecte
     \hfill
     \includegraphics[trim={0.25cm 0cm 1.5cm 0cm},clip,width=\columnwidth]{figures/ch_len.pdf}
     \hfill
-    \caption{[left] Numerical SANS intensity calculated from an FEM simulation of \ce{Fe-Cr} spinodal decomposition at different times. A snapshot of the simulation box is shown in the inset, colour-coded according to the molar fraction of chromium, from which the SLD values were calculated. [right] The time evolution of characteristic length $(\Lambda)$, calculated using $\Lambda=\frac{2\pi}{Q_{\text{p}}}$ with $Q_{\text{p}}$ as $Q$ value of maximal calculated intensity. The error bar is calculated using $Q$ values from either side of $Q_{\text{p}}$. The initial time step is excluded due to randomness in the structure. A linear trend of simulated $\Lambda$ corresponds to a power law in this double-logarithmic plot.\label{fig:sans_fe_cr}}
+    \caption{[left] Numerical SANS intensity calculated from an FEM simulation of \ce{Fe-Cr} spinodal decomposition at different times. A snapshot of the simulation box is shown in the inset, colour-coded according to the molar fraction of chromium, from which the SLD values were calculated. [right] The time evolution of characteristic length $(\Lambda)$, calculated using $\Lambda=\frac{2\pi}{Q_{\text{p}}}$ with $Q_{\text{p}}$ as $Q$ value of maximum calculated intensity. The error bar is calculated using $Q$ values from either side of $Q_{\text{p}}$. The initial time step is excluded due to randomness in the structure. A linear trend of simulated $\Lambda$ corresponds to a power law in this double-logarithmic plot.\label{fig:sans_fe_cr}}
 \end{figure*}
 
 % Real-life phenomena hardly ever produce structures as simple as the ones used in the validation section~\cite{huang2007continuum, zhu20143d}. 
@@ -640,7 +640,7 @@ This study also provides a well-tested and easily reusable Python software, Cont
 
 \section*{Data availability}
 
-An electronic copy of this manuscript can be found in the git repository. The article is available under Creative Commons Attribution 4.0 International license. The repository is available at~\url{https://github.com/majumdararn/C2S_Publication}. The copy was created using the reproducibility software \emph{showyourwork!}\,\cite{luger2021mapping}, which allows continuous integration to programmatically download the data from zenodo.org, create the figures, and compile the manuscript. Each figure caption in the electronic copy contains two links: one to the dataset stored on Zenodo used in the corresponding figure, and the other to the script used to make the figure. The release 1.0.0 of the git repository allows anyone to rebuild the entire manuscript. The datasets are available at~\url{https://doi.org/10.5281/zenodo.16994688}, under the Creative Commons Attribution 4.0 International license.
+An electronic copy of this manuscript can be found in the git repository. The article is available under Creative Commons Attribution 4.0 International license. The repository is available at~\url{https://github.com/majumdararn/C2S_Publication}. The copy was created using the reproducibility software \emph{showyourwork!}\,\cite{luger2021mapping}, which allows continuous integration to programmatically download the data from zenodo.org, create the figures, and compile the manuscript. Each figure caption in the electronic copy contains two links: one to the dataset stored on Zenodo used in the corresponding figure, and the other to the script used to make the figure. The release 1.0.0 of the git repository allows anyone to rebuild the entire manuscript. The datasets are available at~\url{https://doi.org/10.5281/zenodo.24446887}, under the Creative Commons Attribution 4.0 International license.
 
 \section*{Declaration of generative AI and AI-assisted technologies in the writing process}
 
